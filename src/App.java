@@ -2,11 +2,15 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
         List<Customer> customers = new ArrayList<Customer>();
         final String file = "resources/BankUsers.csv";
+        Scanner scanner = new Scanner(System.in);
+        String input;
+
         try(BufferedReader br = new BufferedReader(new FileReader(file))){
             String line;
             String headers = br.readLine();
@@ -33,5 +37,9 @@ public class App {
                 customers.add(newCust);
             }
         }
+
+        System.out.println("Provide input: ");
+        input = scanner.nextLine();
+        System.out.println(input);
     }
 }
