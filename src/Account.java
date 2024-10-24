@@ -1,12 +1,17 @@
 public abstract class Account {
     private Customer accountOwner;
     private int accountNumber;
-    protected double accountBalance; 
+    protected double accountBalance;
 
-    public Account(){
-        
+    public Account() {
+
     }
-    
+
+    public Account(int num, double bal) {
+        this.accountNumber = num;
+        this.accountBalance = bal;
+    }
+
     public Account(Customer accountOwner, int accountNumber, double accountBalance) {
         this.accountOwner = accountOwner;
         this.accountNumber = accountNumber;
@@ -38,14 +43,24 @@ public abstract class Account {
         this.accountBalance = accountBalance;
     }
 
-    public void deposit(double amount) {
-        
+    public boolean deposit(double amount) {
+        if (amount > 0) {
+            accountBalance += amount;
+            return true;
+        }
+        return false;
     }
 
-   
-    public void withdraw(double amount) {
-        
+    public boolean withdraw(double amount) {
+        if (amount > 0) {
+            if (amount <= accountBalance) {
+                accountBalance -= amount;
+                return true;
+            }
+        }
+        return false;
     }
 
+    public abstract String getAccountType();
 
 }

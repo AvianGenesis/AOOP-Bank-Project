@@ -1,0 +1,20 @@
+Mickey Mouse made a balance inquiry on Saving-2000. Mickey Mouse’s Balance for Saving-2000: $4,479.46
+Mickey Mouse deposited $123.00 into Saving-2000. Mickey Mouse’s New Balance for Saving-2000: $4,602.46
+Mickey Mouse deposited $123.00 into Saving-2000. Mickey Mouse’s New Balance for Saving-2000: $4,725.46
+Mickey Mouse deposited $123.00 into Saving-2000. Mickey Mouse’s New Balance for Saving-2000: $4,848.46
+Mickey Mouse deposited $123.00 into Checking-1000. Mickey Mouse’s New Balance for Checking-1000: $526.12
+Mickey Mouse deposited $123.00 into Checking-1000. Mickey Mouse’s New Balance for Checking-1000: $526.12
+Mickey Mouse deposited $123.12 into Checking-1000. Mickey Mouse’s New Balance for Checking-1000: $526.24
+Mickey Mouse deposited $1,231,424.34 into Checking-1000. Mickey Mouse’s New Balance for Checking-1000: $1,231,827.46
+Mickey Mouse deposited $20.11 into Checking-1000. Mickey Mouse’s New Balance for Checking-1000: $423.23
+Mickey Mouse withdrew $123.00 in cash from Saving-2000. Mickey Mouse’s Balance for Saving-2000: $4,356.46
+Mickey Mouse made a balance inquiry on Credit-3000. Mickey Mouse’s Balance for Credit-3000: -$1,653.84
+Mickey Mouse made a balance inquiry on Credit-3000. Mickey Mouse’s Balance for Credit-3000: -$1,653.84
+Mickey Mouse made a balance inquiry on Credit-3000. Mickey Mouse’s Balance for Credit-3000: -$1,653.84
+Mickey Mouse transferred $1.00 from Checking-1000 to Saving-2000. Mickey Mouse’s Balance for Checking-1000: $402.12. Mickey Mouse’s Balance for Saving-2000: $4,480.46
+Goofy Disney made a balance inquiry on Credit-3003. Goofy Disney’s Balance for Credit-3003: -$141.39
+Goofy Disney transferred $12.00 from Credit-3003 to Checking-1000. Goofy Disney’s Balance for Credit-3003: -$153.39. Goofy Disney’s Balance for Checking-1000: $415.12
+Mickey Mouse paid Mickey Mouse $100.00 from Saving-2000. Mickey Mouse’s New Balance for Saving-2000: $4,379.46
+Mickey Mouse received $100.00 from Mickey Mouse. Mickey Mouse’s New Balance for Checking-1000: $503.12
+Mickey Mouse made a balance inquiry on Credit-3000. Mickey Mouse’s Balance for Credit-3000: -$1,653.84
+Mickey Mouse made a balance inquiry on Credit-3000. Mickey Mouse’s Balance for Credit-3000: -$1,653.84
