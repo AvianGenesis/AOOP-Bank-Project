@@ -18,3 +18,5 @@ Mickey Mouse paid Mickey Mouse $100.00 from Saving-2000. Mickey Mouse’s New Ba
 Mickey Mouse received $100.00 from Mickey Mouse. Mickey Mouse’s New Balance for Checking-1000: $503.12
 Mickey Mouse made a balance inquiry on Credit-3000. Mickey Mouse’s Balance for Credit-3000: -$1,653.84
 Mickey Mouse made a balance inquiry on Credit-3000. Mickey Mouse’s Balance for Credit-3000: -$1,653.84
+Mickey Mouse withdrew $20.00 in cash from Credit-3000. Mickey Mouse’s Balance for Credit-3000: -$1,673.84
+Mickey Mouse made a balance inquiry on Credit-3000. Mickey Mouse’s Balance for Credit-3000: -$1,653.84

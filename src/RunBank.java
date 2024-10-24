@@ -9,7 +9,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
-public class App {
+public class RunBank {
+
+    /**
+     * Main method, banking interface
+     * 
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         List<Customer> customers = new ArrayList<Customer>();
         HashMap<Integer, Account> accounts = new HashMap<>();
@@ -116,7 +123,7 @@ public class App {
                             System.out.println("|--------------------------|");
                             System.out.printf("| Balance: %-8s        |%n", activeAccount.getAccountBalance());
                             if (activeAccount.getAccountType() == "Credit") {
-                                System.out.printf("| Max: -%-8s           |%n", ((Credit)activeAccount).getMax());
+                                System.out.printf("| Max: -%-8s           |%n", ((Credit) activeAccount).getMax());
                             }
                             System.out.println("|--------------------------|");
                             System.out.println();
@@ -210,15 +217,19 @@ public class App {
                     input = scanner.nextLine();
                     int receiver = tryParseInt(input);
                     if (receiver != -1 && accounts.containsKey(receiver)) { // if input is a number and account exists
-                        logTransfer(activeAccount.getAccountOwner(), activeAccount, accounts.get(receiver), amt);
-                        System.out.printf("An amount of $%.2f has been transferred from %s --- %s to %s --- %s.%n", amt,
-                                activeAccount.getAccountType(), activeAccount.getAccountNumber(),
-                                accounts.get(receiver).getAccountType(), accounts.get(receiver).getAccountNumber());
-                        System.out.println();
+                        if (logTransfer(activeAccount.getAccountOwner(), activeAccount, accounts.get(receiver), amt)) {
+                            System.out.printf("An amount of $%.2f has been transferred from %s --- %s to %s --- %s.%n",
+                                    amt,
+                                    activeAccount.getAccountType(), activeAccount.getAccountNumber(),
+                                    accounts.get(receiver).getAccountType(), accounts.get(receiver).getAccountNumber());
+                            System.out.println();
 
-                        System.out.println("Please press ENTER to continue.");
-                        scanner.nextLine();
-                        uiMode = modes.CHOOSE_ACCOUNT;
+                            System.out.println("Please press ENTER to continue.");
+                            scanner.nextLine();
+                            uiMode = modes.CHOOSE_ACCOUNT;
+                        } else {
+                            System.out.println("Invalid values given, transfering incomplete. Please try again.");
+                        }
                     } else if (input.trim().toUpperCase().equals("BACK")) { // if BACK
                         uiMode = modes.CHOOSE_ACCOUNT;
                     } else {
@@ -247,18 +258,22 @@ public class App {
                     int receiver = tryParseInt(input);
 
                     if (receiver != -1 && accounts.containsKey(receiver)) { // if input is a number and account exists
-                        logPayment(activeAccount.getAccountOwner(), accounts.get(receiver).getAccountOwner(),
-                                activeAccount, accounts.get(receiver), amt);
-                        System.out.printf("An amount of $%.2f has been paid from %s's %s --- %s to %s's %s --- %s.%n",
-                                amt, activeAccount.getAccountOwner().getFirstName(),
-                                activeAccount.getAccountType(), activeAccount.getAccountNumber(),
-                                accounts.get(receiver).getAccountOwner().getFirstName(),
-                                accounts.get(receiver).getAccountType(), accounts.get(receiver).getAccountNumber());
-                        System.out.println();
+                        if (logPayment(activeAccount.getAccountOwner(), accounts.get(receiver).getAccountOwner(),
+                                activeAccount, accounts.get(receiver), amt)) {
+                            System.out.printf(
+                                    "An amount of $%.2f has been paid from %s's %s --- %s to %s's %s --- %s.%n",
+                                    amt, activeAccount.getAccountOwner().getFirstName(),
+                                    activeAccount.getAccountType(), activeAccount.getAccountNumber(),
+                                    accounts.get(receiver).getAccountOwner().getFirstName(),
+                                    accounts.get(receiver).getAccountType(), accounts.get(receiver).getAccountNumber());
+                            System.out.println();
 
-                        System.out.println("Please press ENTER to continue.");
-                        scanner.nextLine();
-                        uiMode = modes.CHOOSE_ACCOUNT;
+                            System.out.println("Please press ENTER to continue.");
+                            scanner.nextLine();
+                            uiMode = modes.CHOOSE_ACCOUNT;
+                        } else {
+                            System.out.println("Invalid values given, payment incomplete. Please try again.");
+                        }
                     } else if (input.trim().toUpperCase().equals("BACK")) { // if BACK
                         uiMode = modes.CHOOSE_ACCOUNT;
                     } else {
@@ -280,7 +295,16 @@ public class App {
         writeChanges(customers, accounts, file);
     }
 
-    static List<Customer> loadCustomers(String file, HashMap<Integer, Account> accounts)
+    /**
+     * Reads and parses BankUsers.csv
+     * 
+     * @param file     The name of the input file
+     * @param accounts Hash map of accounts to be written to
+     * @return List<Customer>
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
+    public static List<Customer> loadCustomers(String file, HashMap<Integer, Account> accounts)
             throws FileNotFoundException, IOException {
         List<Customer> ret = new ArrayList<Customer>();
         String[] values;
@@ -334,7 +358,14 @@ public class App {
         return ret;
     }
 
-    static Customer findCustomer(int acctId, List<Customer> customers) {
+    /**
+     * Finds Customer based on given account Id
+     * 
+     * @param acctId    Id of account whose owner will be searched
+     * @param customers List of customers to be searched through
+     * @return Customer
+     */
+    public static Customer findCustomer(int acctId, List<Customer> customers) {
         for (Customer cust : customers) {
             if (acctId == cust.getidNumber()) {
                 return cust;
@@ -346,6 +377,11 @@ public class App {
     private static final String LOG_FILE = "resources/Log.txt";
     private static final DecimalFormat df = new DecimalFormat("$#,##0.00");
 
+    /**
+     * Writes action to log file
+     * 
+     * @param message String to be written to the log file
+     */
     public static void logAction(String message) {
         try (FileWriter writer = new FileWriter(LOG_FILE, true)) {
             writer.write(message + "\n");
@@ -354,6 +390,12 @@ public class App {
         }
     }
 
+    /**
+     * Logs balance inquiries
+     * 
+     * @param customer Customer performing the inquiry
+     * @param account  The account the customer is performing the inquiry on
+     */
     public static void logBalanceInquiry(Customer customer, Account account) {
         String message = String.format("%s %s made a balance inquiry on %s-%s. %s %s’s Balance for %s-%s: %s",
                 customer.getFirstName(), customer.getLastName(), account.getAccountType(),
@@ -363,6 +405,14 @@ public class App {
         logAction(message);
     }
 
+    /**
+     * Executes and logs deposits
+     * 
+     * @param customer Customer performing the deposit
+     * @param account  Account being desposited into
+     * @param amount   Amount being deposited
+     * @return true if the deposit was successful, false otherwise
+     */
     public static boolean logDeposit(Customer customer, Account account, double amount) {
         if (account.deposit(amount)) {
             String message = String.format("%s %s deposited %s into %s-%s. %s %s’s New Balance for %s-%s: %s",
@@ -376,6 +426,14 @@ public class App {
         return false;
     }
 
+    /**
+     * Executes and logs withdrawals
+     * 
+     * @param customer Customer performing the withdrawal
+     * @param account  Account being withdrawn from
+     * @param amount   Amount being withdrawn
+     * @return true if the withdrawal was successful, false otherwise
+     */
     public static boolean logWithdrawal(Customer customer, Account account, double amount) {
         if (account.withdraw(amount)) {
             String message = String.format("%s %s withdrew %s in cash from %s-%s. %s %s’s Balance for %s-%s: %s",
@@ -389,6 +447,15 @@ public class App {
         return false;
     }
 
+    /**
+     * Executes and logs transfers
+     * 
+     * @param customer    Customer performing the transfer
+     * @param fromAccount Sending Account
+     * @param toAccount   Receiving Account
+     * @param amount      Amount being transfered
+     * @return true if the transfer was successful, false otherwise
+     */
     public static boolean logTransfer(Customer customer, Account fromAccount, Account toAccount, double amount) {
         if (fromAccount.withdraw(amount)) {
             toAccount.deposit(amount);
@@ -407,6 +474,16 @@ public class App {
         return false;
     }
 
+    /**
+     * Executes and logs payments
+     * 
+     * @param payer        Customer paying
+     * @param payee        Customer being paid
+     * @param payerAccount Sending Account
+     * @param payeeAccount Receiving Account
+     * @param amount       Amount being paid
+     * @return true if the payment was successful, false otherwise
+     */
     public static boolean logPayment(Customer payer, Customer payee, Account payerAccount, Account payeeAccount,
             double amount) {
         if (payerAccount.withdraw(amount)) {
@@ -430,6 +507,13 @@ public class App {
         return false;
     }
 
+    /**
+     * Writes all changes acrued during runtime to BankUsers.csv
+     * 
+     * @param customers List of customers
+     * @param accounts  Hash map of all accounts with changes
+     * @param outFile   File for the changes to be written to
+     */
     static void writeChanges(List<Customer> customers, HashMap<Integer, Account> accounts, String outFile) {
         String changes = "Identification Number,First Name,Last Name,Date of Birth,Address,City,State,Zip,Phone Number,Checking Account Number,Checking Starting Balance,Savings Account Number,Savings Starting Balance,Credit Account Number,Credit Max,Credit Starting Balance\n";
         for (Customer cust : customers) {
@@ -451,13 +535,19 @@ public class App {
                             ((Credit) accounts.get(cust.getAccounts()[2])).getMax() + "," +
                             accounts.get(cust.getAccounts()[2]).getAccountBalance() + "\n");
         }
-        try (FileWriter writer = new FileWriter("resources/Test.csv", false)) {
+        try (FileWriter writer = new FileWriter(outFile, false)) {
             writer.write(changes);
         } catch (IOException e) {
             System.err.println("Error writing to Bank Users file: " + e.getMessage());
         }
     }
 
+    /**
+     * Attempts to parse a String for an int
+     * 
+     * @param str String to be parsed
+     * @return int
+     */
     static int tryParseInt(String str) {
         int ret = -1;
         try {
@@ -467,6 +557,13 @@ public class App {
         return ret;
     }
 
+    /**
+     * Attempts to parse a string for a double and, if successful, return a double
+     * rounded to the 100ths place
+     * 
+     * @param str String to be parsed
+     * @return double
+     */
     static double tryParseAmt(String str) {
         double ret = -1;
         try {
