@@ -20,3 +20,12 @@ Mickey Mouse made a balance inquiry on Credit-3000. Mickey Mouse’s Balance for
 Mickey Mouse made a balance inquiry on Credit-3000. Mickey Mouse’s Balance for Credit-3000: -$1,653.84
 Mickey Mouse withdrew $20.00 in cash from Credit-3000. Mickey Mouse’s Balance for Credit-3000: -$1,673.84
 Mickey Mouse made a balance inquiry on Credit-3000. Mickey Mouse’s Balance for Credit-3000: -$1,653.84
+Mickey Mouse made a balance inquiry on Credit-3000. Mickey Mouse’s Balance for Credit-3000: -$1,653.84
+Mickey Mouse deposited $200.00 into Credit-3000. Mickey Mouse’s New Balance for Credit-3000: -$1,453.84
+Donald Duck made a balance inquiry on Checking-1001. Donald Duck’s Balance for Checking-1001: $1,928.58
+Donald Duck deposited $200.00 into Checking-1001. Donald Duck’s New Balance for Checking-1001: $2,128.58
+Donald Duck made a balance inquiry on Checking-1001. Donald Duck’s Balance for Checking-1001: $2,128.58
+Donald Duck withdrew $100.00 in cash from Checking-1001. Donald Duck’s Balance for Checking-1001: $2,028.58
+Donald Duck made a balance inquiry on Checking-1001. Donald Duck’s Balance for Checking-1001: $2,028.58
+Donald Duck transferred $100.00 from Checking-1001 to Saving-2001. Donald Duck’s Balance for Checking-1001: $1,928.58. Donald Duck’s Balance for Saving-2001: $3,682.37
+Donald Duck made a balance inquiry on Checking-1001. Donald Duck’s Balance for Checking-1001: $1,928.58
