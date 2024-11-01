@@ -5,7 +5,7 @@ public class Navigator {
     // attributes
     Scanner scanner = new Scanner(System.in);
 
-    void Navigator() {
+    public Navigator() {
 
     }
 

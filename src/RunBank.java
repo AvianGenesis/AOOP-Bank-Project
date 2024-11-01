@@ -153,7 +153,7 @@ public class RunBank {
                 } else if (input.trim().toUpperCase().equals("BACK")) {
                     uiMode = modes.CHOOSE_ACCOUNT;
                 } else {
-                    System.out.println("Unknown command, please try again.");
+                    nav.displayGenericInputError(input);
                 }
 
                 System.out.println();
