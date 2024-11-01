@@ -25,9 +25,11 @@ public class RunBank {
 
         Scanner scanner = new Scanner(System.in);
         String input;
+        int btn;
         Customer activeCustomer = null;
         Account activeAccount = null;
         Account receivingAccount = null;
+        Navigator nav = new Navigator();
 
         class Mode {
             public int EXIT = 0;
@@ -38,18 +40,43 @@ public class RunBank {
             public int WITHDRAW = 5;
             public int TRANSFER = 6;
             public int PAY = 7;
+            public int MAIN = 8;
+            public int ADMIN = 9;
+            public int NEW_CUSTOMER = 10;
         }
         Mode modes = new Mode();
-        int uiMode = modes.CREDENTIALS;
+        int uiMode = modes.MAIN;
 
         System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
         while (uiMode != modes.EXIT) {
-            if (uiMode == modes.CREDENTIALS) {
-                System.out.println("Please provide your ID to log in OR");
-                System.out.println("type EXIT to exit the application:");
-                System.out.print("| ");
+            if (uiMode == modes.MAIN) { // Main menu
+                input = nav.displayMainMenu();
+                btn = tryParseInt(input);
 
-                input = scanner.nextLine();
+                if (btn != -1) {
+                    switch (btn) {
+                        case (1):
+                            uiMode = modes.CREDENTIALS;
+                            break;
+                        case (2):
+                            uiMode = modes.ADMIN;
+                            break;
+                        case (3):
+                            uiMode = modes.NEW_CUSTOMER;
+                            break;
+                        default:
+                            nav.displayGenericInputError(input);
+                            break;
+                    }
+                } else if (input.trim().toUpperCase().equals("EXIT")) {
+                    uiMode = modes.EXIT;
+                } else {
+                    nav.displayGenericInputError(input);
+                }
+
+                System.out.println();
+            } else if (uiMode == modes.CREDENTIALS) { // Customer credentials prompt, ADD NAME INPUT FUNCTIONALITY
+                input = nav.displayCustomerLogin();
                 int uId = tryParseInt(input);
                 if (uId != -1) {
                     if ((activeCustomer = findCustomer(uId, customers)) != null) {
@@ -57,75 +84,34 @@ public class RunBank {
                     } else {
                         System.out.println("Unrecognized ID, please try again.");
                     }
-                } else if (input.trim().toUpperCase().equals("EXIT")) {
-                    uiMode = modes.EXIT;
+                } else if (input.trim().toUpperCase().equals("BACK")) {
+                    uiMode = modes.MAIN;
                 } else {
-                    System.out.println("Unknown command, please try again.");
+                    nav.displayGenericInputError(input);
                 }
 
                 System.out.println();
-            } else if (uiMode == modes.CHOOSE_ACCOUNT) {
-                // welcome msg
-                int tick = 1;
-                System.out.println("Welcome back, " + activeCustomer.getFirstName().toUpperCase() + "!");
-                System.out.println("Below are your accounts.");
-                System.out.println();
-                System.out.println("|--------------------------|");
-                System.out.println("| Btn | Acct Type | Acct # |");
-                System.out.println("|--------------------------|");
-                for (int acct : activeCustomer.getAccounts()) {
-                    System.out.printf("| %2s  | %-8s --- %-5s |%n", tick++, accounts.get(acct).getAccountType(), acct);
-                }
-                System.out.println("|--------------------------|");
-                System.out.println();
-                System.out.println("Please press the button for which account you would like to access OR");
-                System.out.println("type BACK to return to the Main Menu:");
-                System.out.print("| ");
-
-                input = scanner.nextLine();
-                int btn = tryParseInt(input);
+            } else if (uiMode == modes.CHOOSE_ACCOUNT) { // Customer chooses account
+                input = nav.displayAccounts(activeCustomer, accounts);
+                btn = tryParseInt(input);
                 if (btn >= 1 && btn <= activeCustomer.getAccounts().length) {
                     activeAccount = accounts.get(activeCustomer.getAccounts()[btn - 1]);
                     uiMode = modes.CHOOSE_ACTION;
                 } else if (input.trim().toUpperCase().equals("BACK")) {
                     uiMode = modes.CREDENTIALS;
                 } else {
-                    System.out.println("Unknown command, please try again.");
+                    nav.displayGenericInputError(input);
                 }
 
                 System.out.println();
             } else if (uiMode == modes.CHOOSE_ACTION) {
-                System.out.println("|--------------------------|");
-                System.out.printf("| btn | %-8s --- %-5s |%n", activeAccount.getAccountType(),
-                        activeAccount.getAccountNumber());
-                System.out.println("|--------------------------|");
-                System.out.println("|  1  | Check balance      |");
-                System.out.println("|  2  | Deposit            |");
-                System.out.println("|  3  | Withdraw           |");
-                System.out.println("|  4  | Transfer           |");
-                System.out.println("|  5  | Pay                |");
-                System.out.println("|--------------------------|");
-                System.out.println();
-                System.out.println("Please press the button for which action you would like to perform OR");
-                System.out.println("type BACK to return to your Accounts page:");
-                System.out.print("| ");
-
-                input = scanner.nextLine();
-                int btn = tryParseInt(input);
+                input = nav.displayAccountActions(activeAccount);
+                btn = tryParseInt(input);
                 if (btn >= 1 && btn <= 5) {
                     switch (btn) {
                         case 1:
                             logBalanceInquiry(activeAccount.getAccountOwner(), activeAccount);
-                            System.out.println();
-                            System.out.println("|--------------------------|");
-                            System.out.printf("| %-8s --- %-5s       |%n", activeAccount.getAccountType(),
-                                    activeAccount.getAccountNumber());
-                            System.out.println("|--------------------------|");
-                            System.out.printf("| Balance: %-8s        |%n", activeAccount.getAccountBalance());
-                            if (activeAccount.getAccountType() == "Credit") {
-                                System.out.printf("| Max: -%-8s           |%n", ((Credit) activeAccount).getMax());
-                            }
-                            System.out.println("|--------------------------|");
+                            nav.displayBalanceRequest(activeAccount);
                             System.out.println();
                             System.out.println("Please press ENTER to continue.");
                             scanner.nextLine();
@@ -150,13 +136,8 @@ public class RunBank {
                 }
 
                 System.out.println();
-                /* DEPOSIT MODE */
-            } else if (uiMode == modes.DEPOSIT) {
-                System.out.println("Please provide how much you would like to deposit [$xxx.xx] OR");
-                System.out.println("type BACK:");
-                System.out.print("| $");
-
-                input = scanner.nextLine();
+            } else if (uiMode == modes.DEPOSIT) { // Deposit mode
+                input = nav.displayDepositRequest();
                 double amt = tryParseAmt(input);
                 if (amt != -1) {
                     if (logDeposit(activeAccount.getAccountOwner(), activeAccount, amt)) {
@@ -176,13 +157,8 @@ public class RunBank {
                 }
 
                 System.out.println();
-                /* WITHDRAW MODE */
-            } else if (uiMode == modes.WITHDRAW) {
-                System.out.println("Please provide how much you would like to withdraw [$xxx.xx] OR");
-                System.out.println("type BACK:");
-                System.out.print("| $");
-
-                input = scanner.nextLine();
+            } else if (uiMode == modes.WITHDRAW) { // Withdraw mode
+                input = nav.displayWithdrawRequest();
                 double amt = tryParseAmt(input);
                 if (amt != -1) {
                     if (logWithdrawal(activeAccount.getAccountOwner(), activeAccount, amt)) {
@@ -198,23 +174,16 @@ public class RunBank {
                 } else if (input.trim().toUpperCase().equals("BACK")) {
                     uiMode = modes.CHOOSE_ACCOUNT;
                 } else {
-                    System.out.println("Unknown command, please try again.");
+                    nav.displayGenericInputError(input);
                 }
 
                 System.out.println();
-                /* TRANSFER MODE */
-            } else if (uiMode == modes.TRANSFER) {
-                System.out.println("Please provide how much you would like to transfer [$xxx.xx] OR");
-                System.out.println("type BACK:");
-                System.out.print("| $");
-                input = scanner.nextLine();
+            } else if (uiMode == modes.TRANSFER) { // Transfer mode
+                input = nav.displayTransferAmtRequest();
                 double amt = tryParseAmt(input);
                 if (amt > 0) { // if input is a number greater than 0
                     System.out.println();
-                    System.out.println("Please provide the account number you would like to transfer to OR");
-                    System.out.println("type BACK:");
-                    System.out.print("| ");
-                    input = scanner.nextLine();
+                    input = nav.displayTransferTargetRequest();
                     int receiver = tryParseInt(input);
                     if (receiver != -1 && accounts.containsKey(receiver)) { // if input is a number and account exists
                         if (logTransfer(activeAccount.getAccountOwner(), activeAccount, accounts.get(receiver), amt)) {
@@ -233,28 +202,22 @@ public class RunBank {
                     } else if (input.trim().toUpperCase().equals("BACK")) { // if BACK
                         uiMode = modes.CHOOSE_ACCOUNT;
                     } else {
-                        System.out.println("Incorrect account number, please try again.");
+                        System.out.println("Invalid account number, please try again.");
                     }
                 } else if (input.trim().toUpperCase().equals("BACK")) { // if BACK
                     uiMode = modes.CHOOSE_ACCOUNT;
                 } else {
-                    System.out.println("Unknown command, please try again.");
+                    nav.displayGenericInputError(input);
                 }
 
                 System.out.println();
                 /* PAY MODE */
             } else if (uiMode == modes.PAY) { // FIX
-                System.out.println("Please provide how much you would like to pay [$xxx.xx] OR");
-                System.out.println("type BACK:");
-                System.out.print("| $");
-                input = scanner.nextLine();
+                input = nav.displayPayAmtRequest();
                 double amt = tryParseAmt(input);
                 if (amt > 0) { // if input is a number greater than 0
                     System.out.println();
-                    System.out.println("Please provide the account number you would like to pay to OR");
-                    System.out.println("type BACK:");
-                    System.out.print("| ");
-                    input = scanner.nextLine();
+                    input = nav.displayPayTargetRequest();
                     int receiver = tryParseInt(input);
 
                     if (receiver != -1 && accounts.containsKey(receiver)) { // if input is a number and account exists
@@ -286,6 +249,10 @@ public class RunBank {
                 }
 
                 System.out.println();
+            } else if (uiMode == modes.ADMIN) {
+                uiMode = modes.EXIT;
+            } else if (uiMode == modes.NEW_CUSTOMER) {
+                uiMode = modes.EXIT;
             }
         }
         System.out.println(

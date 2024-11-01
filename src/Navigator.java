@@ -40,15 +40,15 @@ public class Navigator {
 
     // display customers with same name
     public String displaySameNames(Customer[] customers) {
-        String input = "";
         // print customers here
+        String input = "";
         input = requestInput(
                 "Please press the button for which account you would like to log into OR\ntype BACK:\n");
         return input;
     }
 
     // display accounts of requested customer
-    public void displayAccounts(Customer customer, HashMap<Integer, Account> accounts) {
+    public String displayAccounts(Customer customer, HashMap<Integer, Account> accounts) {
         int tick = 1;
         System.out.println("Welcome back, " + customer.getFirstName().toUpperCase() + "!");
         System.out.println("Below are your accounts.");
@@ -60,11 +60,77 @@ public class Navigator {
             System.out.printf("| %2s  | %-8s --- %-5s |%n", tick++, accounts.get(acct).getAccountType(), acct);
         }
         System.out.println("|--------------------------|");
+
+        String input = "";
+        input = requestInput(
+                "Please press the button for which account you would like to log into OR\ntype BACK:\n");
+        return input;
     }
 
     // prompt user with available actions for selected account
-    public void displayAccountActions(Account account) {
+    public String displayAccountActions(Account account) {
+        System.out.println("|--------------------------|");
+        System.out.printf("| btn | %-8s --- %-5s |%n", account.getAccountType(), account.getAccountNumber());
+        System.out.println("|--------------------------|");
+        System.out.println("|  1  | Check balance      |");
+        System.out.println("|  2  | Deposit            |");
+        System.out.println("|  3  | Withdraw           |");
+        System.out.println("|  4  | Transfer           |");
+        System.out.println("|  5  | Pay                |");
+        System.out.println("|--------------------------|");
 
+        String input = "";
+        input = requestInput(
+                "Please press the button for which action you would like to perform OR\ntype BACK:\n");
+        return input;
+    }
+
+    public void displayBalanceRequest(Account account) {
+        System.out.println();
+        System.out.println("|--------------------------|");
+        System.out.printf("| %-8s --- %-5s       |%n", account.getAccountType(), account.getAccountNumber());
+        System.out.println("|--------------------------|");
+        System.out.printf("| Balance: %-8s        |%n", -account.getAccountBalance());
+        if (account.getAccountType() == "Credit") {
+            System.out.printf("| Max: %-8s           |%n", ((Credit) account).getMax());
+        }
+        System.out.println("|--------------------------|");
+    }
+
+    public String displayDepositRequest() {
+        String input = "";
+        input = requestInput("Please provide how much you would like to deposit [xxx.xx] OR\ntype BACK:\n");
+        return input;
+    }
+
+    public String displayWithdrawRequest() {
+        String input = "";
+        input = requestInput("Please provide how much you would like to withdraw [xxx.xx] OR\ntype BACK:\n");
+        return input;
+    }
+
+    public String displayTransferAmtRequest() {
+        String input = "";
+        input = requestInput("Please provide how much you would like to transfer [xxx.xx] OR\ntype BACK:\n");
+        return input;
+    }
+
+    public String displayTransferTargetRequest() {
+        String input = "";
+        input = requestInput("Please provide the account number you would like to transfer to OR\ntype BACK:\n");
+        return input;
+    }
+
+    public String displayPayAmtRequest() {
+        String input = "";
+        input = requestInput("Please provide how much you would like to pay [xxx.xx] OR\ntype BACK:\n");
+        return input;
+    }
+
+    public String displayPayTargetRequest() {
+        String input = "";
+        input = requestInput("Please provide the name of who you would like to transfer to OR\ntype BACK:\n");
+        return input;
     }
 
     // default input read error
@@ -81,24 +147,5 @@ public class Navigator {
         input = scanner.nextLine();
 
         return input;
-    }
-
-    public int requestInt(String msg) {
-        String input = "";
-
-        System.out.print(msg);
-        System.out.print("| ");
-        input = scanner.nextLine();
-
-        return tryParseInt(input);
-    }
-
-    static int tryParseInt(String str) {
-        int ret = -1;
-        try {
-            ret = Integer.parseInt(str);
-        } catch (Throwable e) {
-        }
-        return ret;
     }
 }
