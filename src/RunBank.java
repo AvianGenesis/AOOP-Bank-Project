@@ -19,9 +19,12 @@ public class RunBank {
      */
     public static void main(String[] args) throws Exception {
         List<Customer> customers = new ArrayList<Customer>();
+        // List<Account> accounts = new ArrayList<Account>();
         HashMap<Integer, Account> accounts = new HashMap<>();
         final String file = "resources/BankUsers.csv";
         customers = loadCustomers(file, accounts);
+        CustomersManager custManager = new CustomersManager(customers);
+        // AccountsManager accManager = new AccountsManager(accounts);
 
         Scanner scanner = new Scanner(System.in);
         String input;
@@ -79,7 +82,7 @@ public class RunBank {
                 input = nav.displayCustomerLogin();
                 int uId = tryParseInt(input);
                 if (uId != -1) {
-                    if ((activeCustomer = findCustomer(uId, customers)) != null) {
+                    if ((activeCustomer = custManager.searchById(uId)/* findCustomer(uId, customers) */) != null) {
                         uiMode = modes.CHOOSE_ACCOUNT;
                     } else {
                         System.out.println("Unrecognized ID, please try again.");
@@ -95,7 +98,7 @@ public class RunBank {
                 input = nav.displayAccounts(activeCustomer, accounts);
                 btn = tryParseInt(input);
                 if (btn >= 1 && btn <= activeCustomer.getAccounts().length) {
-                    activeAccount = accounts.get(activeCustomer.getAccounts()[btn - 1]);
+                    activeAccount = accounts.get(activeCustomer.getAccounts()[btn - 1].getAccountNumber());
                     uiMode = modes.CHOOSE_ACTION;
                 } else if (input.trim().toUpperCase().equals("BACK")) {
                     uiMode = modes.CREDENTIALS;
@@ -314,12 +317,12 @@ public class RunBank {
                 creMax = Integer.parseInt(values[14]);
                 creBal = Double.parseDouble(values[15]);
 
-                Customer newCust = new Customer(firstName, lastName, dob, address, city, state, zip, phone, id,
-                        new int[] { chkNum, savNum, creNum });
-                ret.add(newCust);
+                Customer newCust = new Customer(firstName, lastName, dob, address, city, state, zip, phone, id);
                 accounts.put(chkNum, new Checking(newCust, chkNum, chkBal));
                 accounts.put(savNum, new Saving(newCust, savNum, savBal));
                 accounts.put(creNum, new Credit(newCust, creNum, creBal, creMax));
+                newCust.setAccounts(new Account[] { accounts.get(chkNum), accounts.get(savNum), accounts.get(creNum) });
+                ret.add(newCust);
             }
         }
         return ret;
@@ -495,12 +498,12 @@ public class RunBank {
                             cust.getZip() + "," +
                             cust.getPhoneNumber() + "," +
                             cust.getAccounts()[0] + "," +
-                            accounts.get(cust.getAccounts()[0]).getAccountBalance() + "," +
+                            accounts.get(cust.getAccounts()[0].getAccountNumber()).getAccountBalance() + "," +
                             cust.getAccounts()[1] + "," +
-                            accounts.get(cust.getAccounts()[1]).getAccountBalance() + "," +
+                            accounts.get(cust.getAccounts()[1].getAccountNumber()).getAccountBalance() + "," +
                             cust.getAccounts()[2] + "," +
-                            ((Credit) accounts.get(cust.getAccounts()[2])).getMax() + "," +
-                            accounts.get(cust.getAccounts()[2]).getAccountBalance() + "\n");
+                            ((Credit) accounts.get(cust.getAccounts()[2].getAccountNumber())).getMax() + "," +
+                            accounts.get(cust.getAccounts()[2].getAccountNumber()).getAccountBalance() + "\n");
         }
         try (FileWriter writer = new FileWriter(outFile, false)) {
             writer.write(changes);

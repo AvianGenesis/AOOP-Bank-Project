@@ -1,14 +1,16 @@
 /**
- * Represents a customer in the banking system, inheriting properties from the Person class.
- * A customer has an ID number and an array of associated accounts (e.g., checking, saving, credit).
+ * Represents a customer in the banking system, inheriting properties from the
+ * Person class.
+ * A customer has an ID number and an array of associated accounts (e.g.,
+ * checking, saving, credit).
  */
 public class Customer extends Person {
-    
+
     /** The unique identification number for the customer */
     private int idNumber;
 
     /** An array representing the customer's accounts: [checking, saving, credit] */
-    private int[] accounts; 
+    private Account[] accounts;
 
     /**
      * Default constructor for the Customer class.
@@ -18,23 +20,25 @@ public class Customer extends Person {
     }
 
     /**
-     * Constructor to initialize a Customer with personal details, ID number, and accounts.
+     * Constructor to initialize a Customer with personal details, ID number, and
+     * accounts.
      * 
-     * @param firstName the first name of the customer
-     * @param lastName the last name of the customer
-     * @param dob the date of birth of the customer
-     * @param address the address of the customer
-     * @param city the city of residence
-     * @param state the state of residence
-     * @param zip the zip code of the address
+     * @param firstName   the first name of the customer
+     * @param lastName    the last name of the customer
+     * @param dob         the date of birth of the customer
+     * @param address     the address of the customer
+     * @param city        the city of residence
+     * @param state       the state of residence
+     * @param zip         the zip code of the address
      * @param phoneNumber the phone number of the customer
-     * @param idNumber the unique identification number for the customer
-     * @param accounts an array of account identifiers for the customer (e.g., checking, saving, credit)
+     * @param idNumber    the unique identification number for the customer
+     * @param accounts    an array of account identifiers for the customer (e.g.,
+     *                    checking, saving, credit)
      */
-    public Customer(String firstName, String lastName, String dob, String address, String city, String state, int zip, String phoneNumber, int idNumber, int[] accounts) {
+    public Customer(String firstName, String lastName, String dob, String address, String city, String state, int zip,
+            String phoneNumber, int idNumber) {
         super(firstName, lastName, dob, address, city, state, zip, phoneNumber);
         this.idNumber = idNumber;
-        this.accounts = accounts;
     }
 
     /**
@@ -60,7 +64,7 @@ public class Customer extends Person {
      * 
      * @return an array representing the customer's accounts
      */
-    public int[] getAccounts() {
+    public Account[] getAccounts() {
         return accounts;
     }
 
@@ -69,7 +73,7 @@ public class Customer extends Person {
      * 
      * @param accounts the new array of account identifiers for the customer
      */
-    public void setAccounts(int[] accounts) {
+    public void setAccounts(Account[] accounts) {
         this.accounts = accounts;
     }
 }

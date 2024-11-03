@@ -1,6 +1,7 @@
 /**
  * Abstract class representing a bank account.
- * Contains basic account details and common methods for deposit and withdrawal operations.
+ * Contains basic account details and common methods for deposit and withdrawal
+ * operations.
  */
 public abstract class Account {
 
@@ -11,7 +12,7 @@ public abstract class Account {
     private int accountNumber;
 
     /** The balance of the account */
-    protected double accountBalance; 
+    protected double accountBalance;
 
     /**
      * Default constructor for the Account class.
@@ -34,8 +35,8 @@ public abstract class Account {
     /**
      * Constructor to initialize the account with an owner, number, and balance.
      * 
-     * @param accountOwner the owner of the account
-     * @param accountNumber the unique account number
+     * @param accountOwner   the owner of the account
+     * @param accountNumber  the unique account number
      * @param accountBalance the initial account balance
      */
     public Account(Customer accountOwner, int accountNumber, double accountBalance) {
@@ -98,36 +99,36 @@ public abstract class Account {
         this.accountBalance = accountBalance;
     }
 
-/**
- * Deposits an amount to the account balance if the amount is positive.
- * 
- * @param amount the amount to deposit
- * @return true if the deposit was successful; false otherwise
- */
-public boolean deposit(double amount) {
-    if (amount > 0) {
-        accountBalance += amount;
-        return true;
-    }
-    return false;
-}
-
-/**
- * Withdraws an amount from the account balance if the amount is positive 
- * and does not exceed the current balance.
- * 
- * @param amount the amount to withdraw
- * @return true if the withdrawal was successful; false otherwise
- */
-public boolean withdraw(double amount) {
-    if (amount > 0) {
-        if (amount <= accountBalance) {
-            accountBalance -= amount;
+    /**
+     * Deposits an amount to the account balance if the amount is positive.
+     * 
+     * @param amount the amount to deposit
+     * @return true if the deposit was successful; false otherwise
+     */
+    public boolean deposit(double amount) {
+        if (amount > 0) {
+            accountBalance += amount;
             return true;
         }
+        return false;
     }
-    return false;
-}
+
+    /**
+     * Withdraws an amount from the account balance if the amount is positive
+     * and does not exceed the current balance.
+     * 
+     * @param amount the amount to withdraw
+     * @return true if the withdrawal was successful; false otherwise
+     */
+    public boolean withdraw(double amount) {
+        if (amount > 0) {
+            if (amount <= accountBalance) {
+                accountBalance -= amount;
+                return true;
+            }
+        }
+        return false;
+    }
 
     /**
      * Abstract method to get the account type (e.g., Checking, Saving, Credit).

@@ -56,8 +56,9 @@ public class Navigator {
         System.out.println("|--------------------------|");
         System.out.println("| Btn | Acct Type | Acct # |");
         System.out.println("|--------------------------|");
-        for (int acct : customer.getAccounts()) {
-            System.out.printf("| %2s  | %-8s --- %-5s |%n", tick++, accounts.get(acct).getAccountType(), acct);
+        for (Account acct : customer.getAccounts()) {
+            System.out.printf("| %2s  | %-8s --- %-5s |%n", tick++,
+                    accounts.get(acct.getAccountNumber()).getAccountType(), acct.getAccountNumber());
         }
         System.out.println("|--------------------------|");
 
@@ -90,9 +91,9 @@ public class Navigator {
         System.out.println("|--------------------------|");
         System.out.printf("| %-8s --- %-5s       |%n", account.getAccountType(), account.getAccountNumber());
         System.out.println("|--------------------------|");
-        System.out.printf("| Balance: %-8s        |%n", -account.getAccountBalance());
+        System.out.printf("| Balance: $%-,12.2f   |%n", account.getAccountBalance());
         if (account.getAccountType() == "Credit") {
-            System.out.printf("| Max: %-8s           |%n", ((Credit) account).getMax());
+            System.out.printf("| Max: $%-,12d       |%n", ((Credit) account).getMax());
         }
         System.out.println("|--------------------------|");
     }
