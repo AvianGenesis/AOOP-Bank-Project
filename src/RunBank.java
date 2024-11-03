@@ -5,7 +5,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
@@ -19,12 +18,11 @@ public class RunBank {
      */
     public static void main(String[] args) throws Exception {
         List<Customer> customers = new ArrayList<Customer>();
-        // List<Account> accounts = new ArrayList<Account>();
-        HashMap<Integer, Account> accounts = new HashMap<>();
+        List<Account> accounts = new ArrayList<Account>();
         final String file = "resources/BankUsers.csv";
         customers = loadCustomers(file, accounts);
         CustomersManager custManager = new CustomersManager(customers);
-        // AccountsManager accManager = new AccountsManager(accounts);
+        AccountsManager accManager = new AccountsManager(accounts);
 
         Scanner scanner = new Scanner(System.in);
         String input;
@@ -95,10 +93,10 @@ public class RunBank {
 
                 System.out.println();
             } else if (uiMode == modes.CHOOSE_ACCOUNT) { // Customer chooses account
-                input = nav.displayAccounts(activeCustomer, accounts);
+                input = nav.displayAccounts(activeCustomer);
                 btn = tryParseInt(input);
                 if (btn >= 1 && btn <= activeCustomer.getAccounts().length) {
-                    activeAccount = accounts.get(activeCustomer.getAccounts()[btn - 1].getAccountNumber());
+                    activeAccount = accManager.searchByNum(activeCustomer.getAccounts()[btn - 1].getAccountNumber());
                     uiMode = modes.CHOOSE_ACTION;
                 } else if (input.trim().toUpperCase().equals("BACK")) {
                     uiMode = modes.CREDENTIALS;
@@ -188,12 +186,12 @@ public class RunBank {
                     System.out.println();
                     input = nav.displayTransferTargetRequest();
                     int receiver = tryParseInt(input);
-                    if (receiver != -1 && accounts.containsKey(receiver)) { // if input is a number and account exists
-                        if (logTransfer(activeAccount.getAccountOwner(), activeAccount, accounts.get(receiver), amt)) {
+                    if ((receivingAccount = accManager.searchByNum(receiver)) != null) { // if account exists
+                        if (logTransfer(activeAccount.getAccountOwner(), activeAccount, receivingAccount, amt)) {
                             System.out.printf("An amount of $%.2f has been transferred from %s --- %s to %s --- %s.%n",
                                     amt,
                                     activeAccount.getAccountType(), activeAccount.getAccountNumber(),
-                                    accounts.get(receiver).getAccountType(), accounts.get(receiver).getAccountNumber());
+                                    receivingAccount.getAccountType(), receivingAccount.getAccountNumber());
                             System.out.println();
 
                             System.out.println("Please press ENTER to continue.");
@@ -222,16 +220,17 @@ public class RunBank {
                     System.out.println();
                     input = nav.displayPayTargetRequest();
                     int receiver = tryParseInt(input);
-
-                    if (receiver != -1 && accounts.containsKey(receiver)) { // if input is a number and account exists
-                        if (logPayment(activeAccount.getAccountOwner(), accounts.get(receiver).getAccountOwner(),
-                                activeAccount, accounts.get(receiver), amt)) {
+                    if ((receivingAccount = accManager.searchByNum(receiver)) != null) { // if account exists
+                        if (logPayment(activeAccount.getAccountOwner(), receivingAccount.getAccountOwner(),
+                                activeAccount, receivingAccount, amt)) {
                             System.out.printf(
-                                    "An amount of $%.2f has been paid from %s's %s --- %s to %s's %s --- %s.%n",
+                                    "An amount of $%,.2f has been paid from %s %s's %s --- %s to %s %s's %s --- %s.%n",
                                     amt, activeAccount.getAccountOwner().getFirstName(),
+                                    activeAccount.getAccountOwner().getLastName(),
                                     activeAccount.getAccountType(), activeAccount.getAccountNumber(),
-                                    accounts.get(receiver).getAccountOwner().getFirstName(),
-                                    accounts.get(receiver).getAccountType(), accounts.get(receiver).getAccountNumber());
+                                    receivingAccount.getAccountOwner().getFirstName(),
+                                    receivingAccount.getAccountOwner().getLastName(),
+                                    receivingAccount.getAccountType(), receivingAccount.getAccountNumber());
                             System.out.println();
 
                             System.out.println("Please press ENTER to continue.");
@@ -262,7 +261,7 @@ public class RunBank {
                 "Thank you for banking with us today! Please press ENTER to commit changes and close the application.");
         scanner.nextLine();
         scanner.close();
-        writeChanges(customers, accounts, file);
+        writeChanges(customers, accManager.getAccounts(), file);
     }
 
     /**
@@ -274,7 +273,7 @@ public class RunBank {
      * @throws FileNotFoundException
      * @throws IOException
      */
-    public static List<Customer> loadCustomers(String file, HashMap<Integer, Account> accounts)
+    public static List<Customer> loadCustomers(String file, List<Account> accounts)
             throws FileNotFoundException, IOException {
         List<Customer> ret = new ArrayList<Customer>();
         String[] values;
@@ -318,10 +317,13 @@ public class RunBank {
                 creBal = Double.parseDouble(values[15]);
 
                 Customer newCust = new Customer(firstName, lastName, dob, address, city, state, zip, phone, id);
-                accounts.put(chkNum, new Checking(newCust, chkNum, chkBal));
-                accounts.put(savNum, new Saving(newCust, savNum, savBal));
-                accounts.put(creNum, new Credit(newCust, creNum, creBal, creMax));
-                newCust.setAccounts(new Account[] { accounts.get(chkNum), accounts.get(savNum), accounts.get(creNum) });
+                Account newChk = new Checking(newCust, chkNum, chkBal);
+                Account newSav = new Saving(newCust, savNum, savBal);
+                Account newCre = new Credit(newCust, creNum, creBal, creMax);
+                accounts.add(newChk);
+                accounts.add(newSav);
+                accounts.add(newCre);
+                newCust.setAccounts(new Account[] { newChk, newSav, newCre });
                 ret.add(newCust);
             }
         }
@@ -484,7 +486,7 @@ public class RunBank {
      * @param accounts  Hash map of all accounts with changes
      * @param outFile   File for the changes to be written to
      */
-    static void writeChanges(List<Customer> customers, HashMap<Integer, Account> accounts, String outFile) {
+    static void writeChanges(List<Customer> customers, List<Account> accounts, String outFile) {
         String changes = "Identification Number,First Name,Last Name,Date of Birth,Address,City,State,Zip,Phone Number,Checking Account Number,Checking Starting Balance,Savings Account Number,Savings Starting Balance,Credit Account Number,Credit Max,Credit Starting Balance\n";
         for (Customer cust : customers) {
             changes += new String(
@@ -497,13 +499,13 @@ public class RunBank {
                             cust.getState() + "," +
                             cust.getZip() + "," +
                             cust.getPhoneNumber() + "," +
-                            cust.getAccounts()[0] + "," +
-                            accounts.get(cust.getAccounts()[0].getAccountNumber()).getAccountBalance() + "," +
-                            cust.getAccounts()[1] + "," +
-                            accounts.get(cust.getAccounts()[1].getAccountNumber()).getAccountBalance() + "," +
-                            cust.getAccounts()[2] + "," +
-                            ((Credit) accounts.get(cust.getAccounts()[2].getAccountNumber())).getMax() + "," +
-                            accounts.get(cust.getAccounts()[2].getAccountNumber()).getAccountBalance() + "\n");
+                            cust.getAccounts()[0].getAccountNumber() + "," +
+                            cust.getAccounts()[0].getAccountBalance() + "," +
+                            cust.getAccounts()[1].getAccountNumber() + "," +
+                            cust.getAccounts()[1].getAccountBalance() + "," +
+                            cust.getAccounts()[2].getAccountNumber() + "," +
+                            ((Credit) cust.getAccounts()[2]).getMax() + "," +
+                            cust.getAccounts()[2].getAccountBalance() + "\n");
         }
         try (FileWriter writer = new FileWriter(outFile, false)) {
             writer.write(changes);

@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AccountsManager {
-    List<Account> accounts = new ArrayList<Account>();
+    private List<Account> accounts = new ArrayList<Account>();
 
     public AccountsManager(List<Account> accounts){
         this.accounts = accounts;
@@ -16,5 +16,11 @@ public class AccountsManager {
         }
 
         return null;
+    }
+
+    //public List<Account> searchByName()
+
+    public List<Account> getAccounts(){
+        return accounts;
     }
 }

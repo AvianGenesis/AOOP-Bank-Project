@@ -1,4 +1,4 @@
-import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 
 public class Navigator {
@@ -48,7 +48,7 @@ public class Navigator {
     }
 
     // display accounts of requested customer
-    public String displayAccounts(Customer customer, HashMap<Integer, Account> accounts) {
+    public String displayAccounts(Customer customer) {
         int tick = 1;
         System.out.println("Welcome back, " + customer.getFirstName().toUpperCase() + "!");
         System.out.println("Below are your accounts.");
@@ -57,8 +57,7 @@ public class Navigator {
         System.out.println("| Btn | Acct Type | Acct # |");
         System.out.println("|--------------------------|");
         for (Account acct : customer.getAccounts()) {
-            System.out.printf("| %2s  | %-8s --- %-5s |%n", tick++,
-                    accounts.get(acct.getAccountNumber()).getAccountType(), acct.getAccountNumber());
+            System.out.printf("| %2s  | %-8s --- %-5s |%n", tick++, acct.getAccountType(), acct.getAccountNumber());
         }
         System.out.println("|--------------------------|");
 
