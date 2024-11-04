@@ -1,6 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -19,10 +16,11 @@ public class RunBank {
     public static void main(String[] args) throws Exception {
         List<Customer> customers = new ArrayList<Customer>();
         List<Account> accounts = new ArrayList<Account>();
-        final String file = "resources/BankUsers.csv";
-        customers = loadCustomers(file, accounts);
+        ReadWriter rw = new ReadWriter();
+        customers = rw.loadCustomers(accounts);
         CustomersManager custManager = new CustomersManager(customers);
         AccountsManager accManager = new AccountsManager(accounts);
+        TransactionsManager tm = new TransactionsManager();
 
         Scanner scanner = new Scanner(System.in);
         String input;
@@ -33,17 +31,18 @@ public class RunBank {
         Navigator nav = new Navigator();
 
         class Mode {
-            public int EXIT = 0;
-            public int CREDENTIALS = 1;
-            public int CHOOSE_ACCOUNT = 2;
-            public int CHOOSE_ACTION = 3; // choosing to inquire about a balance does not require an additional mode
-            public int DEPOSIT = 4;
-            public int WITHDRAW = 5;
-            public int TRANSFER = 6;
-            public int PAY = 7;
-            public int MAIN = 8;
-            public int ADMIN = 9;
-            public int NEW_CUSTOMER = 10;
+            public final int EXIT = 0;
+            public final int CREDENTIALS = 1;
+            public final int CHOOSE_ACCOUNT = 2;
+            public final int CHOOSE_ACTION = 3; // choosing to inquire about a balance does not require an additional
+                                                // mode
+            public final int DEPOSIT = 4;
+            public final int WITHDRAW = 5;
+            public final int TRANSFER = 6;
+            public final int PAY = 7;
+            public final int MAIN = 8;
+            public final int ADMIN = 9;
+            public final int NEW_CUSTOMER = 10;
         }
         Mode modes = new Mode();
         int uiMode = modes.MAIN;
@@ -80,7 +79,7 @@ public class RunBank {
                 input = nav.displayCustomerLogin();
                 int uId = tryParseInt(input);
                 if (uId != -1) {
-                    if ((activeCustomer = custManager.searchById(uId)/* findCustomer(uId, customers) */) != null) {
+                    if ((activeCustomer = custManager.searchById(uId)) != null) {
                         uiMode = modes.CHOOSE_ACCOUNT;
                     } else {
                         System.out.println("Unrecognized ID, please try again.");
@@ -111,7 +110,7 @@ public class RunBank {
                 if (btn >= 1 && btn <= 5) {
                     switch (btn) {
                         case 1:
-                            logBalanceInquiry(activeAccount.getAccountOwner(), activeAccount);
+                            tm.checkBalance(activeCustomer, activeAccount);
                             nav.displayBalanceRequest(activeAccount);
                             System.out.println();
                             System.out.println("Please press ENTER to continue.");
@@ -141,15 +140,17 @@ public class RunBank {
                 input = nav.displayDepositRequest();
                 double amt = tryParseAmt(input);
                 if (amt != -1) {
-                    if (logDeposit(activeAccount.getAccountOwner(), activeAccount, amt)) {
+                    if (tm.deposit(activeAccount, amt)) {
                         System.out.printf("An amount of $%.2f has been deposited to %s --- %s.%n", amt,
                                 activeAccount.getAccountType(), activeAccount.getAccountNumber());
                         System.out.println();
                         System.out.println("Please press ENTER to continue.");
                         scanner.nextLine();
-                        uiMode = modes.CHOOSE_ACCOUNT;
+                        uiMode = modes.CHOOSE_ACTION;
                     } else {
-                        System.out.println("invalid amount, please try again.");
+                        System.out.println("Invalid amount, please try again.");
+                        System.out.println("Please press ENTER to continue.");
+                        scanner.nextLine();
                     }
                 } else if (input.trim().toUpperCase().equals("BACK")) {
                     uiMode = modes.CHOOSE_ACCOUNT;
@@ -162,15 +163,17 @@ public class RunBank {
                 input = nav.displayWithdrawRequest();
                 double amt = tryParseAmt(input);
                 if (amt != -1) {
-                    if (logWithdrawal(activeAccount.getAccountOwner(), activeAccount, amt)) {
+                    if (tm.withdraw(activeAccount, amt)) {
                         System.out.printf("An amount of $%.2f has been withdrawn from %s --- %s.%n", amt,
                                 activeAccount.getAccountType(), activeAccount.getAccountNumber());
                         System.out.println();
                         System.out.println("Please press ENTER to continue.");
                         scanner.nextLine();
-                        uiMode = modes.CHOOSE_ACCOUNT;
+                        uiMode = modes.CHOOSE_ACTION;
                     } else {
                         System.out.println("invalid amount, please try again.");
+                        System.out.println("Please press ENTER to continue.");
+                        scanner.nextLine();
                     }
                 } else if (input.trim().toUpperCase().equals("BACK")) {
                     uiMode = modes.CHOOSE_ACCOUNT;
@@ -261,89 +264,7 @@ public class RunBank {
                 "Thank you for banking with us today! Please press ENTER to commit changes and close the application.");
         scanner.nextLine();
         scanner.close();
-        writeChanges(customers, accManager.getAccounts(), file);
-    }
-
-    /**
-     * Reads and parses BankUsers.csv
-     * 
-     * @param file     The name of the input file
-     * @param accounts Hash map of accounts to be written to
-     * @return List<Customer>
-     * @throws FileNotFoundException
-     * @throws IOException
-     */
-    public static List<Customer> loadCustomers(String file, List<Account> accounts)
-            throws FileNotFoundException, IOException {
-        List<Customer> ret = new ArrayList<Customer>();
-        String[] values;
-        int id;
-        String firstName;
-        String lastName;
-        String dob;
-        String address;
-        String city;
-        String state;
-        int zip;
-        String phone;
-        int chkNum;
-        double chkBal;
-        int savNum;
-        double savBal;
-        int creNum;
-        int creMax;
-        double creBal;
-
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line;
-            String headers = br.readLine();
-            while ((line = br.readLine()) != null) {
-                values = line.split(",");
-                id = Integer.parseInt(values[0]);
-                firstName = values[1];
-                lastName = values[2];
-                dob = values[3];
-                address = values[4];
-                city = values[5];
-                state = values[6];
-                zip = Integer.parseInt(values[7]);
-                phone = values[8];
-                chkNum = Integer.parseInt(values[9]);
-                chkBal = Double.parseDouble(values[10]);
-                savNum = Integer.parseInt(values[11]);
-                savBal = Double.parseDouble(values[12]);
-                creNum = Integer.parseInt(values[13]);
-                creMax = Integer.parseInt(values[14]);
-                creBal = Double.parseDouble(values[15]);
-
-                Customer newCust = new Customer(firstName, lastName, dob, address, city, state, zip, phone, id);
-                Account newChk = new Checking(newCust, chkNum, chkBal);
-                Account newSav = new Saving(newCust, savNum, savBal);
-                Account newCre = new Credit(newCust, creNum, creBal, creMax);
-                accounts.add(newChk);
-                accounts.add(newSav);
-                accounts.add(newCre);
-                newCust.setAccounts(new Account[] { newChk, newSav, newCre });
-                ret.add(newCust);
-            }
-        }
-        return ret;
-    }
-
-    /**
-     * Finds Customer based on given account Id
-     * 
-     * @param acctId    Id of account whose owner will be searched
-     * @param customers List of customers to be searched through
-     * @return Customer
-     */
-    public static Customer findCustomer(int acctId, List<Customer> customers) {
-        for (Customer cust : customers) {
-            if (acctId == cust.getidNumber()) {
-                return cust;
-            }
-        }
-        return null;
+        rw.writeChanges(custManager.getCustomers());
     }
 
     private static final String LOG_FILE = "resources/Log.txt";
@@ -360,63 +281,6 @@ public class RunBank {
         } catch (IOException e) {
             System.err.println("Error writing to log file: " + e.getMessage());
         }
-    }
-
-    /**
-     * Logs balance inquiries
-     * 
-     * @param customer Customer performing the inquiry
-     * @param account  The account the customer is performing the inquiry on
-     */
-    public static void logBalanceInquiry(Customer customer, Account account) {
-        String message = String.format("%s %s made a balance inquiry on %s-%s. %s %s’s Balance for %s-%s: %s",
-                customer.getFirstName(), customer.getLastName(), account.getAccountType(),
-                String.valueOf(account.getAccountNumber()),
-                customer.getFirstName(), customer.getLastName(), account.getAccountType(),
-                String.valueOf(account.getAccountNumber()), df.format(account.getAccountBalance()));
-        logAction(message);
-    }
-
-    /**
-     * Executes and logs deposits
-     * 
-     * @param customer Customer performing the deposit
-     * @param account  Account being desposited into
-     * @param amount   Amount being deposited
-     * @return true if the deposit was successful, false otherwise
-     */
-    public static boolean logDeposit(Customer customer, Account account, double amount) {
-        if (account.deposit(amount)) {
-            String message = String.format("%s %s deposited %s into %s-%s. %s %s’s New Balance for %s-%s: %s",
-                    customer.getFirstName(), customer.getLastName(), df.format(amount), account.getAccountType(),
-                    String.valueOf(account.getAccountNumber()),
-                    customer.getFirstName(), customer.getLastName(), account.getAccountType(),
-                    String.valueOf(account.getAccountNumber()), df.format(account.getAccountBalance()));
-            logAction(message);
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Executes and logs withdrawals
-     * 
-     * @param customer Customer performing the withdrawal
-     * @param account  Account being withdrawn from
-     * @param amount   Amount being withdrawn
-     * @return true if the withdrawal was successful, false otherwise
-     */
-    public static boolean logWithdrawal(Customer customer, Account account, double amount) {
-        if (account.withdraw(amount)) {
-            String message = String.format("%s %s withdrew %s in cash from %s-%s. %s %s’s Balance for %s-%s: %s",
-                    customer.getFirstName(), customer.getLastName(), df.format(amount), account.getAccountType(),
-                    String.valueOf(account.getAccountNumber()),
-                    customer.getFirstName(), customer.getLastName(), account.getAccountType(),
-                    String.valueOf(account.getAccountNumber()), df.format(account.getAccountBalance()));
-            logAction(message);
-            return true;
-        }
-        return false;
     }
 
     /**
@@ -477,41 +341,6 @@ public class RunBank {
             return true;
         }
         return false;
-    }
-
-    /**
-     * Writes all changes acrued during runtime to BankUsers.csv
-     * 
-     * @param customers List of customers
-     * @param accounts  Hash map of all accounts with changes
-     * @param outFile   File for the changes to be written to
-     */
-    static void writeChanges(List<Customer> customers, List<Account> accounts, String outFile) {
-        String changes = "Identification Number,First Name,Last Name,Date of Birth,Address,City,State,Zip,Phone Number,Checking Account Number,Checking Starting Balance,Savings Account Number,Savings Starting Balance,Credit Account Number,Credit Max,Credit Starting Balance\n";
-        for (Customer cust : customers) {
-            changes += new String(
-                    cust.getidNumber() + "," +
-                            cust.getFirstName() + "," +
-                            cust.getLastName() + "," +
-                            cust.getDob() + "," +
-                            cust.getAddress() + "," +
-                            cust.getCity() + "," +
-                            cust.getState() + "," +
-                            cust.getZip() + "," +
-                            cust.getPhoneNumber() + "," +
-                            cust.getAccounts()[0].getAccountNumber() + "," +
-                            cust.getAccounts()[0].getAccountBalance() + "," +
-                            cust.getAccounts()[1].getAccountNumber() + "," +
-                            cust.getAccounts()[1].getAccountBalance() + "," +
-                            cust.getAccounts()[2].getAccountNumber() + "," +
-                            ((Credit) cust.getAccounts()[2]).getMax() + "," +
-                            cust.getAccounts()[2].getAccountBalance() + "\n");
-        }
-        try (FileWriter writer = new FileWriter(outFile, false)) {
-            writer.write(changes);
-        } catch (IOException e) {
-            System.err.println("Error writing to Bank Users file: " + e.getMessage());
-        }
     }
 
     /**

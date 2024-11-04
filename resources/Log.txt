@@ -47,3 +47,12 @@ Mickey Mouse transferred $5.00 from Checking-1000 to Checking-1005. Mickey Mouse
 Mickey Mouse made a balance inquiry on Credit-3000. Mickey Mouse’s Balance for Credit-3000: -$1,453.84
 Mickey Mouse paid Aladdin Disney $2.00 from Saving-2000. Mickey Mouse’s New Balance for Saving-2000: $4,477.46
 Aladdin Disney received $2.00 from Mickey Mouse. Aladdin Disney’s New Balance for Saving-2010: $3,433.15
+Mickey Mouse made a balance inquiry on Checking-1000. Mickey Mouse’s Balance for Checking-1000: $399.12
+Mickey Mouse made a balance inquiry on Checking-1000. Mickey Mouse’s Balance for Checking-1000: $399.12
+Mickey Mouse made a balance inquiry on Checking-1000. Mickey Mouse’s Balance for Checking-1000: $399.12
+Mickey Mouse made a balance inquiry on Saving-2000. Mickey Mouse’s Balance for Saving-2000: $4,477.46
+Mickey Mouse made a balance inquiry on Checking-1000. Mickey Mouse’s Balance for Checking-1000: $399.12
+Mickey Mouse deposited $1,987.99 into Checking-1000. Mickey Mouse’s New Balance for Checking-1000: $2,387.11
+Donald Duck deposited $300.00 into Saving-2001. Donald Duck’s New Balance for Saving-2001: $3,982.37
+Donald Duck withdrew $21.00 in cash from Saving-2001. Donald Duck’s Balance for Saving-2001: $3,961.37
+Donald Duck made a balance inquiry on Saving-2001. Donald Duck’s Balance for Saving-2001: $3,961.37

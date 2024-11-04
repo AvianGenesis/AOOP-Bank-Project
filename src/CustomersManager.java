@@ -40,4 +40,8 @@ public class CustomersManager {
 
         return ret;
     }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
 }
