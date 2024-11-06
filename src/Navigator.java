@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Navigator {
     // attributes
-    Scanner scanner = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
     public Navigator() {
 
@@ -39,7 +39,7 @@ public class Navigator {
     }
 
     // display customers with same name
-    public String displaySameNames(Customer[] customers) {
+    public String displaySameNames(List<Customer> customers) {
         // print customers here
         String input = "";
         input = requestInput(
@@ -139,7 +139,7 @@ public class Navigator {
         scanner.nextLine();
     }
 
-    public String requestInput(String msg) {
+    private String requestInput(String msg) {
         String input = "";
 
         System.out.print(msg);

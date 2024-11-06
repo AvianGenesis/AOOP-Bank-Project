@@ -1,8 +1,16 @@
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
+
 public class TransactionsManager {
     ReadWriter rw = new ReadWriter();
 
     public TransactionsManager() {
 
+    }
+
+    public CustomersManager loadCustomers(List<Account> account) throws FileNotFoundException, IOException{
+        return rw.loadCustomers(account);
     }
 
     public void checkBalance(Customer customer, Account account) {
@@ -26,10 +34,20 @@ public class TransactionsManager {
     }
 
     public boolean transfer(Account from, Account to, double amount) {
+        if(from.withdraw(amount)){
+            to.deposit(amount);
+            rw.logTransfer(from, to, amount);
+            return true;
+        }
         return false;
     }
 
     public boolean pay(Account from, Account to, double amount) {
+        if(from.withdraw(amount)){
+            to.deposit(amount);
+            rw.logPayment(from, to, amount);
+            return true;
+        }
         return false;
     }
 
@@ -43,5 +61,9 @@ public class TransactionsManager {
 
     public void newCustomer(Customer customer) {
         // log customer creation
+    }
+
+    public void writeChanges(CustomersManager customers){
+        rw.writeChanges(customers);
     }
 }

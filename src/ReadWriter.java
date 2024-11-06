@@ -17,7 +17,7 @@ public class ReadWriter {
 
     }
 
-    public List<Customer> loadCustomers(List<Account> accounts) throws FileNotFoundException, IOException {
+    public CustomersManager loadCustomers(List<Account> accounts) throws FileNotFoundException, IOException {
         List<Customer> ret = new ArrayList<Customer>();
         String[] values;
         int id;
@@ -71,7 +71,7 @@ public class ReadWriter {
             }
         }
 
-        return ret;
+        return new CustomersManager(ret);
     }
 
     public List<List<String>> readTransactions(String transFile) { // FIX
@@ -126,6 +126,29 @@ public class ReadWriter {
         logAction(message);
     }
 
+    public void logPayment(Account fromAccount, Account toAccount, double amount) {
+        String fromName = fromAccount.getAccountOwner().getFirstName() + " " + fromAccount.getAccountOwner().getLastName();
+        String fromType = fromAccount.getAccountType();
+        String fromNum = String.valueOf(fromAccount.getAccountNumber());
+        String toName = toAccount.getAccountOwner().getFirstName() + " " + toAccount.getAccountOwner().getLastName();;
+        String toType = toAccount.getAccountType();
+        String toNum = String.valueOf(toAccount.getAccountNumber());
+
+        String fromMessage = String.format("%s paid %s %s from %s-%s. %s’s New Balance for %s-%s: %s",
+                fromName, toName,
+                DF.format(amount),
+                fromType, fromNum,
+                fromName, fromType,
+                fromNum, DF.format(fromAccount.getAccountBalance()));
+        logAction(fromMessage);
+
+        String toMessage = String.format("%s %s received %s from %s %s. %s %s’s New Balance for %s-%s: %s",
+                toName, DF.format(amount), fromName,
+                toName, toType,
+                toNum, DF.format(toAccount.getAccountBalance()));
+        logAction(toMessage);
+    }
+
     public void logAction(String action) {
         try (FileWriter writer = new FileWriter(OUTPUT_LOG, true)) {
             writer.write(action + "\n");
@@ -134,9 +157,9 @@ public class ReadWriter {
         }
     }
 
-    public void writeChanges(List<Customer> customers) {
+    public void writeChanges(CustomersManager customers) {
         String changes = "Identification Number,First Name,Last Name,Date of Birth,Address,City,State,Zip,Phone Number,Checking Account Number,Checking Starting Balance,Savings Account Number,Savings Starting Balance,Credit Account Number,Credit Max,Credit Starting Balance\n";
-        for (Customer cust : customers) {
+        for (Customer cust : customers.getCustomers()) {
             changes += new String(
                     cust.getidNumber() + "," +
                             cust.getFirstName() + "," +

@@ -1,6 +1,3 @@
-import java.io.FileWriter;
-import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,13 +11,10 @@ public class RunBank {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        List<Customer> customers = new ArrayList<Customer>();
-        List<Account> accounts = new ArrayList<Account>();
-        ReadWriter rw = new ReadWriter();
-        customers = rw.loadCustomers(accounts);
-        CustomersManager custManager = new CustomersManager(customers);
-        AccountsManager accManager = new AccountsManager(accounts);
         TransactionsManager tm = new TransactionsManager();
+        List<Account> accounts = new ArrayList<Account>();
+        CustomersManager custManager = tm.loadCustomers(accounts);
+        AccountsManager accManager = new AccountsManager(accounts);
 
         Scanner scanner = new Scanner(System.in);
         String input;
@@ -171,7 +165,7 @@ public class RunBank {
                         scanner.nextLine();
                         uiMode = modes.CHOOSE_ACTION;
                     } else {
-                        System.out.println("invalid amount, please try again.");
+                        System.out.println("Invalid amount, please try again.");
                         System.out.println("Please press ENTER to continue.");
                         scanner.nextLine();
                     }
@@ -185,12 +179,15 @@ public class RunBank {
             } else if (uiMode == modes.TRANSFER) { // Transfer mode
                 input = nav.displayTransferAmtRequest();
                 double amt = tryParseAmt(input);
-                if (amt > 0) { // if input is a number greater than 0
+
+                if (amt != -1) { // if input is a number
                     System.out.println();
                     input = nav.displayTransferTargetRequest();
                     int receiver = tryParseInt(input);
+
                     if ((receivingAccount = accManager.searchByNum(receiver)) != null) { // if account exists
-                        if (logTransfer(activeAccount.getAccountOwner(), activeAccount, receivingAccount, amt)) {
+
+                        if (tm.transfer(activeAccount, receivingAccount, amt)) {
                             System.out.printf("An amount of $%.2f has been transferred from %s --- %s to %s --- %s.%n",
                                     amt,
                                     activeAccount.getAccountType(), activeAccount.getAccountNumber(),
@@ -215,17 +212,18 @@ public class RunBank {
                 }
 
                 System.out.println();
-                /* PAY MODE */
-            } else if (uiMode == modes.PAY) { // FIX
+            } else if (uiMode == modes.PAY) { // Pay mode
                 input = nav.displayPayAmtRequest();
                 double amt = tryParseAmt(input);
-                if (amt > 0) { // if input is a number greater than 0
+
+                if (amt != -1) { // if input is a number
                     System.out.println();
                     input = nav.displayPayTargetRequest();
                     int receiver = tryParseInt(input);
+
                     if ((receivingAccount = accManager.searchByNum(receiver)) != null) { // if account exists
-                        if (logPayment(activeAccount.getAccountOwner(), receivingAccount.getAccountOwner(),
-                                activeAccount, receivingAccount, amt)) {
+
+                        if (tm.pay(activeAccount, receivingAccount, amt)) {
                             System.out.printf(
                                     "An amount of $%,.2f has been paid from %s %s's %s --- %s to %s %s's %s --- %s.%n",
                                     amt, activeAccount.getAccountOwner().getFirstName(),
@@ -250,7 +248,7 @@ public class RunBank {
                 } else if (input.trim().toUpperCase().equals("BACK")) { // if BACK
                     uiMode = modes.CHOOSE_ACCOUNT;
                 } else {
-                    System.out.println("Unknown command, please try again.");
+                    nav.displayGenericInputError(input);
                 }
 
                 System.out.println();
@@ -264,83 +262,7 @@ public class RunBank {
                 "Thank you for banking with us today! Please press ENTER to commit changes and close the application.");
         scanner.nextLine();
         scanner.close();
-        rw.writeChanges(custManager.getCustomers());
-    }
-
-    private static final String LOG_FILE = "resources/Log.txt";
-    private static final DecimalFormat df = new DecimalFormat("$#,##0.00");
-
-    /**
-     * Writes action to log file
-     * 
-     * @param message String to be written to the log file
-     */
-    public static void logAction(String message) {
-        try (FileWriter writer = new FileWriter(LOG_FILE, true)) {
-            writer.write(message + "\n");
-        } catch (IOException e) {
-            System.err.println("Error writing to log file: " + e.getMessage());
-        }
-    }
-
-    /**
-     * Executes and logs transfers
-     * 
-     * @param customer    Customer performing the transfer
-     * @param fromAccount Sending Account
-     * @param toAccount   Receiving Account
-     * @param amount      Amount being transfered
-     * @return true if the transfer was successful, false otherwise
-     */
-    public static boolean logTransfer(Customer customer, Account fromAccount, Account toAccount, double amount) {
-        if (fromAccount.withdraw(amount)) {
-            toAccount.deposit(amount);
-            String message = String.format(
-                    "%s %s transferred %s from %s-%s to %s-%s. %s %s’s Balance for %s-%s: %s. %s %s’s Balance for %s-%s: %s",
-                    customer.getFirstName(), customer.getLastName(), df.format(amount), fromAccount.getAccountType(),
-                    String.valueOf(fromAccount.getAccountNumber()),
-                    toAccount.getAccountType(), String.valueOf(toAccount.getAccountNumber()),
-                    customer.getFirstName(), customer.getLastName(), fromAccount.getAccountType(),
-                    String.valueOf(fromAccount.getAccountNumber()), df.format(fromAccount.getAccountBalance()),
-                    customer.getFirstName(), customer.getLastName(), toAccount.getAccountType(),
-                    String.valueOf(toAccount.getAccountNumber()), df.format(toAccount.getAccountBalance()));
-            logAction(message);
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Executes and logs payments
-     * 
-     * @param payer        Customer paying
-     * @param payee        Customer being paid
-     * @param payerAccount Sending Account
-     * @param payeeAccount Receiving Account
-     * @param amount       Amount being paid
-     * @return true if the payment was successful, false otherwise
-     */
-    public static boolean logPayment(Customer payer, Customer payee, Account payerAccount, Account payeeAccount,
-            double amount) {
-        if (payerAccount.withdraw(amount)) {
-            payeeAccount.deposit(amount);
-            String message = String.format("%s %s paid %s %s %s from %s-%s. %s %s’s New Balance for %s-%s: %s",
-                    payer.getFirstName(), payer.getLastName(), payee.getFirstName(), payee.getLastName(),
-                    df.format(amount),
-                    payerAccount.getAccountType(), String.valueOf(payerAccount.getAccountNumber()),
-                    payer.getFirstName(), payer.getLastName(), payerAccount.getAccountType(),
-                    String.valueOf(payerAccount.getAccountNumber()), df.format(payerAccount.getAccountBalance()));
-            logAction(message);
-
-            String payeeMessage = String.format("%s %s received %s from %s %s. %s %s’s New Balance for %s-%s: %s",
-                    payee.getFirstName(), payee.getLastName(), df.format(amount), payer.getFirstName(),
-                    payer.getLastName(),
-                    payee.getFirstName(), payee.getLastName(), payeeAccount.getAccountType(),
-                    String.valueOf(payeeAccount.getAccountNumber()), df.format(payeeAccount.getAccountBalance()));
-            logAction(payeeMessage);
-            return true;
-        }
-        return false;
+        tm.writeChanges(custManager);
     }
 
     /**
