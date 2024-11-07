@@ -35,18 +35,24 @@ public class TransactionsManager {
 
     public boolean transfer(Account from, Account to, double amount) {
         if(from.withdraw(amount)){
-            to.deposit(amount);
-            rw.logTransfer(from, to, amount);
-            return true;
+            if(to.deposit(amount)){
+                rw.logTransfer(from, to, amount);
+                return true;
+            } else {
+                from.deposit(amount);
+            }
         }
         return false;
     }
 
     public boolean pay(Account from, Account to, double amount) {
         if(from.withdraw(amount)){
-            to.deposit(amount);
-            rw.logPayment(from, to, amount);
-            return true;
+            if(to.deposit(amount)){
+                rw.logPayment(from, to, amount);
+                return true;
+            } else {
+                from.deposit(amount);
+            }
         }
         return false;
     }

@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ReadWriter {
@@ -13,6 +14,52 @@ public class ReadWriter {
     private static final String OUTPUT_LOG = "resources/Log.txt";
     private static final DecimalFormat DF = new DecimalFormat("$#,##0.00");
 
+    private static final String ID = "Identification Number";
+    private static final String FIRST_NAME = "First Name";
+    private static final String LAST_NAME = "Last Name";
+    private static final String DOB = "Date of Birth";
+    private static final String ADDRESS = "Address";
+    private static final String CITY = "City";
+    private static final String STATE = "State";
+    private static final String ZIP = "Zip";
+    private static final String PHONE_NUMBER = "Phone Number";
+    private static final String CHECKING_NUMBER = "Checking Account Number";
+    private static final String CHECKING_BALANCE = "Checking Starting Balance";
+    private static final String SAVINGS_NUMBER = "Savings Account Number";
+    private static final String SAVINGS_BALANCE = "Savings Starting Balance";
+    private static final String CREDIT_NUMBER = "Credit Account Number";
+    private static final String CREDIT_MAX = "Credit Max";
+    private static final String CREDIT_BALANCE = "Credit Starting Balance";
+    //List<String> test = new ArrayList<String>();
+    private class DataPoint {
+        public String head;
+        public String data;
+        public int loc;
+
+        public DataPoint(String head){
+            this.head = head;
+        }
+    }
+
+    List<DataPoint> points = new ArrayList<DataPoint>();
+    DataPoint id = new DataPoint(ID);
+    //points.add(id);
+    DataPoint firstName = new DataPoint(FIRST_NAME);
+    DataPoint lastName = new DataPoint(LAST_NAME);
+    DataPoint dob = new DataPoint(DOB);
+    DataPoint address = new DataPoint(ADDRESS);
+    DataPoint city = new DataPoint(CITY);
+    DataPoint state = new DataPoint(STATE);
+    DataPoint zip = new DataPoint(ZIP);
+    DataPoint phone = new DataPoint(PHONE_NUMBER);
+    DataPoint chkNum = new DataPoint(CHECKING_NUMBER);
+    DataPoint chkBal = new DataPoint(CHECKING_BALANCE);
+    DataPoint savNum = new DataPoint(SAVINGS_NUMBER);
+    DataPoint savBal = new DataPoint(SAVINGS_BALANCE);
+    DataPoint creNum = new DataPoint(CREDIT_NUMBER);
+    DataPoint creMax = new DataPoint(CREDIT_MAX);
+    DataPoint creBal = new DataPoint(CREDIT_BALANCE);
+
     public ReadWriter() {
 
     }
@@ -20,7 +67,7 @@ public class ReadWriter {
     public CustomersManager loadCustomers(List<Account> accounts) throws FileNotFoundException, IOException {
         List<Customer> ret = new ArrayList<Customer>();
         String[] values;
-        int id;
+        //int id;
         String firstName;
         String lastName;
         String dob;
@@ -39,10 +86,19 @@ public class ReadWriter {
 
         try (BufferedReader br = new BufferedReader(new FileReader(INPUT_CSV))) {
             String line;
-            String headers = br.readLine();
+            List<String> headers = new ArrayList<String>(Arrays.asList(br.readLine().split(",")));
+            for(int i = 0; i < headers.size(); i++){
+                //Identification Number,First Name,Last Name,Date of Birth,Address,City,State,Zip,Phone Number,Checking Account Number,Checking Starting Balance,Savings Account Number,Savings Starting Balance,Credit Account Number,Credit Max,Credit Starting Balance
+                switch(headers.get(i)){
+                    case("ye"):
+                    break;
+                }
+            }
+            id.loc = headers.indexOf(id.head);
+
             while ((line = br.readLine()) != null) {
                 values = line.split(",");
-                id = Integer.parseInt(values[0]);
+                id.data = values[id.loc];
                 firstName = values[1];
                 lastName = values[2];
                 dob = values[3];
@@ -59,7 +115,7 @@ public class ReadWriter {
                 creMax = Integer.parseInt(values[14]);
                 creBal = Double.parseDouble(values[15]);
 
-                Customer newCust = new Customer(firstName, lastName, dob, address, city, state, zip, phone, id);
+                Customer newCust = new Customer(firstName, lastName, dob, address, city, state, zip, phone, Integer.parseInt(id.data));
                 Account newChk = new Checking(newCust, chkNum, chkBal);
                 Account newSav = new Saving(newCust, savNum, savBal);
                 Account newCre = new Credit(newCust, creNum, creBal, creMax);
