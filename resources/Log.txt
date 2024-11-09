@@ -56,3 +56,5 @@ Mickey Mouse deposited $1,987.99 into Checking-1000. Mickey Mouse’s New Balanc
 Donald Duck deposited $300.00 into Saving-2001. Donald Duck’s New Balance for Saving-2001: $3,982.37
 Donald Duck withdrew $21.00 in cash from Saving-2001. Donald Duck’s Balance for Saving-2001: $3,961.37
 Donald Duck made a balance inquiry on Saving-2001. Donald Duck’s Balance for Saving-2001: $3,961.37
+Mickey Mouse made a balance inquiry on Checking-1000. Mickey Mouse’s Balance for Checking-1000: $399.12
+Mickey Mouse made a balance inquiry on Credit-3000. Mickey Mouse’s Balance for Credit-3000: -$1,453.84
