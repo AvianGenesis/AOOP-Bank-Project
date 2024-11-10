@@ -34,7 +34,7 @@ public class TransactionsManager {
     }
 
     public boolean transfer(Account from, Account to, double amount) {
-        if(from.withdraw(amount)){
+        if(from != to && from.withdraw(amount)){
             if(to.deposit(amount)){
                 rw.logTransfer(from, to, amount);
                 return true;
@@ -46,7 +46,7 @@ public class TransactionsManager {
     }
 
     public boolean pay(Account from, Account to, double amount) {
-        if(from.withdraw(amount)){
+        if(from.getAccountOwner() != to.getAccountOwner() && from.withdraw(amount)){
             if(to.deposit(amount)){
                 rw.logPayment(from, to, amount);
                 return true;
