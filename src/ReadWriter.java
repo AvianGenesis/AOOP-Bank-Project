@@ -31,7 +31,8 @@ public class ReadWriter {
     private static final String CREDIT_MAX = "Credit Max";
     private static final String CREDIT_BALANCE = "Credit Starting Balance";
 
-    // List<String> test = new ArrayList<String>();
+    List<String[]> history = new ArrayList<String[]>();
+
     private class DataPoint {
         public String head;
         public String data;
@@ -125,8 +126,7 @@ public class ReadWriter {
             while ((line = br.readLine()) != null) {
                 ret.add(line.split(","));
             }
-        } 
-        catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Unrecognized file");
         }
         return ret;
@@ -139,6 +139,9 @@ public class ReadWriter {
                 customer.getFirstName(), customer.getLastName(), account.getAccountType(),
                 String.valueOf(account.getAccountNumber()), DF.format(account.getAccountBalance()));
         logAction(message);
+
+        history.add(new String[] { String.valueOf(customer.getidNumber()), String.valueOf(account.getAccountNumber()),
+                "inquires", "", "", "" });
     }
 
     public void logDeposit(Account account, double amount) { // clean up
@@ -150,6 +153,9 @@ public class ReadWriter {
                 account.getAccountType(),
                 String.valueOf(account.getAccountNumber()), DF.format(account.getAccountBalance()));
         logAction(message);
+
+        history.add(new String[] { String.valueOf(account.getAccountNumber()),
+                "deposits", "", "" });
     }
 
     public void logWithdrawal(Account account, double amount) { // clean up
@@ -161,6 +167,10 @@ public class ReadWriter {
                 account.getAccountType(),
                 String.valueOf(account.getAccountNumber()), DF.format(account.getAccountBalance()));
         logAction(message);
+
+        history.add(new String[] { String.valueOf(account.getAccountOwner().getidNumber()),
+                String.valueOf(account.getAccountNumber()),
+                "withdraws", "", "", "" });
     }
 
     public void logTransfer(Account fromAccount, Account toAccount, double amount) {
@@ -176,6 +186,11 @@ public class ReadWriter {
                 DF.format(fromAccount.getAccountBalance()), name, toType, toNum,
                 DF.format(toAccount.getAccountBalance()));
         logAction(message);
+
+        history.add(new String[] { String.valueOf(fromAccount.getAccountOwner().getidNumber()),
+                String.valueOf(fromAccount.getAccountNumber()),
+                "transfers", String.valueOf(toAccount.getAccountOwner().getidNumber()),
+                String.valueOf(fromAccount.getAccountNumber()), String.valueOf(amount) });
     }
 
     public void logPayment(Account fromAccount, Account toAccount, double amount) {
@@ -200,6 +215,11 @@ public class ReadWriter {
                 toName, toType,
                 toNum, DF.format(toAccount.getAccountBalance()));
         logAction(toMessage);
+
+        history.add(new String[] { String.valueOf(fromAccount.getAccountOwner().getidNumber()),
+                String.valueOf(fromAccount.getAccountNumber()),
+                "pays", String.valueOf(toAccount.getAccountOwner().getidNumber()),
+                String.valueOf(fromAccount.getAccountNumber()), String.valueOf(amount) });
     }
 
     public void logAction(String action) {
@@ -211,9 +231,12 @@ public class ReadWriter {
     }
 
     public void writeChanges(CustomersManager customers) {
-        //String changes = "Identification Number,First Name,Last Name,Date of Birth,Address,City,State,Zip,Phone Number,Checking Account Number,Checking Starting Balance,Savings Account Number,Savings Starting Balance,Credit Account Number,Credit Max,Credit Starting Balance\n";
+        // String changes = "Identification Number,First Name,Last Name,Date of
+        // Birth,Address,City,State,Zip,Phone Number,Checking Account Number,Checking
+        // Starting Balance,Savings Account Number,Savings Starting Balance,Credit
+        // Account Number,Credit Max,Credit Starting Balance\n";
         String changes = headers.get(0);
-        for(int i = 1; i < headers.size(); i++){
+        for (int i = 1; i < headers.size(); i++) {
             changes += "," + headers.get(i);
         }
         changes += "\n";
@@ -237,27 +260,29 @@ public class ReadWriter {
             newLine[creBal.loc] = "-" + String.valueOf(cust.getAccounts()[2].getAccountBalance());
 
             changes += newLine[0];
-            for(int i = 1; i < 16; i++){
+            for (int i = 1; i < 16; i++) {
                 changes += "," + newLine[i];
             }
             changes += "\n";
-/*             changes += new String(
-                    cust.getidNumber() + "," +
-                            cust.getFirstName() + "," +
-                            cust.getLastName() + "," +
-                            cust.getDob() + "," +
-                            cust.getAddress() + "," +
-                            cust.getCity() + "," +
-                            cust.getState() + "," +
-                            cust.getZip() + "," +
-                            cust.getPhoneNumber() + "," +
-                            cust.getAccounts()[0].getAccountNumber() + "," +
-                            cust.getAccounts()[0].getAccountBalance() + "," +
-                            cust.getAccounts()[1].getAccountNumber() + "," +
-                            cust.getAccounts()[1].getAccountBalance() + "," +
-                            cust.getAccounts()[2].getAccountNumber() + "," +
-                            ((Credit) cust.getAccounts()[2]).getMax() + "," +
-                            cust.getAccounts()[2].getAccountBalance() + "\n"); */
+            /*
+             * changes += new String(
+             * cust.getidNumber() + "," +
+             * cust.getFirstName() + "," +
+             * cust.getLastName() + "," +
+             * cust.getDob() + "," +
+             * cust.getAddress() + "," +
+             * cust.getCity() + "," +
+             * cust.getState() + "," +
+             * cust.getZip() + "," +
+             * cust.getPhoneNumber() + "," +
+             * cust.getAccounts()[0].getAccountNumber() + "," +
+             * cust.getAccounts()[0].getAccountBalance() + "," +
+             * cust.getAccounts()[1].getAccountNumber() + "," +
+             * cust.getAccounts()[1].getAccountBalance() + "," +
+             * cust.getAccounts()[2].getAccountNumber() + "," +
+             * ((Credit) cust.getAccounts()[2]).getMax() + "," +
+             * cust.getAccounts()[2].getAccountBalance() + "\n");
+             */
         }
         try (FileWriter writer = new FileWriter(OUTPUT_CSV, false)) {
             writer.write(changes);
