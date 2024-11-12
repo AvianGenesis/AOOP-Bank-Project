@@ -109,6 +109,16 @@ public class ReadWriter {
                 accounts.add(newCre);
                 newCust.setAccounts(new Account[] { newChk, newSav, newCre });
                 ret.add(newCust);
+
+                history.add(new String[] { String.valueOf(newChk.getAccountNumber()),
+                        String.valueOf(newChk.getAccountBalance()),
+                        "start", "", "", "" });
+                history.add(new String[] { String.valueOf(newSav.getAccountNumber()),
+                        String.valueOf(newSav.getAccountBalance()),
+                        "start", "", "", "" });
+                history.add(new String[] { String.valueOf(newCre.getAccountNumber()),
+                        String.valueOf(newCre.getAccountBalance()),
+                        "start", "", "", "" });
             }
         }
 
@@ -154,8 +164,9 @@ public class ReadWriter {
                 String.valueOf(account.getAccountNumber()), DF.format(account.getAccountBalance()));
         logAction(message);
 
-        history.add(new String[] { String.valueOf(account.getAccountNumber()),
-                "deposits", "", "" });
+        history.add(new String[] { String.valueOf(account.getAccountOwner().getidNumber()),
+            String.valueOf(account.getAccountNumber()),
+            "deposits", "", "", String.valueOf(amount) });
     }
 
     public void logWithdrawal(Account account, double amount) { // clean up
@@ -170,7 +181,7 @@ public class ReadWriter {
 
         history.add(new String[] { String.valueOf(account.getAccountOwner().getidNumber()),
                 String.valueOf(account.getAccountNumber()),
-                "withdraws", "", "", "" });
+                "withdraws", "", "", String.valueOf(amount) });
     }
 
     public void logTransfer(Account fromAccount, Account toAccount, double amount) {
@@ -220,6 +231,44 @@ public class ReadWriter {
                 String.valueOf(fromAccount.getAccountNumber()),
                 "pays", String.valueOf(toAccount.getAccountOwner().getidNumber()),
                 String.valueOf(fromAccount.getAccountNumber()), String.valueOf(amount) });
+    }
+
+    public void generateReport(Customer customer) throws IOException {
+        String chk = String.valueOf(customer.searchAccounts("Checking").getAccountNumber());
+        String sav = String.valueOf(customer.searchAccounts("Savings").getAccountNumber());
+        String cre = String.valueOf(customer.searchAccounts("Credit").getAccountNumber());
+        try (FileWriter writer = new FileWriter("resources/User" + customer.getidNumber() + "Transactions.csv",
+                false)) {
+            for (String[] record : history) {
+                if (record[0].equals(chk) && record[2].equals("start")) {
+                    // starting chk balance
+                } else if (record[0].equals(sav) && record[2].equals("start")) {
+                    // starting sav balance
+                } else if (record[0].equals(cre) && record[2].equals("start")) {
+                    // starting cre balance
+                } else if (record[0].equals(String.valueOf(customer.getidNumber()))){
+                    switch(record[2]){
+                        case("inquires"):
+                        writer.write("Inquired " + record[1] + "\n");
+                        break;
+                        case("deposits"):
+                        writer.write("Deposited " + record[5] + " into " + record[1] + "\n");
+                        break;
+                        case("withdraws"):
+                        writer.write("Withdrew " + record[5] + " from " + record[1] + "\n");
+                        break;
+                        case("transfers"):
+                        writer.write("Transferred " + record[5] + " from " + record[1] + " to " + record[4] + "\n");
+                        break;
+                        case("pays"):
+                        writer.write("\n");
+                        break;
+                    }
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Unable to generate report");
+        }
     }
 
     public void logAction(String action) {
