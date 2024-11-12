@@ -9,7 +9,7 @@ public class TransactionsManager {
 
     }
 
-    public CustomersManager loadCustomers(List<Account> account) throws FileNotFoundException, IOException{
+    public CustomersManager loadCustomers(List<Account> account) throws FileNotFoundException, IOException {
         return rw.loadCustomers(account);
     }
 
@@ -18,47 +18,83 @@ public class TransactionsManager {
     }
 
     public boolean deposit(Account target, double amount) {
-        if(target.deposit(amount)){
+        if (target.deposit(amount)) {
             rw.logDeposit(target, amount);
             return true;
         }
+        System.out.println("Unable to deposit to " + target.getAccountType() + " -- " + target.getAccountNumber());
+        System.out.println("Requested: $" + amount);
+        System.out.println();
         return false;
     }
 
     public boolean withdraw(Account target, double amount) {
-        if(target.withdraw(amount)){
+        if (target.withdraw(amount)) {
             rw.logWithdrawal(target, amount);
             return true;
         }
+        System.out.println("Unable to withdraw from " + target.getAccountType() + " -- " + target.getAccountNumber());
+        System.out.println("Requested: $" + amount);
+        System.out.println("Available: $" + target.getAccountBalance());
+        System.out.println();
         return false;
     }
 
     public boolean transfer(Account from, Account to, double amount) {
-        if(from != to && from.withdraw(amount)){
-            if(to.deposit(amount)){
-                rw.logTransfer(from, to, amount);
-                return true;
-            } else {
-                from.deposit(amount);
+        if (from != to) {
+            if (from.withdraw(amount)) {
+                if (to.deposit(amount)) {
+                    rw.logTransfer(from, to, amount);
+                    return true;
+                } else {
+                    from.deposit(amount);
+                    System.out.println("Unable to deposit to " + to.getAccountType() + " -- " + to.getAccountNumber());
+                    System.out.println("Requested: $" + amount);
+                    System.out.println();
+                    return false;
+                }
             }
+            System.out.println("Unable to withdraw from " + from.getAccountType() + " -- " + from.getAccountNumber()
+                    + " for transfer");
+            System.out.println("Requested: $" + amount);
+            System.out.println("Available: $" + from.getAccountBalance());
+            System.out.println();
+            return false;
         }
+        System.out.println("Cannot transfer to same account");
+        System.out.println();
         return false;
     }
 
     public boolean pay(Account from, Account to, double amount) {
-        if(from.getAccountOwner() != to.getAccountOwner() && from.withdraw(amount)){
-            if(to.deposit(amount)){
-                rw.logPayment(from, to, amount);
-                return true;
-            } else {
-                from.deposit(amount);
+        if (from.getAccountOwner() != to.getAccountOwner()) {
+            if (from.withdraw(amount)) {
+                if (to.deposit(amount)) {
+                    rw.logPayment(from, to, amount);
+                    return true;
+                } else {
+                    from.deposit(amount);
+                    System.out.println("Unable to deposit to " + to.getAccountType() + " -- " + to.getAccountNumber());
+                    System.out.println("Requested: $" + amount);
+                    System.out.println();
+                    return false;
+                }
             }
+            System.out.println("Unable to withdraw from " + from.getAccountType() + " -- " + from.getAccountNumber()
+                    + " for pay");
+            System.out.println("Requested: $" + amount);
+            System.out.println("Available: $" + from.getAccountBalance());
+            System.out.println();
+            return false;
         }
+        System.out.println("Cannot pay same account");
+        System.out.println();
         return false;
     }
 
-    public boolean readTransactions(String transFile) {
-        return false;
+    public List<String[]> readTransactions(String transFile) throws FileNotFoundException, IOException {
+        // log transactions execution
+        return rw.readTransactions(transFile);
     }
 
     public void generateReport(Customer customer) {
@@ -69,7 +105,7 @@ public class TransactionsManager {
         // log customer creation
     }
 
-    public void writeChanges(CustomersManager customers){
+    public void writeChanges(CustomersManager customers) {
         rw.writeChanges(customers);
     }
 }

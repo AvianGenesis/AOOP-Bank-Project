@@ -39,7 +39,7 @@ public class Saving extends Account {
      */
     @Override
     public String getAccountType() {
-        return "Saving";
+        return "Savings";
     }
 }
 

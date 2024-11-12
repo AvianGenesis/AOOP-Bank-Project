@@ -48,7 +48,7 @@ public class Navigator {
     }
 
     // display accounts of requested customer
-    public String displayAccounts(Customer customer) {
+    public String displayAccounts(Customer customer, boolean isAdmin) {
         int tick = 1;
         System.out.println("Welcome back, " + customer.getFirstName().toUpperCase() + "!");
         System.out.println("Below are your accounts.");
@@ -58,6 +58,9 @@ public class Navigator {
         System.out.println("|--------------------------|");
         for (Account acct : customer.getAccounts()) {
             System.out.printf("| %2s  | %-8s --- %-5s |%n", tick++, acct.getAccountType(), acct.getAccountNumber());
+        }
+        if(isAdmin){
+            System.out.println("|  4  | Bank statement |");
         }
         System.out.println("|--------------------------|");
 
@@ -130,6 +133,24 @@ public class Navigator {
     public String displayPayTargetRequest() {
         String input = "";
         input = requestInput("Please provide the name of who you would like to transfer to OR\ntype BACK:\n");
+        return input;
+    }
+
+    public String displayAdminOptions(){
+        System.out.println("|----------------------------|");
+        System.out.println("|      Bank Manager View     |");
+        System.out.println("|----------------------------|");
+        System.out.println("|  1  | Inspect Customer     |");
+        System.out.println("|  2  | Read in transactions |");
+        System.out.println("|----------------------------|");
+        String input = "";
+        input = requestInput("Please press the button for which action you would like to perform OR\ntype BACK:\n");
+        return input;
+    }
+
+    public String displayTransactionFileRequest(){
+        String input = "";
+        input = requestInput("Please provide the name of the Transactions file you would like to execute OR\ntype BACK:\n");
         return input;
     }
 

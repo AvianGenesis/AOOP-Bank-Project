@@ -17,14 +17,16 @@ public class RunBank {
         AccountsManager accManager = new AccountsManager(accounts);
 
         Scanner scanner = new Scanner(System.in);
+        boolean isAdmin = false;
         String input;
         int btn;
         Customer activeCustomer = null;
+        Customer receivingCustomer = null;
         Account activeAccount = null;
         Account receivingAccount = null;
         Navigator nav = new Navigator();
 
-        class Mode {
+        class Mode { // change to enum
             public final int EXIT = 0;
             public final int CREDENTIALS = 1;
             public final int CHOOSE_ACCOUNT = 2;
@@ -37,6 +39,7 @@ public class RunBank {
             public final int MAIN = 8;
             public final int ADMIN = 9;
             public final int NEW_CUSTOMER = 10;
+            public final int TRANSACTIONS = 11;
         }
         Mode modes = new Mode();
         int uiMode = modes.MAIN;
@@ -44,6 +47,7 @@ public class RunBank {
         System.out.println("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
         while (uiMode != modes.EXIT) {
             if (uiMode == modes.MAIN) { // Main menu
+                isAdmin = false;
                 input = nav.displayMainMenu();
                 btn = tryParseInt(input);
 
@@ -53,6 +57,7 @@ public class RunBank {
                             uiMode = modes.CREDENTIALS;
                             break;
                         case (2):
+                            isAdmin = true;
                             uiMode = modes.ADMIN;
                             break;
                         case (3):
@@ -86,7 +91,7 @@ public class RunBank {
 
                 System.out.println();
             } else if (uiMode == modes.CHOOSE_ACCOUNT) { // Customer chooses account
-                input = nav.displayAccounts(activeCustomer);
+                input = nav.displayAccounts(activeCustomer, isAdmin);
                 btn = tryParseInt(input);
                 if (btn >= 1 && btn <= activeCustomer.getAccounts().length) {
                     activeAccount = accManager.searchByNum(activeCustomer.getAccounts()[btn - 1].getAccountNumber());
@@ -126,7 +131,7 @@ public class RunBank {
                 } else if (input.trim().toUpperCase().equals("BACK")) {
                     uiMode = modes.CHOOSE_ACCOUNT;
                 } else {
-                    System.out.println("Unknown command, please try again.");
+                    nav.displayGenericInputError(input);
                 }
 
                 System.out.println();
@@ -253,9 +258,84 @@ public class RunBank {
 
                 System.out.println();
             } else if (uiMode == modes.ADMIN) {
-                uiMode = modes.EXIT;
+                input = nav.displayAdminOptions();
+                btn = tryParseInt(input);
+                if (btn >= 1 && btn <= 2) {
+                    switch (btn) {
+                        case 1:
+                            uiMode = modes.CREDENTIALS;
+                            break;
+                        case 2:
+                            uiMode = modes.TRANSACTIONS;
+                            break;
+                    }
+                } else if (input.trim().toUpperCase().equals("BACK")) {
+                    uiMode = modes.MAIN;
+                } else {
+                    nav.displayGenericInputError(input);
+                }
+
+                System.out.println();
             } else if (uiMode == modes.NEW_CUSTOMER) {
                 uiMode = modes.EXIT;
+
+                System.out.println();
+            } else if (uiMode == modes.TRANSACTIONS) {
+                input = nav.displayTransactionFileRequest();
+                List<String[]> transactions = tm.readTransactions(input);
+                for (String[] line : transactions) {
+                    switch (line[3]) {
+                        case ("inquires"):
+                            if ((activeCustomer = custManager.searchByName(line[0], line[1])) != null) {
+                                tm.checkBalance(activeCustomer, activeCustomer.searchAccounts(line[2]));
+                            } else {
+                                System.out.println("Inquiry incomplete, customer not found.");
+                            }
+                            break;
+                        case ("deposits"):
+                            if ((activeCustomer = custManager.searchByName(line[4], line[5])) != null) {
+                                activeAccount = activeCustomer.searchAccounts(line[6]);
+                                tm.deposit(activeAccount, tryParseAmt(line[7]));
+                            } else {
+                                System.out.println("Deposit incomplete, customer not found.");
+                            }
+                            break;
+                        case ("withdraws"):
+                            if ((activeCustomer = custManager.searchByName(line[0], line[1])) != null) {
+                                activeAccount = activeCustomer.searchAccounts(line[2]);
+                                tm.withdraw(activeAccount, tryParseAmt(line[7]));
+                            } else {
+                                System.out.println("Withdrawal incomplete, customer not found.");
+                            }
+                            break;
+                        case ("transfers"):
+                            if ((activeCustomer = custManager.searchByName(line[0], line[1])) != null &&
+                                    (receivingCustomer = custManager.searchByName(line[4], line[5])) != null) {
+                                activeAccount = activeCustomer.searchAccounts(line[2]);
+                                receivingAccount = receivingCustomer.searchAccounts(line[6]);
+                                tm.transfer(activeAccount, receivingAccount, tryParseAmt(line[7]));
+                            } else {
+                                System.out.println("Transfer incomplete, customer(s) not found.");
+                            }
+                            break;
+                        case ("pays"):
+                            if ((activeCustomer = custManager.searchByName(line[0], line[1])) != null &&
+                                    (receivingCustomer = custManager.searchByName(line[4], line[5])) != null) {
+                                activeAccount = activeCustomer.searchAccounts(line[2]);
+                                receivingAccount = receivingCustomer.searchAccounts(line[6]);
+                                tm.pay(activeAccount, receivingAccount, tryParseAmt(line[7]));
+                            } else {
+                                System.out.println("Payment incomplete, customer(s) not found.");
+                            }
+                            break;
+                        default:
+                            nav.displayGenericInputError(line[3]);
+                            break;
+                    }
+                }
+                uiMode = modes.ADMIN;
+
+                System.out.println();
             }
         }
         System.out.println(
@@ -263,6 +343,7 @@ public class RunBank {
         scanner.nextLine();
         scanner.close();
         tm.writeChanges(custManager);
+
     }
 
     /**

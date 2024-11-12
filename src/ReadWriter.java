@@ -114,9 +114,21 @@ public class ReadWriter {
         return new CustomersManager(ret);
     }
 
-    public List<List<String>> readTransactions(String transFile) { // FIX
-        List<List<String>> ret = new ArrayList<List<String>>();
+    public List<String[]> readTransactions(String transFile) throws FileNotFoundException, IOException { // FIX
+        List<String[]> ret = new ArrayList<String[]>();
+        String[] values;
 
+        try (BufferedReader br = new BufferedReader(new FileReader("resources/" + transFile))) {
+            String line;
+            headers = new ArrayList<String>(Arrays.asList(br.readLine().split(",")));
+
+            while ((line = br.readLine()) != null) {
+                ret.add(line.split(","));
+            }
+        } 
+        catch (Exception e){
+            System.out.println("Unrecognized file");
+        }
         return ret;
     }
 
@@ -172,7 +184,6 @@ public class ReadWriter {
         String fromType = fromAccount.getAccountType();
         String fromNum = String.valueOf(fromAccount.getAccountNumber());
         String toName = toAccount.getAccountOwner().getFirstName() + " " + toAccount.getAccountOwner().getLastName();
-        ;
         String toType = toAccount.getAccountType();
         String toNum = String.valueOf(toAccount.getAccountNumber());
 
@@ -184,7 +195,7 @@ public class ReadWriter {
                 fromNum, DF.format(fromAccount.getAccountBalance()));
         logAction(fromMessage);
 
-        String toMessage = String.format("%s %s received %s from %s %s. %s %s’s New Balance for %s-%s: %s",
+        String toMessage = String.format("%s received %s from %s. %s’s New Balance for %s-%s: %s",
                 toName, DF.format(amount), fromName,
                 toName, toType,
                 toNum, DF.format(toAccount.getAccountBalance()));

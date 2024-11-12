@@ -41,6 +41,16 @@ public class Customer extends Person {
         this.idNumber = idNumber;
     }
 
+    public Account searchAccounts(String type){
+        for(Account acc : accounts){
+            if(acc.getAccountType().equals(type)){
+                return acc;
+            }
+        }
+        System.out.println("Unable to find account of type [" + type + "]");
+        return null;
+    }
+
     /**
      * Gets the unique identification number of the customer.
      * 

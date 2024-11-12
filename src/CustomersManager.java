@@ -19,13 +19,16 @@ public class CustomersManager {
     }
 
     public Customer searchByName(String first, String last) {
+        //System.out.println("Checking: " + first.toUpperCase() + " " + last.toUpperCase());
         for (Customer cust : customers) {
+            //System.out.println(cust.getFirstName().toUpperCase() + " " + cust.getLastName().toUpperCase());
             if (first.toUpperCase().equals(cust.getFirstName().toUpperCase())
                     && last.toUpperCase().equals(cust.getLastName().toUpperCase())) {
                 return cust;
             }
         }
 
+        System.out.println("No customer found with name " + first + " " + last);
         return null;
     }
 
