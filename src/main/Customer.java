@@ -34,8 +34,6 @@ public class Customer extends Person {
      * @param zip         the zip code of the address
      * @param phoneNumber the phone number of the customer
      * @param idNumber    the unique identification number for the customer
-     * @param accounts    an array of account identifiers for the customer (e.g.,
-     *                    checking, saving, credit)
      */
     public Customer(String firstName, String lastName, String dob, String address, String city, String state, int zip,
             String phoneNumber, int idNumber) {
@@ -43,6 +41,12 @@ public class Customer extends Person {
         this.idNumber = idNumber;
     }
 
+    
+    /** 
+     * Search a customer's accounts via type
+     * @param type
+     * @return Account
+     */
     public Account searchAccounts(String type){
         for(Account acc : accounts){
             if(acc.getAccountType().equals(type)){

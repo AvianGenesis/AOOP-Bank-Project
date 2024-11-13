@@ -11,6 +11,12 @@ public class CustomersManager {
         this.customers = customers;
     }
 
+    /**
+     * Return customer via ID
+     * 
+     * @param id
+     * @return Customer
+     */
     public Customer searchById(int id) {
         for (Customer cust : customers) {
             if (id == cust.getidNumber()) {
@@ -21,10 +27,19 @@ public class CustomersManager {
         return null;
     }
 
+    /**
+     * Return customer based on first and last name
+     * 
+     * @param first
+     * @param last
+     * @return Customer
+     */
     public Customer searchByName(String first, String last) {
-        //System.out.println("Checking: " + first.toUpperCase() + " " + last.toUpperCase());
+        // System.out.println("Checking: " + first.toUpperCase() + " " +
+        // last.toUpperCase());
         for (Customer cust : customers) {
-            //System.out.println(cust.getFirstName().toUpperCase() + " " + cust.getLastName().toUpperCase());
+            // System.out.println(cust.getFirstName().toUpperCase() + " " +
+            // cust.getLastName().toUpperCase());
             if (first.toUpperCase().equals(cust.getFirstName().toUpperCase())
                     && last.toUpperCase().equals(cust.getLastName().toUpperCase())) {
                 return cust;
@@ -35,6 +50,12 @@ public class CustomersManager {
         return null;
     }
 
+    /**
+     * Return list of customers with the same name
+     * 
+     * @param name
+     * @return List of customers
+     */
     public List<Customer> searchByName(String name) {
         List<Customer> ret = new ArrayList<Customer>();
         for (Customer cust : customers) {
@@ -47,47 +68,83 @@ public class CustomersManager {
         return ret;
     }
 
+    /**
+     * Return class's list of customers
+     * 
+     * @return List of customers
+     */
     public List<Customer> getCustomers() {
         return customers;
-    }//privat method to get last Customer
+    }// privat method to get last Customer
+
+    /**
+     * Identify the lest customer in the list
+     * 
+     * @return Customer
+     */
     private Customer getLastCustomer() {
         return customers.stream()
                 .max(Comparator.comparingInt(Customer::getidNumber)) // Find the customer with the highest ID
                 .orElse(null); // Return null if the list is empty
     }
 
+    /**
+     * Return ID of last customer in list
+     * 
+     * @return int
+     */
     public int getLastCustomerId() {
         Customer lastID = getLastCustomer();
-        return lastID.getidNumber()+1;
+        return lastID.getidNumber() + 1;
 
     }
 
-    public int getLastChecking(){
-        
-        Customer lastCustomer = getLastCustomer(); 
+    /**
+     * Return the account number of the last checking account
+     * 
+     * @return int
+     */
+    public int getLastChecking() {
+
+        Customer lastCustomer = getLastCustomer();
         Account[] AccArr = lastCustomer.getAccounts();
         int lastChecking = AccArr[0].getAccountNumber();
-        return lastChecking+1;
-        
+        return lastChecking + 1;
+
     }
 
-    public int getLastSaving(){
+    /**
+     * Return the account number of the last savings account
+     * 
+     * @return int
+     */
+    public int getLastSaving() {
         Customer lastCustomer = getLastCustomer();
         Account[] AccArr = lastCustomer.getAccounts();
         int lastSaving = AccArr[1].getAccountNumber();
-        return lastSaving+1;
-        
+        return lastSaving + 1;
+
     }
 
-    public int getLastCredit(){
-        Customer lastCustomer = getLastCustomer(); 
+    /**
+     * Return the account number of the last credit account
+     * 
+     * @return int
+     */
+    public int getLastCredit() {
+        Customer lastCustomer = getLastCustomer();
         Account[] AccArr = lastCustomer.getAccounts();
         int lastCredit = AccArr[2].getAccountNumber();
-        return lastCredit+1;
-        
+        return lastCredit + 1;
+
     }
 
-    public void addNewCustomer(Customer newCust){
+    /**
+     * Add new customer to the list
+     * 
+     * @param newCust
+     */
+    public void addNewCustomer(Customer newCust) {
         customers.add(newCust);
         System.out.println("You Have Successfully Made An Account!");
     }

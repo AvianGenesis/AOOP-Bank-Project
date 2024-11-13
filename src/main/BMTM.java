@@ -11,10 +11,21 @@ public class BMTM implements TMInterface {
     }
 
     
+    
+    /** 
+     * @param customer
+     * @param account
+     */
     public void checkBalance(Customer customer, Account account) {
         mrw.logBalanceInquiry(customer, account);
     }
 
+    
+    /** 
+     * @param target
+     * @param amount
+     * @return boolean
+     */
     public boolean deposit(Account target, double amount) {
         if(target.deposit(amount)){
             mrw.logDeposit(target, amount);
@@ -26,6 +37,12 @@ public class BMTM implements TMInterface {
         return false;
     }
 
+    
+    /** 
+     * @param target
+     * @param amount
+     * @return boolean
+     */
     public boolean withdraw(Account target, double amount) {
         if(target.withdraw(amount)){
             mrw.logWithdrawal(target, amount);
@@ -38,6 +55,13 @@ public class BMTM implements TMInterface {
         return false;
     }
 
+    
+    /** 
+     * @param from
+     * @param to
+     * @param amount
+     * @return boolean
+     */
     public boolean transfer(Account from, Account to, double amount) {
         if (from != to) {
             if (from.withdraw(amount)) {
@@ -64,6 +88,13 @@ public class BMTM implements TMInterface {
         return false;
     }
 
+    
+    /** 
+     * @param from
+     * @param to
+     * @param amount
+     * @return boolean
+     */
     public boolean pay(Account from, Account to, double amount) {
         if (from.getAccountOwner() != to.getAccountOwner()) {
             if (from.withdraw(amount)) {
@@ -91,15 +122,32 @@ public class BMTM implements TMInterface {
     }
 
 
+    
+    /** 
+     * @param transFile
+     * @return List of String[]
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public List<String[]> readTransactions(String transFile) throws FileNotFoundException, IOException {
         // log transactions execution
         return mrw.readTransactions(transFile);
     }
 
+    
+    /** 
+     * @param customer
+     * @throws IOException
+     */
     public void generateReport(Customer customer) throws IOException {
         crw.generateReport(customer);
     }
 
+    
+    /** 
+     * @param customer
+     * @throws IOException
+     */
     public void generateStatement(Customer customer) throws IOException {
         crw.generateStatement(customer);
     }

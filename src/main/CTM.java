@@ -10,14 +10,32 @@ public class CTM implements TMInterface {
         
     }
 
+    
+    /** 
+     * @param account
+     * @return CustomersManager
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public CustomersManager loadCustomers(List<Account> account) throws FileNotFoundException, IOException{
         return crw.loadCustomers(account);
     }
 
+    
+    /** 
+     * @param customer
+     * @param account
+     */
     public void checkBalance(Customer customer, Account account) {
         crw.logBalanceInquiry(customer, account);
     }
 
+    
+    /** 
+     * @param target
+     * @param amount
+     * @return boolean
+     */
     public boolean deposit(Account target, double amount) {
         if(target.deposit(amount)){
             crw.logDeposit(target, amount);
@@ -29,6 +47,12 @@ public class CTM implements TMInterface {
         return false;
     }
 
+    
+    /** 
+     * @param target
+     * @param amount
+     * @return boolean
+     */
     public boolean withdraw(Account target, double amount) {
         if(target.withdraw(amount)){
             crw.logWithdrawal(target, amount);
@@ -41,6 +65,13 @@ public class CTM implements TMInterface {
         return false;
     }
 
+    
+    /** 
+     * @param from
+     * @param to
+     * @param amount
+     * @return boolean
+     */
     public boolean transfer(Account from, Account to, double amount) {
         if (from != to) {
             if (from.withdraw(amount)) {
@@ -67,6 +98,13 @@ public class CTM implements TMInterface {
         return false;
     }
 
+    
+    /** 
+     * @param from
+     * @param to
+     * @param amount
+     * @return boolean
+     */
     public boolean pay(Account from, Account to, double amount) {
         if (from.getAccountOwner() != to.getAccountOwner()) {
             if (from.withdraw(amount)) {
@@ -94,23 +132,48 @@ public class CTM implements TMInterface {
     }
 
 
+    
+    /** 
+     * @param transFile
+     * @return List of String[]
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public List<String[]> readTransactions(String transFile) throws FileNotFoundException, IOException {
         // log transactions execution
         return crw.readTransactions(transFile);
     }
 
+    
+    /** 
+     * @param customer
+     * @throws IOException
+     */
     public void generateReport(Customer customer) throws IOException {
         crw.generateReport(customer);
     }
 
+    
+    /** 
+     * @param customer
+     * @throws IOException
+     */
     public void generateStatement(Customer customer) throws IOException {
         crw.generateStatement(customer);
     }
 
+    
+    /** 
+     * @param customer
+     */
     public void newCustomer(Customer customer) {
         // log customer creation
     }
 
+    
+    /** 
+     * @param customers
+     */
     public void writeChanges(CustomersManager customers){
         crw.writeChanges(customers);
     }

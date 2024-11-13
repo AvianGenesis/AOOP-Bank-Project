@@ -11,14 +11,34 @@ public class TransactionsManager {
 
     }
 
+    
+    /** 
+     * Initial load-in of BankUsers.csv
+     * @param account
+     * @return CustomersManager
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public CustomersManager loadCustomers(List<Account> account) throws FileNotFoundException, IOException {
         return rw.loadCustomers(account);
     }
 
+    
+    /** 
+     * Record a customer's balance inquiry
+     * @param customer
+     * @param account
+     */
     public void checkBalance(Customer customer, Account account) {
         rw.logBalanceInquiry(customer, account);
     }
 
+    
+    /** 
+     * @param target
+     * @param amount
+     * @return boolean
+     */
     public boolean deposit(Account target, double amount) {
         if (target.deposit(amount)) {
             rw.logDeposit(target, amount);
@@ -30,6 +50,12 @@ public class TransactionsManager {
         return false;
     }
 
+    
+    /** 
+     * @param target
+     * @param amount
+     * @return boolean
+     */
     public boolean withdraw(Account target, double amount) {
         if (target.withdraw(amount)) {
             rw.logWithdrawal(target, amount);
@@ -42,6 +68,13 @@ public class TransactionsManager {
         return false;
     }
 
+    
+    /** 
+     * @param from
+     * @param to
+     * @param amount
+     * @return boolean
+     */
     public boolean transfer(Account from, Account to, double amount) {
         if (from != to) {
             if (from.withdraw(amount)) {
@@ -68,6 +101,13 @@ public class TransactionsManager {
         return false;
     }
 
+    
+    /** 
+     * @param from
+     * @param to
+     * @param amount
+     * @return boolean
+     */
     public boolean pay(Account from, Account to, double amount) {
         if (from.getAccountOwner() != to.getAccountOwner()) {
             if (from.withdraw(amount)) {
@@ -94,23 +134,48 @@ public class TransactionsManager {
         return false;
     }
 
+    
+    /** 
+     * @param transFile
+     * @return List of String[]
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public List<String[]> readTransactions(String transFile) throws FileNotFoundException, IOException {
         // log transactions execution
         return rw.readTransactions(transFile);
     }
 
+    
+    /** 
+     * @param customer
+     * @throws IOException
+     */
     public void generateReport(Customer customer) throws IOException {
         rw.generateReport(customer);
     }
 
+    
+    /** 
+     * @param customer
+     * @throws IOException
+     */
     public void generateStatement(Customer customer) throws IOException {
         rw.generateStatement(customer);
     }
 
+    
+    /** 
+     * @param customer
+     */
     public void newCustomer(Customer customer) {
         // log customer creation
     }
 
+    
+    /** 
+     * @param customers
+     */
     public void writeChanges(CustomersManager customers) {
         rw.writeChanges(customers);
     }

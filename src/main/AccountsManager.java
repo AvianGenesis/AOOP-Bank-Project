@@ -6,13 +6,17 @@ import java.util.List;
 public class AccountsManager {
     private List<Account> accounts = new ArrayList<Account>();
 
-    public AccountsManager(List<Account> accounts){
+    public AccountsManager(List<Account> accounts) {
         this.accounts = accounts;
     }
 
-    public Account searchByNum(int num){
-        for(Account acc : accounts){
-            if(num == acc.getAccountNumber()){
+    /**
+     * @param num
+     * @return Account
+     */
+    public Account searchByNum(int num) {
+        for (Account acc : accounts) {
+            if (num == acc.getAccountNumber()) {
                 return acc;
             }
         }
@@ -20,9 +24,10 @@ public class AccountsManager {
         return null;
     }
 
-    //public List<Account> searchByName()
-
-    public List<Account> getAccounts(){
+    /**
+     * @return List of Account
+     */
+    public List<Account> getAccounts() {
         return accounts;
     }
 }

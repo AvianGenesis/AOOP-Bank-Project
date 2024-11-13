@@ -11,6 +11,10 @@ public class Navigator {
 
     }
 
+    
+    /** 
+     * @return String
+     */
     // methods
 
     // ask to login as customer, bank manager, or create new customer
@@ -32,6 +36,10 @@ public class Navigator {
         return input;
     }
 
+    
+    /** 
+     * @return String
+     */
     // display customer login methods
     public String displayCustomerLogin() {
         String input = "";
@@ -40,6 +48,11 @@ public class Navigator {
         return input;
     }
 
+    
+    /** 
+     * @param customers
+     * @return String
+     */
     // display customers with same name
     public String displaySameNames(List<Customer> customers) {
         // print customers here
@@ -49,6 +62,12 @@ public class Navigator {
         return input;
     }
 
+    
+    /** 
+     * @param customer
+     * @param isAdmin
+     * @return String
+     */
     // display accounts of requested customer
     public String displayAccounts(Customer customer, boolean isAdmin) {
         int tick = 1;
@@ -73,6 +92,11 @@ public class Navigator {
         return input;
     }
 
+    
+    /** 
+     * @param account
+     * @return String
+     */
     // prompt user with available actions for selected account
     public String displayAccountActions(Account account) {
         System.out.println("|--------------------------|");
@@ -91,6 +115,10 @@ public class Navigator {
         return input;
     }
 
+    
+    /** 
+     * @param account
+     */
     public void displayBalanceRequest(Account account) {
         System.out.println();
         System.out.println("|--------------------------|");
@@ -103,42 +131,70 @@ public class Navigator {
         System.out.println("|--------------------------|");
     }
 
+    
+    /** 
+     * @return String
+     */
     public String displayDepositRequest() {
         String input = "";
         input = requestInput("Please provide how much you would like to deposit [xxx.xx] OR\ntype BACK:\n");
         return input;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String displayWithdrawRequest() {
         String input = "";
         input = requestInput("Please provide how much you would like to withdraw [xxx.xx] OR\ntype BACK:\n");
         return input;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String displayTransferAmtRequest() {
         String input = "";
         input = requestInput("Please provide how much you would like to transfer [xxx.xx] OR\ntype BACK:\n");
         return input;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String displayTransferTargetRequest() {
         String input = "";
         input = requestInput("Please provide the account number you would like to transfer to OR\ntype BACK:\n");
         return input;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String displayPayAmtRequest() {
         String input = "";
         input = requestInput("Please provide how much you would like to pay [xxx.xx] OR\ntype BACK:\n");
         return input;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String displayPayTargetRequest() {
         String input = "";
         input = requestInput("Please provide the name of who you would like to transfer to OR\ntype BACK:\n");
         return input;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String displayAdminOptions(){
         System.out.println("|----------------------------|");
         System.out.println("|      Bank Manager View     |");
@@ -151,59 +207,104 @@ public class Navigator {
         return input;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String displayTransactionFileRequest(){
         String input = "";
         input = requestInput("Please provide the name of the Transactions file you would like to execute OR\ntype BACK:\n");
         return input;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String displayFirstNameReq(){
         String in = requestInput("Please provide your first name for the account");
         return in;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String displayLastNameReq(){
         String in = requestInput("Please Provide your last name for the account");
         return in;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String displayDOBReq(){
         String in = requestInput("Please provide you Date of Birth: 11/11/11");
         return in;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String displayAddressReq(){
         String in = requestInput("Please provide your current living address");
         return in;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String displayCityReq(){
         String in = requestInput("Please provide the city you live in");
         return in;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String displayStateReq(){
         String in = requestInput("Please provide the state");
         return in;
     }
 
+    
+    /** 
+     * @return int
+     */
     public int displayZipRequest(){
         //int in = requestInput("Please provide the zip code");
         //return in;
         return 0;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String displayPhoneNumReq(){
         String in = requestInput("Please provide a Phone Number");
         return in;
     }
 
+    
+    /** 
+     * @param input
+     */
     // default input read error
     public void displayGenericInputError(String input) {
         System.out.println("Command [" + input + "] unrecognized, please press ENTER and try again.");
         scanner.nextLine();
     }
 
+    
+    /** 
+     * @param msg
+     * @return String
+     */
     private String requestInput(String msg) {
         String input = "";
 

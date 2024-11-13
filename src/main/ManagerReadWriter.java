@@ -61,6 +61,13 @@ public class ManagerReadWriter implements ReadWriter {
     }
 
 
+    
+    /** 
+     * @param transFile
+     * @return List of String
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public List<String[]> readTransactions(String transFile) throws FileNotFoundException, IOException { // FIX
         List<String[]> ret = new ArrayList<String[]>();
         String[] values;
@@ -78,6 +85,11 @@ public class ManagerReadWriter implements ReadWriter {
         return ret;
     }
 
+    
+    /** 
+     * @param customer
+     * @param account
+     */
     public void logBalanceInquiry(Customer customer, Account account) {
         String message = String.format("Bank Manager Handled: %s %s balance inquiry on %s-%s. %s %s’s Balance for %s-%s: %s",
                 customer.getFirstName(), customer.getLastName(), account.getAccountType(),
@@ -89,6 +101,11 @@ public class ManagerReadWriter implements ReadWriter {
                 "inquires", "", "", "" });
     }
 
+    
+    /** 
+     * @param account
+     * @param amount
+     */
     public void logDeposit(Account account, double amount) { // clean up
         String message = String.format("Bank Manager Handled: %s %s deposit %s into %s-%s. %s %s’s New Balance for %s-%s: %s",
                 account.getAccountOwner().getFirstName(), account.getAccountOwner().getLastName(),
@@ -101,6 +118,11 @@ public class ManagerReadWriter implements ReadWriter {
                 "deposits", "", "" });
     }
 
+    
+    /** 
+     * @param account
+     * @param amount
+     */
     public void logWithdrawal(Account account, double amount) { // clean up
         String message = String.format("Bank Manager Handled: %s %s withdraw %s in cash from %s-%s. %s %s’s Balance for %s-%s: %s",
                 account.getAccountOwner().getFirstName(), account.getAccountOwner().getLastName(), DF.format(amount),
@@ -114,6 +136,12 @@ public class ManagerReadWriter implements ReadWriter {
                 "withdraws", "", "", "" });
     }
 
+    
+    /** 
+     * @param fromAccount
+     * @param toAccount
+     * @param amount
+     */
     public void logTransfer(Account fromAccount, Account toAccount, double amount) {
         String name = fromAccount.getAccountOwner().getFirstName() + " " + fromAccount.getAccountOwner().getLastName();
         String fromType = fromAccount.getAccountType();
@@ -134,6 +162,12 @@ public class ManagerReadWriter implements ReadWriter {
                 String.valueOf(fromAccount.getAccountNumber()), String.valueOf(amount) });
     }
 
+    
+    /** 
+     * @param fromAccount
+     * @param toAccount
+     * @param amount
+     */
     public void logPayment(Account fromAccount, Account toAccount, double amount) {
         String fromName = fromAccount.getAccountOwner().getFirstName() + " " + fromAccount.getAccountOwner().getLastName();
         String fromType = fromAccount.getAccountType();
@@ -162,6 +196,10 @@ public class ManagerReadWriter implements ReadWriter {
                 String.valueOf(fromAccount.getAccountNumber()), String.valueOf(amount) });
     }
 
+    
+    /** 
+     * @param action
+     */
     public void logAction(String action) {
         try (FileWriter writer = new FileWriter(OUTPUT_LOG, true)) {
             writer.write(action + "\n");
@@ -170,6 +208,10 @@ public class ManagerReadWriter implements ReadWriter {
         }
     }
 
+    
+    /** 
+     * @param customers
+     */
     public void writeChanges(CustomersManager customers) {
         // String changes = "Identification Number,First Name,Last Name,Date of
         // Birth,Address,City,State,Zip,Phone Number,Checking Account Number,Checking
