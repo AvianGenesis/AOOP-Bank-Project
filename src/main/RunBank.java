@@ -1,5 +1,8 @@
+package main;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class RunBank {
@@ -11,9 +14,10 @@ public class RunBank {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        TransactionsManager tm = new TransactionsManager();
+        CTM ctm = new CTM();
+        BMTM bmtm = new BMTM();
         List<Account> accounts = new ArrayList<Account>();
-        CustomersManager custManager = tm.loadCustomers(accounts);
+        CustomersManager custManager = ctm.loadCustomers(accounts);
         AccountsManager accManager = new AccountsManager(accounts);
 
         Scanner scanner = new Scanner(System.in);
@@ -96,6 +100,10 @@ public class RunBank {
                 if (btn >= 1 && btn <= activeCustomer.getAccounts().length) {
                     activeAccount = accManager.searchByNum(activeCustomer.getAccounts()[btn - 1].getAccountNumber());
                     uiMode = modes.CHOOSE_ACTION;
+                } else if (btn == 4) {
+                    ctm.generateReport(activeCustomer);
+                } else if (isAdmin && btn == 5) {
+                    ctm.generateStatement(activeCustomer);
                 } else if (input.trim().toUpperCase().equals("BACK")) {
                     uiMode = modes.CREDENTIALS;
                 } else {
@@ -109,7 +117,7 @@ public class RunBank {
                 if (btn >= 1 && btn <= 5) {
                     switch (btn) {
                         case 1:
-                            tm.checkBalance(activeCustomer, activeAccount);
+                            ctm.checkBalance(activeCustomer, activeAccount);
                             nav.displayBalanceRequest(activeAccount);
                             System.out.println();
                             System.out.println("Please press ENTER to continue.");
@@ -139,7 +147,7 @@ public class RunBank {
                 input = nav.displayDepositRequest();
                 double amt = tryParseAmt(input);
                 if (amt != -1) {
-                    if (tm.deposit(activeAccount, amt)) {
+                    if (ctm.deposit(activeAccount, amt)) {
                         System.out.printf("An amount of $%.2f has been deposited to %s --- %s.%n", amt,
                                 activeAccount.getAccountType(), activeAccount.getAccountNumber());
                         System.out.println();
@@ -162,12 +170,15 @@ public class RunBank {
                 input = nav.displayWithdrawRequest();
                 double amt = tryParseAmt(input);
                 if (amt != -1) {
-                    if (tm.withdraw(activeAccount, amt)) {
+                    if (ctm.withdraw(activeAccount, amt)) {
                         System.out.printf("An amount of $%.2f has been withdrawn from %s --- %s.%n", amt,
                                 activeAccount.getAccountType(), activeAccount.getAccountNumber());
                         System.out.println();
-                        System.out.println("Please press ENTER to continue.");
-                        scanner.nextLine();
+                        System.out.println("Please press ENTER to continue OR type 1 to donate $1.");
+                        input = scanner.nextLine();
+                        if (input.equals("1")) {
+                            ctm.withdraw(activeAccount, 1);
+                        }
                         uiMode = modes.CHOOSE_ACTION;
                     } else {
                         System.out.println("Invalid amount, please try again.");
@@ -192,7 +203,7 @@ public class RunBank {
 
                     if ((receivingAccount = accManager.searchByNum(receiver)) != null) { // if account exists
 
-                        if (tm.transfer(activeAccount, receivingAccount, amt)) {
+                        if (ctm.transfer(activeAccount, receivingAccount, amt)) {
                             System.out.printf("An amount of $%.2f has been transferred from %s --- %s to %s --- %s.%n",
                                     amt,
                                     activeAccount.getAccountType(), activeAccount.getAccountNumber(),
@@ -228,7 +239,7 @@ public class RunBank {
 
                     if ((receivingAccount = accManager.searchByNum(receiver)) != null) { // if account exists
 
-                        if (tm.pay(activeAccount, receivingAccount, amt)) {
+                        if (ctm.pay(activeAccount, receivingAccount, amt)) {
                             System.out.printf(
                                     "An amount of $%,.2f has been paid from %s %s's %s --- %s to %s %s's %s --- %s.%n",
                                     amt, activeAccount.getAccountOwner().getFirstName(),
@@ -276,18 +287,59 @@ public class RunBank {
                 }
 
                 System.out.println();
-            } else if (uiMode == modes.NEW_CUSTOMER) {
-                uiMode = modes.EXIT;
+            } else if (uiMode == modes.NEW_CUSTOMER) {//Asking the user for all their inputs for the new account
+                String newFN = nav.displayFirstNameReq();
+                String newLN = nav.displayLastNameReq();
+                String newDOB = nav.displayDOBReq();
+                String newAddy = nav.displayAddressReq();
+                String newCity = nav.displayCityReq();
+                String newState = nav.displayStateReq();
+                int newZip = nav.displayZipRequest();
+                String newPhoneNum = nav.displayPhoneNumReq();
+
+                //Creates the correct ID and account numbers
+                int newID = custManager.getLastCustomerId();
+                int newChecking = custManager.getLastChecking();
+                int newSaving = custManager.getLastSaving();
+                int newCredit = custManager.getLastCredit();
+
+                //display
+                System.out.println("----------------------");
+                System.out.println("Your ID will be:"+ newID);
+                System.out.println("Your Cheking account number is: "+newChecking);
+                System.out.println("Your Saving account number is: "+newSaving);
+                System.out.println("Your Credit account number is: "+newCredit);
+                System.out.println("-----------------------");
+                System.out.println();
+
+
+                //creation of the Customer object and accounts
+                Customer newC = new Customer(newFN, newLN, newDOB, newAddy, newCity, newState, newZip, newPhoneNum, newID);
+                Account newChk = new Checking(newC, newChecking, 0);
+                Account newSav = new Saving(newC, newSaving, 0);
+                Random rand = new Random();
+                int randLimit = rand.nextInt(100,16000);
+                Account newCred = new Credit(newC, newCredit, -1, randLimit);
+
+                Account[] newAccounts = new Account[] {newChk, newSav, newCred};
+                newC.setAccounts(newAccounts);
+                custManager.addNewCustomer(newC);
+                System.out.println();
+
+                System.out.println("Make a Deposit into your savings to activate account ");
+                activeAccount = newSav;
+                activeCustomer = newC;
+                uiMode = modes.DEPOSIT;
 
                 System.out.println();
             } else if (uiMode == modes.TRANSACTIONS) {
                 input = nav.displayTransactionFileRequest();
-                List<String[]> transactions = tm.readTransactions(input);
+                List<String[]> transactions = ctm.readTransactions(input);
                 for (String[] line : transactions) {
                     switch (line[3]) {
                         case ("inquires"):
                             if ((activeCustomer = custManager.searchByName(line[0], line[1])) != null) {
-                                tm.checkBalance(activeCustomer, activeCustomer.searchAccounts(line[2]));
+                                ctm.checkBalance(activeCustomer, activeCustomer.searchAccounts(line[2]));
                             } else {
                                 System.out.println("Inquiry incomplete, customer not found.");
                             }
@@ -295,7 +347,7 @@ public class RunBank {
                         case ("deposits"):
                             if ((activeCustomer = custManager.searchByName(line[4], line[5])) != null) {
                                 activeAccount = activeCustomer.searchAccounts(line[6]);
-                                tm.deposit(activeAccount, tryParseAmt(line[7]));
+                                ctm.deposit(activeAccount, tryParseAmt(line[7]));
                             } else {
                                 System.out.println("Deposit incomplete, customer not found.");
                             }
@@ -303,7 +355,7 @@ public class RunBank {
                         case ("withdraws"):
                             if ((activeCustomer = custManager.searchByName(line[0], line[1])) != null) {
                                 activeAccount = activeCustomer.searchAccounts(line[2]);
-                                tm.withdraw(activeAccount, tryParseAmt(line[7]));
+                                ctm.withdraw(activeAccount, tryParseAmt(line[7]));
                             } else {
                                 System.out.println("Withdrawal incomplete, customer not found.");
                             }
@@ -313,7 +365,7 @@ public class RunBank {
                                     (receivingCustomer = custManager.searchByName(line[4], line[5])) != null) {
                                 activeAccount = activeCustomer.searchAccounts(line[2]);
                                 receivingAccount = receivingCustomer.searchAccounts(line[6]);
-                                tm.transfer(activeAccount, receivingAccount, tryParseAmt(line[7]));
+                                ctm.transfer(activeAccount, receivingAccount, tryParseAmt(line[7]));
                             } else {
                                 System.out.println("Transfer incomplete, customer(s) not found.");
                             }
@@ -323,7 +375,7 @@ public class RunBank {
                                     (receivingCustomer = custManager.searchByName(line[4], line[5])) != null) {
                                 activeAccount = activeCustomer.searchAccounts(line[2]);
                                 receivingAccount = receivingCustomer.searchAccounts(line[6]);
-                                tm.pay(activeAccount, receivingAccount, tryParseAmt(line[7]));
+                                ctm.pay(activeAccount, receivingAccount, tryParseAmt(line[7]));
                             } else {
                                 System.out.println("Payment incomplete, customer(s) not found.");
                             }
@@ -342,7 +394,7 @@ public class RunBank {
                 "Thank you for banking with us today! Please press ENTER to commit changes and close the application.");
         scanner.nextLine();
         scanner.close();
-        tm.writeChanges(custManager);
+        ctm.writeChanges(custManager);
 
     }
 

@@ -1,3 +1,5 @@
+package main;
+
 /**
  * Represents a Checking account, which is a subclass of Account.
  */

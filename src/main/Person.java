@@ -1,3 +1,5 @@
+package main;
+
 /**
  * Represents a person with personal information.
  */

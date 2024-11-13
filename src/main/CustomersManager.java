@@ -1,4 +1,7 @@
+package main;
+
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class CustomersManager {
@@ -46,5 +49,46 @@ public class CustomersManager {
 
     public List<Customer> getCustomers() {
         return customers;
+    }//privat method to get last Customer
+    private Customer getLastCustomer() {
+        return customers.stream()
+                .max(Comparator.comparingInt(Customer::getidNumber)) // Find the customer with the highest ID
+                .orElse(null); // Return null if the list is empty
+    }
+
+    public int getLastCustomerId() {
+        Customer lastID = getLastCustomer();
+        return lastID.getidNumber()+1;
+
+    }
+
+    public int getLastChecking(){
+        
+        Customer lastCustomer = getLastCustomer(); 
+        Account[] AccArr = lastCustomer.getAccounts();
+        int lastChecking = AccArr[0].getAccountNumber();
+        return lastChecking+1;
+        
+    }
+
+    public int getLastSaving(){
+        Customer lastCustomer = getLastCustomer();
+        Account[] AccArr = lastCustomer.getAccounts();
+        int lastSaving = AccArr[1].getAccountNumber();
+        return lastSaving+1;
+        
+    }
+
+    public int getLastCredit(){
+        Customer lastCustomer = getLastCustomer(); 
+        Account[] AccArr = lastCustomer.getAccounts();
+        int lastCredit = AccArr[2].getAccountNumber();
+        return lastCredit+1;
+        
+    }
+
+    public void addNewCustomer(Customer newCust){
+        customers.add(newCust);
+        System.out.println("You Have Successfully Made An Account!");
     }
 }

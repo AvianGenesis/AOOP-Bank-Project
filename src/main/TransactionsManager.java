@@ -1,9 +1,11 @@
+package main;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
 public class TransactionsManager {
-    ReadWriter rw = new ReadWriter();
+    CustomerReadWriter rw = new CustomerReadWriter();
 
     public TransactionsManager() {
 
@@ -97,8 +99,12 @@ public class TransactionsManager {
         return rw.readTransactions(transFile);
     }
 
-    public void generateReport(Customer customer) {
-        // log generation
+    public void generateReport(Customer customer) throws IOException {
+        rw.generateReport(customer);
+    }
+
+    public void generateStatement(Customer customer) throws IOException {
+        rw.generateStatement(customer);
     }
 
     public void newCustomer(Customer customer) {

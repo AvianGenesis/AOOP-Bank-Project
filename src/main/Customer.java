@@ -1,3 +1,5 @@
+package main;
+
 /**
  * Represents a customer in the banking system, inheriting properties from the
  * Person class.

@@ -1,3 +1,5 @@
+package main;
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -59,8 +61,9 @@ public class Navigator {
         for (Account acct : customer.getAccounts()) {
             System.out.printf("| %2s  | %-8s --- %-5s |%n", tick++, acct.getAccountType(), acct.getAccountNumber());
         }
+        System.out.println("|  4  | User transactions  |");
         if(isAdmin){
-            System.out.println("|  4  | Bank statement |");
+            System.out.println("|  5  | Bank statement     |");
         }
         System.out.println("|--------------------------|");
 
@@ -152,6 +155,47 @@ public class Navigator {
         String input = "";
         input = requestInput("Please provide the name of the Transactions file you would like to execute OR\ntype BACK:\n");
         return input;
+    }
+
+    public String displayFirstNameReq(){
+        String in = requestInput("Please provide your first name for the account");
+        return in;
+    }
+
+    public String displayLastNameReq(){
+        String in = requestInput("Please Provide your last name for the account");
+        return in;
+    }
+
+    public String displayDOBReq(){
+        String in = requestInput("Please provide you Date of Birth: 11/11/11");
+        return in;
+    }
+
+    public String displayAddressReq(){
+        String in = requestInput("Please provide your current living address");
+        return in;
+    }
+
+    public String displayCityReq(){
+        String in = requestInput("Please provide the city you live in");
+        return in;
+    }
+
+    public String displayStateReq(){
+        String in = requestInput("Please provide the state");
+        return in;
+    }
+
+    public int displayZipRequest(){
+        //int in = requestInput("Please provide the zip code");
+        //return in;
+        return 0;
+    }
+
+    public String displayPhoneNumReq(){
+        String in = requestInput("Please provide a Phone Number");
+        return in;
     }
 
     // default input read error

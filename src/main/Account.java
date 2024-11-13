@@ -1,3 +1,5 @@
+package main;
+
 /**
  * Abstract class representing a bank account.
  * Contains basic account details and common methods for deposit and withdrawal

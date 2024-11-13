@@ -1,36 +1,15 @@
+package main;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class ReadWriter {
-    private static final String INPUT_CSV = "resources/BankUsers.csv";
-    private static final String OUTPUT_CSV = "resources/BankUsersOutput.csv";
-    private static final String OUTPUT_LOG = "resources/Log.txt";
-    private static final DecimalFormat DF = new DecimalFormat("$#,##0.00");
-
-    private static final String ID = "Identification Number";
-    private static final String FIRST_NAME = "First Name";
-    private static final String LAST_NAME = "Last Name";
-    private static final String DOB = "Date of Birth";
-    private static final String ADDRESS = "Address";
-    private static final String CITY = "City";
-    private static final String STATE = "State";
-    private static final String ZIP = "Zip";
-    private static final String PHONE_NUMBER = "Phone Number";
-    private static final String CHECKING_NUMBER = "Checking Account Number";
-    private static final String CHECKING_BALANCE = "Checking Starting Balance";
-    private static final String SAVINGS_NUMBER = "Savings Account Number";
-    private static final String SAVINGS_BALANCE = "Savings Starting Balance";
-    private static final String CREDIT_NUMBER = "Credit Account Number";
-    private static final String CREDIT_MAX = "Credit Max";
-    private static final String CREDIT_BALANCE = "Credit Starting Balance";
-
+public class ManagerReadWriter implements ReadWriter {
     List<String[]> history = new ArrayList<String[]>();
 
     private class DataPoint {
@@ -62,7 +41,7 @@ public class ReadWriter {
     DataPoint creMax = new DataPoint(CREDIT_MAX);
     DataPoint creBal = new DataPoint(CREDIT_BALANCE);
 
-    public ReadWriter() {
+    public ManagerReadWriter() {
         points.add(id);
         points.add(firstName);
         points.add(lastName);
@@ -81,49 +60,6 @@ public class ReadWriter {
         points.add(creBal);
     }
 
-    public CustomersManager loadCustomers(List<Account> accounts) throws FileNotFoundException, IOException {
-        List<Customer> ret = new ArrayList<Customer>();
-        String[] values;
-
-        try (BufferedReader br = new BufferedReader(new FileReader(INPUT_CSV))) {
-            String line;
-            headers = new ArrayList<String>(Arrays.asList(br.readLine().split(",")));
-            for (DataPoint dp : points) {
-                dp.loc = headers.indexOf(dp.head);
-            }
-
-            while ((line = br.readLine()) != null) {
-                values = line.split(",");
-                for (DataPoint dp : points) {
-                    dp.data = values[dp.loc];
-                }
-
-                Customer newCust = new Customer(firstName.data, lastName.data, dob.data, address.data, city.data,
-                        state.data, Integer.parseInt(zip.data), phone.data, Integer.parseInt(id.data));
-                Account newChk = new Checking(newCust, Integer.parseInt(chkNum.data), Double.parseDouble(chkBal.data));
-                Account newSav = new Saving(newCust, Integer.parseInt(savNum.data), Double.parseDouble(savBal.data));
-                Account newCre = new Credit(newCust, Integer.parseInt(creNum.data), -Double.parseDouble(creBal.data),
-                        Integer.parseInt(creMax.data));
-                accounts.add(newChk);
-                accounts.add(newSav);
-                accounts.add(newCre);
-                newCust.setAccounts(new Account[] { newChk, newSav, newCre });
-                ret.add(newCust);
-
-                history.add(new String[] { String.valueOf(newChk.getAccountNumber()),
-                        String.valueOf(newChk.getAccountBalance()),
-                        "start", "", "", "" });
-                history.add(new String[] { String.valueOf(newSav.getAccountNumber()),
-                        String.valueOf(newSav.getAccountBalance()),
-                        "start", "", "", "" });
-                history.add(new String[] { String.valueOf(newCre.getAccountNumber()),
-                        String.valueOf(newCre.getAccountBalance()),
-                        "start", "", "", "" });
-            }
-        }
-
-        return new CustomersManager(ret);
-    }
 
     public List<String[]> readTransactions(String transFile) throws FileNotFoundException, IOException { // FIX
         List<String[]> ret = new ArrayList<String[]>();
@@ -143,10 +79,9 @@ public class ReadWriter {
     }
 
     public void logBalanceInquiry(Customer customer, Account account) {
-        String message = String.format("%s %s made a balance inquiry on %s-%s. %s %s’s Balance for %s-%s: %s",
+        String message = String.format("Bank Manager Handled: %s %s balance inquiry on %s-%s. %s %s’s Balance for %s-%s: %s",
                 customer.getFirstName(), customer.getLastName(), account.getAccountType(),
-                String.valueOf(account.getAccountNumber()),
-                customer.getFirstName(), customer.getLastName(), account.getAccountType(),
+                String.valueOf(account.getAccountNumber()),customer.getFirstName(), customer.getLastName(), account.getAccountType(),
                 String.valueOf(account.getAccountNumber()), DF.format(account.getAccountBalance()));
         logAction(message);
 
@@ -155,33 +90,28 @@ public class ReadWriter {
     }
 
     public void logDeposit(Account account, double amount) { // clean up
-        String message = String.format("%s %s deposited %s into %s-%s. %s %s’s New Balance for %s-%s: %s",
+        String message = String.format("Bank Manager Handled: %s %s deposit %s into %s-%s. %s %s’s New Balance for %s-%s: %s",
                 account.getAccountOwner().getFirstName(), account.getAccountOwner().getLastName(),
-                DF.format(amount), account.getAccountType(),
-                String.valueOf(account.getAccountNumber()),
+                DF.format(amount), account.getAccountType(),String.valueOf(account.getAccountNumber()),
                 account.getAccountOwner().getFirstName(), account.getAccountOwner().getLastName(),
-                account.getAccountType(),
-                String.valueOf(account.getAccountNumber()), DF.format(account.getAccountBalance()));
+                account.getAccountType(),String.valueOf(account.getAccountNumber()), DF.format(account.getAccountBalance()));
         logAction(message);
 
-        history.add(new String[] { String.valueOf(account.getAccountOwner().getidNumber()),
-            String.valueOf(account.getAccountNumber()),
-            "deposits", "", "", String.valueOf(amount) });
+        history.add(new String[] { String.valueOf(account.getAccountNumber()),
+                "deposits", "", "" });
     }
 
     public void logWithdrawal(Account account, double amount) { // clean up
-        String message = String.format("%s %s withdrew %s in cash from %s-%s. %s %s’s Balance for %s-%s: %s",
+        String message = String.format("Bank Manager Handled: %s %s withdraw %s in cash from %s-%s. %s %s’s Balance for %s-%s: %s",
                 account.getAccountOwner().getFirstName(), account.getAccountOwner().getLastName(), DF.format(amount),
-                account.getAccountType(),
-                String.valueOf(account.getAccountNumber()),
+                account.getAccountType(),String.valueOf(account.getAccountNumber()),
                 account.getAccountOwner().getFirstName(), account.getAccountOwner().getLastName(),
-                account.getAccountType(),
-                String.valueOf(account.getAccountNumber()), DF.format(account.getAccountBalance()));
+                account.getAccountType(),String.valueOf(account.getAccountNumber()), DF.format(account.getAccountBalance()));
         logAction(message);
 
         history.add(new String[] { String.valueOf(account.getAccountOwner().getidNumber()),
                 String.valueOf(account.getAccountNumber()),
-                "withdraws", "", "", String.valueOf(amount) });
+                "withdraws", "", "", "" });
     }
 
     public void logTransfer(Account fromAccount, Account toAccount, double amount) {
@@ -192,7 +122,7 @@ public class ReadWriter {
         String toNum = String.valueOf(toAccount.getAccountNumber());
 
         String message = String.format(
-                "%s transferred %s from %s-%s to %s-%s. %s’s Balance for %s-%s: %s. %s’s Balance for %s-%s: %s", name,
+                "Bank Manager Handled: %s transfer %s from %s-%s to %s-%s. %s’s Balance for %s-%s: %s. %s’s Balance for %s-%s: %s", name,
                 DF.format(amount), fromType, fromNum, toType, toNum, name, fromType, fromNum,
                 DF.format(fromAccount.getAccountBalance()), name, toType, toNum,
                 DF.format(toAccount.getAccountBalance()));
@@ -205,15 +135,14 @@ public class ReadWriter {
     }
 
     public void logPayment(Account fromAccount, Account toAccount, double amount) {
-        String fromName = fromAccount.getAccountOwner().getFirstName() + " "
-                + fromAccount.getAccountOwner().getLastName();
+        String fromName = fromAccount.getAccountOwner().getFirstName() + " " + fromAccount.getAccountOwner().getLastName();
         String fromType = fromAccount.getAccountType();
         String fromNum = String.valueOf(fromAccount.getAccountNumber());
-        String toName = toAccount.getAccountOwner().getFirstName() + " " + toAccount.getAccountOwner().getLastName();
+        String toName = toAccount.getAccountOwner().getFirstName() + " " + toAccount.getAccountOwner().getLastName();;
         String toType = toAccount.getAccountType();
         String toNum = String.valueOf(toAccount.getAccountNumber());
 
-        String fromMessage = String.format("%s paid %s %s from %s-%s. %s’s New Balance for %s-%s: %s",
+        String fromMessage = String.format("Bank Manager Handled: %s paying %s %s from %s-%s. %s’s New Balance for %s-%s: %s",
                 fromName, toName,
                 DF.format(amount),
                 fromType, fromNum,
@@ -221,7 +150,7 @@ public class ReadWriter {
                 fromNum, DF.format(fromAccount.getAccountBalance()));
         logAction(fromMessage);
 
-        String toMessage = String.format("%s received %s from %s. %s’s New Balance for %s-%s: %s",
+        String toMessage = String.format("Bank Manager Handled: %s %s receiving %s from %s %s. %s %s’s New Balance for %s-%s: %s",
                 toName, DF.format(amount), fromName,
                 toName, toType,
                 toNum, DF.format(toAccount.getAccountBalance()));
@@ -231,44 +160,6 @@ public class ReadWriter {
                 String.valueOf(fromAccount.getAccountNumber()),
                 "pays", String.valueOf(toAccount.getAccountOwner().getidNumber()),
                 String.valueOf(fromAccount.getAccountNumber()), String.valueOf(amount) });
-    }
-
-    public void generateReport(Customer customer) throws IOException {
-        String chk = String.valueOf(customer.searchAccounts("Checking").getAccountNumber());
-        String sav = String.valueOf(customer.searchAccounts("Savings").getAccountNumber());
-        String cre = String.valueOf(customer.searchAccounts("Credit").getAccountNumber());
-        try (FileWriter writer = new FileWriter("resources/User" + customer.getidNumber() + "Transactions.csv",
-                false)) {
-            for (String[] record : history) {
-                if (record[0].equals(chk) && record[2].equals("start")) {
-                    // starting chk balance
-                } else if (record[0].equals(sav) && record[2].equals("start")) {
-                    // starting sav balance
-                } else if (record[0].equals(cre) && record[2].equals("start")) {
-                    // starting cre balance
-                } else if (record[0].equals(String.valueOf(customer.getidNumber()))){
-                    switch(record[2]){
-                        case("inquires"):
-                        writer.write("Inquired " + record[1] + "\n");
-                        break;
-                        case("deposits"):
-                        writer.write("Deposited " + record[5] + " into " + record[1] + "\n");
-                        break;
-                        case("withdraws"):
-                        writer.write("Withdrew " + record[5] + " from " + record[1] + "\n");
-                        break;
-                        case("transfers"):
-                        writer.write("Transferred " + record[5] + " from " + record[1] + " to " + record[4] + "\n");
-                        break;
-                        case("pays"):
-                        writer.write("\n");
-                        break;
-                    }
-                }
-            }
-        } catch (IOException e) {
-            System.out.println("Unable to generate report");
-        }
     }
 
     public void logAction(String action) {

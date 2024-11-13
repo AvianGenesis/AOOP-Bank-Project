@@ -1,0 +1,9 @@
+ID: 5
+Name: Pluto Disney
+Timestamp: 2024-11-13T01:03:56.083820500Z
+Checking start balance: $1549.67
+Checking end balance: $1549.67
+Savings start balance: $1622.73
+Savings end balance: $1622.73
+Credit start balance: $1289.68
+Credit end balance: $1289.68

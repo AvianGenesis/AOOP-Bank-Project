@@ -1,3 +1,5 @@
+package main;
+
 /**
  * Represents a Credit account, which is a type of Account.
  * A credit account has a maximum limit and allows deposits and withdrawals within that limit.
