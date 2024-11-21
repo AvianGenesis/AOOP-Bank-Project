@@ -78,21 +78,58 @@ public class RunBank {
                 }
 
                 System.out.println();
-            } else if (uiMode == modes.CREDENTIALS) { // Customer credentials prompt, ADD NAME INPUT FUNCTIONALITY
-                input = nav.displayCustomerLogin();
-                int uId = tryParseInt(input);
-                if (uId != -1) {
+            } else if (uiMode == modes.CREDENTIALS) {
+                input = nav.displayCustomerLogin(); 
+                int uId = tryParseInt(input);  
+            
+                if (uId != -1) {  
                     if ((activeCustomer = custManager.searchById(uId)) != null) {
                         uiMode = modes.CHOOSE_ACCOUNT;
                     } else {
                         System.out.println("Unrecognized ID, please try again.");
                     }
-                } else if (input.trim().toUpperCase().equals("BACK")) {
+                } else if (input.trim().toUpperCase().equals("BACK")) {  
                     uiMode = modes.MAIN;
                 } else {
-                    nav.displayGenericInputError(input);
+                    // Handle name input (could be full name or single name)
+                    String[] nameParts = input.trim().split("\\s+");  // Split input by spaces
+                    if (nameParts.length == 2) {
+                        // If two names were entered (first and last)
+                        String first = nameParts[0];
+                        String last = nameParts[1];
+                        if ((activeCustomer = custManager.searchByName(first, last)) != null) {
+                            uiMode = modes.CHOOSE_ACCOUNT;
+                        } else {
+                            System.out.println("Customer not found with that name.");
+                        }
+                    } else if (nameParts.length == 1) {
+                        // If only one name was entered, search by first or last name
+                        List<Customer> possibleCustomers = custManager.searchByName(nameParts[0]);
+                        if (possibleCustomers.isEmpty()) {
+                            System.out.println("No customers found with that name.");
+                        } else if (possibleCustomers.size() == 1) {
+                            activeCustomer = possibleCustomers.get(0);
+                            uiMode = modes.CHOOSE_ACCOUNT;
+                        } else {
+                            // Multiple customers found, ask user to select one
+                            System.out.println("Multiple customers found:");
+                            for (int i = 0; i < possibleCustomers.size(); i++) {
+                                System.out.println((i + 1) + ". " + possibleCustomers.get(i).getFirstName() + " " + possibleCustomers.get(i).getLastName());
+                            }
+                            // Ask user to pick a customer
+                            input = nav.displayCustomerSelection();  // Method to prompt user for selection
+                            int selection = tryParseInt(input);
+                            if (selection >= 1 && selection <= possibleCustomers.size()) {
+                                activeCustomer = possibleCustomers.get(selection - 1);  // Set active customer based on selection
+                                uiMode = modes.CHOOSE_ACCOUNT;
+                            } else {
+                                System.out.println("Invalid selection, please try again.");
+                            }
+                        }
+                    } else {
+                        nav.displayGenericInputError(input);  // Handle any other invalid input
+                    }
                 }
-
                 System.out.println();
             } else if (uiMode == modes.CHOOSE_ACCOUNT) { // Customer chooses account
                 input = nav.displayAccounts(activeCustomer, isAdmin);
@@ -103,7 +140,7 @@ public class RunBank {
                 } else if (btn == 4) {
                     ctm.generateReport(activeCustomer);
                 } else if (isAdmin && btn == 5) {
-                    ctm.generateStatement(activeCustomer);
+                    bmtm.generateStatement(activeCustomer);
                 } else if (input.trim().toUpperCase().equals("BACK")) {
                     uiMode = modes.CREDENTIALS;
                 } else {
@@ -117,7 +154,12 @@ public class RunBank {
                 if (btn >= 1 && btn <= 5) {
                     switch (btn) {
                         case 1:
-                            ctm.checkBalance(activeCustomer, activeAccount);
+                            if (isAdmin) {
+                                bmtm.checkBalance(activeCustomer, activeAccount);
+                            } else {
+                                ctm.checkBalance(activeCustomer, activeAccount);
+                            }
+
                             nav.displayBalanceRequest(activeAccount);
                             System.out.println();
                             System.out.println("Please press ENTER to continue.");
@@ -287,7 +329,7 @@ public class RunBank {
                 }
 
                 System.out.println();
-            } else if (uiMode == modes.NEW_CUSTOMER) {//Asking the user for all their inputs for the new account
+            } else if (uiMode == modes.NEW_CUSTOMER) {// Asking the user for all their inputs for the new account
                 String newFN = nav.displayFirstNameReq();
                 String newLN = nav.displayLastNameReq();
                 String newDOB = nav.displayDOBReq();
@@ -297,31 +339,31 @@ public class RunBank {
                 int newZip = nav.displayZipRequest();
                 String newPhoneNum = nav.displayPhoneNumReq();
 
-                //Creates the correct ID and account numbers
+                // Creates the correct ID and account numbers
                 int newID = custManager.getLastCustomerId();
                 int newChecking = custManager.getLastChecking();
                 int newSaving = custManager.getLastSaving();
                 int newCredit = custManager.getLastCredit();
 
-                //display
+                // display
                 System.out.println("----------------------");
-                System.out.println("Your ID will be:"+ newID);
-                System.out.println("Your Cheking account number is: "+newChecking);
-                System.out.println("Your Saving account number is: "+newSaving);
-                System.out.println("Your Credit account number is: "+newCredit);
+                System.out.println("Your ID will be:" + newID);
+                System.out.println("Your Cheking account number is: " + newChecking);
+                System.out.println("Your Saving account number is: " + newSaving);
+                System.out.println("Your Credit account number is: " + newCredit);
                 System.out.println("-----------------------");
                 System.out.println();
 
-
-                //creation of the Customer object and accounts
-                Customer newC = new Customer(newFN, newLN, newDOB, newAddy, newCity, newState, newZip, newPhoneNum, newID);
+                // creation of the Customer object and accounts
+                Customer newC = new Customer(newFN, newLN, newDOB, newAddy, newCity, newState, newZip, newPhoneNum,
+                        newID);
                 Account newChk = new Checking(newC, newChecking, 0);
                 Account newSav = new Saving(newC, newSaving, 0);
                 Random rand = new Random();
-                int randLimit = rand.nextInt(100,16000);
+                int randLimit = rand.nextInt(100, 16000);
                 Account newCred = new Credit(newC, newCredit, -1, randLimit);
 
-                Account[] newAccounts = new Account[] {newChk, newSav, newCred};
+                Account[] newAccounts = new Account[] { newChk, newSav, newCred };
                 newC.setAccounts(newAccounts);
                 custManager.addNewCustomer(newC);
                 System.out.println();

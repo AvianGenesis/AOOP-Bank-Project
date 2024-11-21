@@ -301,6 +301,14 @@ public class Navigator {
     }
 
     
+
+    public String displayCustomerSelection() {
+        System.out.print("Please enter the number corresponding to the customer: ");
+        Scanner scanner = new Scanner(System.in); 
+        return scanner.nextLine();
+    }
+
+    
     /** 
      * @param msg
      * @return String
