@@ -1,0 +1,10 @@
+ID: 6
+Name: Chip Disney
+Timestamp: 2024-11-21T03:39:01.803675Z
+Checking start balance: $37.84
+Checking end balance: $37.84
+Savings start balance: $3687.14
+Savings end balance: $3612.14
+Credit start balance: $1451.7
+Credit end balance: $1451.7
+Withdrew $ from 2005

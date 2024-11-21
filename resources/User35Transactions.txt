@@ -1,0 +1,10 @@
+ID: 35
+Name: Lilo Disney
+Timestamp: 2024-11-21T03:52:19.827911Z
+Checking start balance: $1763.47
+Checking end balance: $1763.47
+Savings start balance: $1942.89
+Savings end balance: $1883.89
+Credit start balance: $1715.37
+Credit end balance: $1715.37
+Withdrew $ from 2034

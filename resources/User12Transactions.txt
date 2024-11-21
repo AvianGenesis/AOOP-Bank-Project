@@ -1,0 +1,9 @@
+ID: 12
+Name: Simba Disney
+Timestamp: 2024-11-21T03:49:58.231075800Z
+Checking start balance: $1336.79
+Checking end balance: $1336.79
+Savings start balance: $373.47
+Savings end balance: $373.47
+Credit start balance: $1220.11
+Credit end balance: $1220.11
