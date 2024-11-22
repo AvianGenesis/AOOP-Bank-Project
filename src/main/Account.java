@@ -16,6 +16,8 @@ public abstract class Account {
     /** The balance of the account */
     protected double accountBalance;
 
+    protected double startBalance;
+
     /**
      * Default constructor for the Account class.
      */
@@ -32,6 +34,7 @@ public abstract class Account {
     public Account(int num, double bal) {
         this.accountNumber = num;
         this.accountBalance = bal;
+        this.startBalance = bal;
     }
 
     /**
@@ -45,6 +48,7 @@ public abstract class Account {
         this.accountOwner = accountOwner;
         this.accountNumber = accountNumber;
         this.accountBalance = accountBalance;
+        this.startBalance = accountBalance;
     }
 
     /**

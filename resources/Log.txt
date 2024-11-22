@@ -3171,3 +3171,4 @@ Shere Khan withdrew $86.00 in cash from Checking-1025. Shere Khan’s Balance fo
 Captaiin Hook paid Sofia Hernandez $11.83 from Savings-2026. Captaiin Hook’s New Balance for Savings-2026: $3,197.45
 Sofia Hernandez received $11.83 from Captaiin Hook. Sofia Hernandez’s New Balance for Checking-1073: $5,527.62
 Kaa Disney withdrew $86.00 in cash from Checking-1027. Kaa Disney’s Balance for Checking-1027: $830.93
+Mickey Mouse deposited $10.00 into Checking-1000. Mickey Mouse’s New Balance for Checking-1000: $409.12

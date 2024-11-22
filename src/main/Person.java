@@ -95,6 +95,10 @@ public class Person {
         this.lastName = lastName;
     }
 
+    public String getName(){
+        return firstName + " " + lastName;
+    }
+
     /**
      * Gets the date of birth of the person.
      * 
