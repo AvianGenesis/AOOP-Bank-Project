@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import account.Account;
+import account.Credit;
+
 public class ManagerReadWriter implements ReadWriter {
     List<String[]> history = new ArrayList<String[]>();
 

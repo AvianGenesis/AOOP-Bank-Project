@@ -1,5 +1,7 @@
 package main;
 
-public abstract class CustomerAction implements Action {
+import loggable.Loggable;
+
+public abstract class CustomerAction implements Loggable {
     Customer customer;
 }

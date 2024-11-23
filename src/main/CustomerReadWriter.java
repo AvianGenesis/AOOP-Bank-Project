@@ -10,6 +10,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import account.Account;
+import account.Checking;
+import account.Credit;
+import account.Saving;
+
 public class CustomerReadWriter implements ReadWriter {
     List<String[]> history = new ArrayList<String[]>();
 

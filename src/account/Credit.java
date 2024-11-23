@@ -1,4 +1,6 @@
-package main;
+package account;
+
+import main.Customer;
 
 /**
  * Represents a Credit account, which is a type of Account.
@@ -49,11 +51,26 @@ public class Credit extends Account {
      */
     @Override
     public boolean deposit(double amount) {
-        if (amount > 0 && amount <= accountBalance) {
+        if (canDeposit(amount)) {
             accountBalance -= amount;
             return true;
         }
         return false;
+    }
+
+    public boolean canDeposit(double amount){
+        return amtIsPositive(amount) && amtAllowed(amount);
+    }
+
+    private boolean amtAllowed(double amount){
+        if(amount <= accountBalance){
+            return true;
+        } else {
+            System.out.println("Depositing too much!");
+            System.out.println("Amount: $" + amount);
+            System.out.println("Balance owed: $" + accountBalance);
+            return false;
+        }
     }
 
     /**
@@ -64,11 +81,23 @@ public class Credit extends Account {
      */
     @Override
     public boolean withdraw(double amount) {
-        if (amount > 0 && amount + accountBalance <= max) {
+        if (canWithdraw(amount)) {
             accountBalance += amount;
             return true;
         }
         return false;
+    }
+
+    protected boolean amtExists(double amount) {
+        if (amount + accountBalance <= max) {
+            return true;
+        } else {
+            System.out.println("Not enough funds in account!");
+            System.out.println("Requested: $" + amount);
+            System.out.println("Balance owed: $" + accountBalance);
+            System.out.println("Max: $" + max);
+            return false;
+        }
     }
 
     /**

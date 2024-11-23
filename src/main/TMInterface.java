@@ -1,8 +1,12 @@
 package main;
 
+import account.Account;
+import loggable.LoggableManager;
+
 interface TMInterface {
     static final CustomerReadWriter crw = new CustomerReadWriter();
     static final ManagerReadWriter mrw = new ManagerReadWriter();
+    static final LoggableManager lm = new LoggableManager();
 
     /**
      * Perform and log balance inquiry

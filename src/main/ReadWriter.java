@@ -2,6 +2,8 @@ package main;
 
 import java.text.DecimalFormat;
 
+import account.Account;
+
 interface ReadWriter {
 
     static final String INPUT_CSV = "resources/BankUsers.csv";

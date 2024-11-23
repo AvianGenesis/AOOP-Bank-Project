@@ -3,6 +3,9 @@ package main;
 import java.util.List;
 import java.util.Scanner;
 
+import account.Account;
+import account.Credit;
+
 public class Navigator {
     // attributes
     private Scanner scanner = new Scanner(System.in);

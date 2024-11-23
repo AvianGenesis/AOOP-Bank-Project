@@ -4,6 +4,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+import account.Account;
+
 public class TransactionsManager {
     CustomerReadWriter rw = new CustomerReadWriter();
 
