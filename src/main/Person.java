@@ -3,31 +3,31 @@ package main;
 /**
  * Represents a person with personal information.
  */
-public class Person {
+public abstract class Person {
     
     /** The first name of the person */
-    private String firstName;
+    protected String firstName;
     
     /** The last name of the person */
-    private String lastName;
+    protected String lastName;
     
     /** The date of birth of the person */
-    private String dob;
+    protected String dob;
     
     /** The address of the person */
-    private String address;
+    protected String address;
     
     /** The city of residence */
-    private String city;
+    protected String city;
     
     /** The state of residence */
-    private String state;
+    protected String state;
     
     /** The zip code of the address */
-    private int zip;
+    protected int zip;
     
     /** The phone number of the person */
-    private String phoneNumber;
+    protected String phoneNumber;
 
     /**
      * Default constructor for the Person class.
@@ -93,6 +93,10 @@ public class Person {
      */
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getName(){
+        return firstName + " " + lastName;
     }
 
     /**

@@ -1,4 +1,6 @@
-package main;
+package account;
+
+import main.Customer;
 
 /**
  * Abstract class representing a bank account.
@@ -18,6 +20,8 @@ public abstract class Account {
     /** The balance of the account */
     protected double accountBalance;
 
+    protected double startBalance;
+
     /**
      * Default constructor for the Account class.
      */
@@ -34,6 +38,7 @@ public abstract class Account {
     public Account(int num, double bal) {
         this.accountNumber = num;
         this.accountBalance = bal;
+        this.startBalance = bal;
     }
 
     /**
@@ -47,6 +52,7 @@ public abstract class Account {
         this.accountOwner = accountOwner;
         this.accountNumber = accountNumber;
         this.accountBalance = accountBalance;
+        this.startBalance = accountBalance;
     }
 
     /**
@@ -103,6 +109,10 @@ public abstract class Account {
         this.accountBalance = accountBalance;
     }
 
+    public double getStartBalance(){
+        return startBalance;
+    }
+
     /**
      * Deposits an amount to the account balance if the amount is positive.
      * 
@@ -110,11 +120,15 @@ public abstract class Account {
      * @return true if the deposit was successful; false otherwise
      */
     public boolean deposit(double amount) {
-        if (amount > 0) {
+        if (canDeposit(amount)) {
             accountBalance += amount;
             return true;
         }
         return false;
+    }
+
+    public boolean canDeposit(double amount) {
+        return amtIsPositive(amount);
     }
 
     /**
@@ -125,13 +139,35 @@ public abstract class Account {
      * @return true if the withdrawal was successful; false otherwise
      */
     public boolean withdraw(double amount) {
-        if (amount > 0) {
-            if (amount <= accountBalance) {
-                accountBalance -= amount;
-                return true;
-            }
+        if (canWithdraw(amount)) {
+            accountBalance -= amount;
+            return true;
         }
         return false;
+    }
+
+    public boolean canWithdraw(double amount) {
+        return amtIsPositive(amount) && amtExists(amount);
+    }
+
+    protected boolean amtIsPositive(double amount) {
+        if (amount > 0.0) {
+            return true;
+        } else {
+            System.out.println("Amount must be positive!\n");
+            return false;
+        }
+    }
+
+    protected boolean amtExists(double amount) {
+        if (amount <= accountBalance) {
+            return true;
+        } else {
+            System.out.println("Not enough funds in account!");
+            System.out.println("Requested: $" + amount);
+            System.out.println("Available: $" + accountBalance);
+            return false;
+        }
     }
 
     /**

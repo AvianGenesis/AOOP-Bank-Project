@@ -1,4 +1,6 @@
-package main;
+package account;
+
+import main.Customer;
 
 /**
  * Represents a Checking account, which is a subclass of Account.

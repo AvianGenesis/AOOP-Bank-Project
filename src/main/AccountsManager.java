@@ -3,6 +3,8 @@ package main;
 import java.util.ArrayList;
 import java.util.List;
 
+import account.Account;
+
 public class AccountsManager {
     private List<Account> accounts = new ArrayList<Account>();
 

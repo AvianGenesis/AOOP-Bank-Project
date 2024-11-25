@@ -1,5 +1,11 @@
 package main;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import account.Account;
+import loggable.AccountAction;
+
 /**
  * Represents a customer in the banking system, inheriting properties from the
  * Person class.
@@ -13,6 +19,8 @@ public class Customer extends Person {
 
     /** An array representing the customer's accounts: [checking, saving, credit] */
     private Account[] accounts;
+
+    private List<AccountAction> actions;
 
     /**
      * Default constructor for the Customer class.
@@ -37,19 +45,28 @@ public class Customer extends Person {
      */
     public Customer(String firstName, String lastName, String dob, String address, String city, String state, int zip,
             String phoneNumber, int idNumber) {
-        super(firstName, lastName, dob, address, city, state, zip, phoneNumber);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dob = dob;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.phoneNumber = phoneNumber;
         this.idNumber = idNumber;
+        
+        actions = new ArrayList<AccountAction>();
     }
 
-    
-    /** 
+    /**
      * Search a customer's accounts via type
+     * 
      * @param type
      * @return Account
      */
-    public Account searchAccounts(String type){
-        for(Account acc : accounts){
-            if(acc.getAccountType().equals(type)){
+    public Account searchAccounts(String type) {
+        for (Account acc : accounts) {
+            if (acc.getAccountType().equals(type)) {
                 return acc;
             }
         }
@@ -91,5 +108,13 @@ public class Customer extends Person {
      */
     public void setAccounts(Account[] accounts) {
         this.accounts = accounts;
+    }
+
+    public void appendActions(AccountAction action) {
+        actions.add(action);
+    }
+
+    public List<AccountAction> getLogs() {
+        return actions;
     }
 }

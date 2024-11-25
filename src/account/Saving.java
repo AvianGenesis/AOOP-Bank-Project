@@ -1,4 +1,6 @@
-package main;
+package account;
+
+import main.Customer;
 
 /**
  * Represents a Savings account, which is a type of Account.

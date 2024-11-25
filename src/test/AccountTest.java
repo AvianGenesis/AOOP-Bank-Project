@@ -4,8 +4,8 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import main.Account;
-import main.Checking;
+import account.Account;
+import account.Checking;
 import main.Customer;
 
 
