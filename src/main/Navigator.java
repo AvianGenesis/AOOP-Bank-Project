@@ -14,8 +14,7 @@ public class Navigator {
 
     }
 
-    
-    /** 
+    /**
      * @return String
      */
     // methods
@@ -29,7 +28,6 @@ public class Navigator {
         System.out.println("|--------------------------|");
         System.out.println("|  1  | Login as Customer  |");
         System.out.println("|  2  | Login as Manager   |");
-        System.out.println("|  3  | Create new account |");
         System.out.println("|--------------------------|");
         System.out.println();
 
@@ -39,8 +37,7 @@ public class Navigator {
         return input;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
     // display customer login methods
@@ -51,8 +48,7 @@ public class Navigator {
         return input;
     }
 
-    
-    /** 
+    /**
      * @param customers
      * @return String
      */
@@ -65,14 +61,13 @@ public class Navigator {
         return input;
     }
 
-    
-    /** 
+    /**
      * @param customer
      * @param isAdmin
      * @return String
      */
     // display accounts of requested customer
-    public String displayAccounts(Customer customer, boolean isAdmin) {
+    public String displayAccounts(Customer customer) {
         int tick = 1;
         System.out.println("Welcome back, " + customer.getFirstName().toUpperCase() + "!");
         System.out.println("Below are your accounts.");
@@ -84,9 +79,6 @@ public class Navigator {
             System.out.printf("| %2s  | %-8s --- %-5s |%n", tick++, acct.getAccountType(), acct.getAccountNumber());
         }
         System.out.println("|  4  | User transactions  |");
-        if(isAdmin){
-            System.out.println("|  5  | Bank statement     |");
-        }
         System.out.println("|--------------------------|");
 
         String input = "";
@@ -95,8 +87,20 @@ public class Navigator {
         return input;
     }
 
-    
-    /** 
+    public String displayAdminView(Customer customer) {
+        System.out.println("|--------------------------|");
+        System.out.printf("| Btn | %-18s |\n", customer.getName());
+        System.out.println("|--------------------------|");
+        System.out.println("|  1  | Generate statement |");
+        System.out.println("|--------------------------|");
+
+        String input = "";
+        input = requestInput(
+                "Press 1 to generate a bank statement on the selected customer OR\ntype BACK:\n");
+        return input;
+    }
+
+    /**
      * @param account
      * @return String
      */
@@ -118,8 +122,7 @@ public class Navigator {
         return input;
     }
 
-    
-    /** 
+    /**
      * @param account
      */
     public void displayBalanceRequest(Account account) {
@@ -134,8 +137,7 @@ public class Navigator {
         System.out.println("|--------------------------|");
     }
 
-    
-    /** 
+    /**
      * @return String
      */
     public String displayDepositRequest() {
@@ -144,8 +146,7 @@ public class Navigator {
         return input;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
     public String displayWithdrawRequest() {
@@ -154,8 +155,7 @@ public class Navigator {
         return input;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
     public String displayTransferAmtRequest() {
@@ -164,8 +164,7 @@ public class Navigator {
         return input;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
     public String displayTransferTargetRequest() {
@@ -174,8 +173,7 @@ public class Navigator {
         return input;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
     public String displayPayAmtRequest() {
@@ -184,8 +182,7 @@ public class Navigator {
         return input;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
     public String displayPayTargetRequest() {
@@ -194,107 +191,98 @@ public class Navigator {
         return input;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
-    public String displayAdminOptions(){
+    public String displayAdminOptions() {
         System.out.println("|----------------------------|");
         System.out.println("|      Bank Manager View     |");
         System.out.println("|----------------------------|");
         System.out.println("|  1  | Inspect Customer     |");
         System.out.println("|  2  | Read in transactions |");
+        System.out.println("|  3  | Create new account   |");
         System.out.println("|----------------------------|");
         String input = "";
         input = requestInput("Please press the button for which action you would like to perform OR\ntype BACK:\n");
         return input;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
-    public String displayTransactionFileRequest(){
+    public String displayTransactionFileRequest() {
         String input = "";
-        input = requestInput("Please provide the name of the Transactions file you would like to execute OR\ntype BACK:\n");
+        input = requestInput(
+                "Please provide the name of the Transactions file you would like to execute OR\ntype BACK:\n");
         return input;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
-    public String displayFirstNameReq(){
+    public String displayFirstNameReq() {
         String in = requestInput("Please provide your first name for the account");
         return in;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
-    public String displayLastNameReq(){
+    public String displayLastNameReq() {
         String in = requestInput("Please Provide your last name for the account");
         return in;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
-    public String displayDOBReq(){
+    public String displayDOBReq() {
         String in = requestInput("Please provide you Date of Birth: 11/11/11");
         return in;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
-    public String displayAddressReq(){
+    public String displayAddressReq() {
         String in = requestInput("Please provide your current living address");
         return in;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
-    public String displayCityReq(){
+    public String displayCityReq() {
         String in = requestInput("Please provide the city you live in");
         return in;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
-    public String displayStateReq(){
+    public String displayStateReq() {
         String in = requestInput("Please provide the state");
         return in;
     }
 
-    
-    /** 
+    /**
      * @return int
      */
-    public int displayZipRequest(){
-        //int in = requestInput("Please provide the zip code");
-        //return in;
+    public int displayZipRequest() {
+        // int in = requestInput("Please provide the zip code");
+        // return in;
         return 0;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
-    public String displayPhoneNumReq(){
+    public String displayPhoneNumReq() {
         String in = requestInput("Please provide a Phone Number");
         return in;
     }
 
-    
-    /** 
+    /**
      * @param input
      */
     // default input read error
@@ -303,16 +291,13 @@ public class Navigator {
         scanner.nextLine();
     }
 
-    
-
     public String displayCustomerSelection() {
         System.out.print("Please enter the number corresponding to the customer: ");
-        Scanner scanner = new Scanner(System.in); 
+        Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 
-    
-    /** 
+    /**
      * @param msg
      * @return String
      */
@@ -324,5 +309,11 @@ public class Navigator {
         input = scanner.nextLine();
 
         return input;
+    }
+
+    public void pressToContinue() {
+        System.out.println();
+        System.out.println("Please press ENTER to continue.");
+        scanner.nextLine();
     }
 }

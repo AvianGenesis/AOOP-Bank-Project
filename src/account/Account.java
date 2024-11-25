@@ -107,6 +107,10 @@ public abstract class Account {
         this.accountBalance = accountBalance;
     }
 
+    public double getStartBalance(){
+        return startBalance;
+    }
+
     /**
      * Deposits an amount to the account balance if the amount is positive.
      * 

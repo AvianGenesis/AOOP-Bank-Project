@@ -5,17 +5,24 @@ import java.io.IOException;
 import java.util.List;
 
 import account.Account;
+import loggable.AccountAction;
+import loggable.Deposit;
+import loggable.Inquire;
+import loggable.Loggable;
+import loggable.Pay;
+import loggable.Transfer;
+import loggable.Withdraw;
 
 public class TransactionsManager {
-    CustomerReadWriter rw = new CustomerReadWriter();
+    static final CustomerReadWriter rw = new CustomerReadWriter();
 
     public TransactionsManager() {
 
     }
 
-    
-    /** 
+    /**
      * Initial load-in of BankUsers.csv
+     * 
      * @param account
      * @return CustomersManager
      * @throws FileNotFoundException
@@ -25,119 +32,55 @@ public class TransactionsManager {
         return rw.loadCustomers(account);
     }
 
-    
-    /** 
+    /**
      * Record a customer's balance inquiry
+     * 
      * @param customer
      * @param account
      */
-    public void checkBalance(Customer customer, Account account) {
-        rw.logBalanceInquiry(customer, account);
+    public void checkBalance(Account account) {
+        executeAction(new Inquire(account));
     }
 
-    
-    /** 
+    /**
      * @param target
      * @param amount
      * @return boolean
      */
     public boolean deposit(Account target, double amount) {
-        if (target.deposit(amount)) {
-            rw.logDeposit(target, amount);
-            return true;
-        }
-        System.out.println("Unable to deposit to " + target.getAccountType() + " -- " + target.getAccountNumber());
-        System.out.println("Requested: $" + amount);
-        System.out.println();
-        return false;
+        return executeAction(new Deposit(target, amount));
     }
 
-    
-    /** 
+    /**
      * @param target
      * @param amount
      * @return boolean
      */
     public boolean withdraw(Account target, double amount) {
-        if (target.withdraw(amount)) {
-            rw.logWithdrawal(target, amount);
-            return true;
-        }
-        System.out.println("Unable to withdraw from " + target.getAccountType() + " -- " + target.getAccountNumber());
-        System.out.println("Requested: $" + amount);
-        System.out.println("Available: $" + target.getAccountBalance());
-        System.out.println();
-        return false;
+        return executeAction(new Withdraw(target, amount));
     }
 
-    
-    /** 
+    /**
      * @param from
      * @param to
      * @param amount
      * @return boolean
      */
     public boolean transfer(Account from, Account to, double amount) {
-        if (from != to) {
-            if (from.withdraw(amount)) {
-                if (to.deposit(amount)) {
-                    rw.logTransfer(from, to, amount);
-                    return true;
-                } else {
-                    from.deposit(amount);
-                    System.out.println("Unable to deposit to " + to.getAccountType() + " -- " + to.getAccountNumber());
-                    System.out.println("Requested: $" + amount);
-                    System.out.println();
-                    return false;
-                }
-            }
-            System.out.println("Unable to withdraw from " + from.getAccountType() + " -- " + from.getAccountNumber()
-                    + " for transfer");
-            System.out.println("Requested: $" + amount);
-            System.out.println("Available: $" + from.getAccountBalance());
-            System.out.println();
-            return false;
-        }
-        System.out.println("Cannot transfer to same account");
-        System.out.println();
-        return false;
+        return executeAction(new Transfer(from, amount, to));
     }
 
-    
-    /** 
+    /**
      * @param from
      * @param to
      * @param amount
      * @return boolean
      */
     public boolean pay(Account from, Account to, double amount) {
-        if (from.getAccountOwner() != to.getAccountOwner()) {
-            if (from.withdraw(amount)) {
-                if (to.deposit(amount)) {
-                    rw.logPayment(from, to, amount);
-                    return true;
-                } else {
-                    from.deposit(amount);
-                    System.out.println("Unable to deposit to " + to.getAccountType() + " -- " + to.getAccountNumber());
-                    System.out.println("Requested: $" + amount);
-                    System.out.println();
-                    return false;
-                }
-            }
-            System.out.println("Unable to withdraw from " + from.getAccountType() + " -- " + from.getAccountNumber()
-                    + " for pay");
-            System.out.println("Requested: $" + amount);
-            System.out.println("Available: $" + from.getAccountBalance());
-            System.out.println();
-            return false;
-        }
-        System.out.println("Cannot pay same account");
-        System.out.println();
-        return false;
+        return executeAction(new Pay(from, amount, to));
     }
 
-    
-    /** 
+    /**
      * @param transFile
      * @return List of String[]
      * @throws FileNotFoundException
@@ -148,8 +91,7 @@ public class TransactionsManager {
         return rw.readTransactions(transFile);
     }
 
-    
-    /** 
+    /**
      * @param customer
      * @throws IOException
      */
@@ -157,8 +99,7 @@ public class TransactionsManager {
         rw.generateReport(customer);
     }
 
-    
-    /** 
+    /**
      * @param customer
      * @throws IOException
      */
@@ -166,16 +107,24 @@ public class TransactionsManager {
         rw.generateStatement(customer);
     }
 
-    
-    /** 
+    /**
      * @param customer
      */
     public void newCustomer(Customer customer) {
         // log customer creation
     }
 
-    
-    /** 
+    private boolean executeAction(AccountAction action){
+        if (action.action()) {
+            ((AccountAction)action).getOwner().appendActions(action);
+            System.out.print(action.getSuccess());
+            rw.logAction(action.getLog());
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * @param customers
      */
     public void writeChanges(CustomersManager customers) {

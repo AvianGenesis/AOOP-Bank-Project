@@ -1,9 +1,0 @@
-ID: 2
-Name: Donald Duck
-Timestamp: 2024-11-21T03:51:17.726884700Z
-Checking start balance: $1928.58
-Checking end balance: $1928.58
-Savings start balance: $3682.37
-Savings end balance: $3682.37
-Credit start balance: $1513.57
-Credit end balance: $1513.57

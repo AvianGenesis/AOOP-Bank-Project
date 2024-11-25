@@ -14,6 +14,7 @@ import account.Account;
 import account.Checking;
 import account.Credit;
 import account.Saving;
+import loggable.AccountAction;
 
 public class CustomerReadWriter implements ReadWriter {
     List<String[]> history = new ArrayList<String[]>();
@@ -315,32 +316,60 @@ public class CustomerReadWriter implements ReadWriter {
         }
     }
 
+    public void generateReportAgain(Customer customer) throws IOException {
+        String message = "";
+
+        Account checking = customer.searchAccounts("Checking");
+        Account savings = customer.searchAccounts("Savings");
+        Account credit = customer.searchAccounts("Credit");
+        try (FileWriter writer = new FileWriter("resources/User" + customer.getidNumber() + "Transactions.txt",
+                false)) {
+            message += ("ID: " + customer.getidNumber() + "\n");
+            message += ("Name: " + customer.getFirstName() + " " + customer.getLastName() + "\n");
+            message += ("Timestamp: " + Instant.now() + "\n");
+            message += ("Checking start balance: $" + checking.getStartBalance() + "\n");
+            message += ("Checking end balance: $" + checking.getAccountBalance() + "\n");
+            message += ("Savings start balance: $" + savings.getStartBalance() + "\n");
+            message += ("Savings end balance: $" + savings.getAccountBalance() + "\n");
+            message += ("Credit start balance: $" + credit.getStartBalance() + "\n");
+            message += ("Credit end balance: $" + credit.getAccountBalance() + "\n");
+            for (AccountAction act : customer.getLogs()) {
+                message += (act.getReport());
+            }
+            writer.write(message);
+        } catch (IOException e) {
+            System.out.println("Unable to generate report");
+        }
+    }
+
     /**
      * @param customer
      * @throws IOException
      */
     public void generateStatement(Customer customer) throws IOException {
+        String message = "";
+
         try (FileWriter writer = new FileWriter("resources/User" + customer.getidNumber() + "BankStatement.txt",
                 false)) {
-            writer.write("ID: " + customer.getidNumber() + "\n");
-            writer.write("Name: " + customer.getFirstName() + " " + customer.getLastName() + "\n");
-            writer.write("Address: " + customer.getAddress() + ", " + customer.getCity() + ", " + customer.getState()
+            message += ("ID: " + customer.getidNumber() + "\n");
+            message += ("Name: " + customer.getFirstName() + " " + customer.getLastName() + "\n");
+            message += ("Address: " + customer.getAddress() + ", " + customer.getCity() + ", " + customer.getState()
                     + " " + customer.getZip() + "\n");
-            writer.write("Phone: " + customer.getPhoneNumber() + "\n");
-            writer.write("Timestamp: " + Instant.now() + "\n");
-            writer.write("\n");
-            writer.write("|-------------------------------------------------------------------------------------|\n");
-            writer.write("| Sender ID | Sending Account | Description | Receiver ID | Receiver Account | Amount |\n");
-            writer.write("|-------------------------------------------------------------------------------------|\n");
-            for (String[] record : history) {
-                if (record[0].equals(String.valueOf(customer.getidNumber()))) {
-                    writer.write(String.format("| %-9s | %-15s | %-11s | %-11s | %-16s | %-6s |\n",
-                            record[0], record[1], record[2], record[3], record[4], record[5]));
-                }
+            message += ("Phone: " + customer.getPhoneNumber() + "\n");
+            message += ("Timestamp: " + Instant.now() + "\n");
+            message += ("\n");
+            message += ("|-------------------------------------------------------------------------------------|\n");
+            message += ("| Sender ID | Sending Account | Description | Receiver ID | Receiver Account | Amount |\n");
+            message += ("|-------------------------------------------------------------------------------------|\n");
+            for (AccountAction act : customer.getLogs()) {
+                String[] statement = act.getStatement();
+                message += (String.format("| %-9s | %-15s | %-11s | %-11s | %-16s | %-6s |\n",
+                        statement[0], statement[1], statement[2], statement[3], statement[4], statement[5]));
             }
-            writer.write("|-------------------------------------------------------------------------------------|\n");
+            message += ("|-------------------------------------------------------------------------------------|\n");
+            writer.write(message);
         } catch (IOException e) {
-            System.out.println("Unable to generate report");
+            System.out.println("Unable to generate statement");
         }
     }
 

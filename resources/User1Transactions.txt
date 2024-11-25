@@ -1,9 +1,0 @@
-ID: 1
-Name: Mickey Mouse
-Timestamp: 2024-11-22T07:51:29.723336500Z
-Checking start balance: $399.12
-Checking end balance: $409.12
-Savings start balance: $4477.46
-Savings end balance: $4477.46
-Credit start balance: $1453.84
-Credit end balance: $1453.84

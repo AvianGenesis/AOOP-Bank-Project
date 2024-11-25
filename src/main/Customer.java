@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import account.Account;
-import loggable.Loggable;
+import loggable.AccountAction;
 
 /**
  * Represents a customer in the banking system, inheriting properties from the
@@ -20,7 +20,7 @@ public class Customer extends Person {
     /** An array representing the customer's accounts: [checking, saving, credit] */
     private Account[] accounts;
 
-    private List<Loggable> logs;
+    private List<AccountAction> actions;
 
     /**
      * Default constructor for the Customer class.
@@ -55,7 +55,7 @@ public class Customer extends Person {
         this.phoneNumber = phoneNumber;
         this.idNumber = idNumber;
         
-        logs = new ArrayList<Loggable>();
+        actions = new ArrayList<AccountAction>();
     }
 
     /**
@@ -110,11 +110,11 @@ public class Customer extends Person {
         this.accounts = accounts;
     }
 
-    public void appendLogs(Loggable log) {
-        logs.add(log);
+    public void appendActions(AccountAction action) {
+        actions.add(action);
     }
 
-    public List<Loggable> getLogs() {
-        return logs;
+    public List<AccountAction> getLogs() {
+        return actions;
     }
 }
