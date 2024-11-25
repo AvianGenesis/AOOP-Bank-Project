@@ -8,7 +8,6 @@ import account.Account;
 import loggable.AccountAction;
 import loggable.Deposit;
 import loggable.Inquire;
-import loggable.Loggable;
 import loggable.Pay;
 import loggable.Transfer;
 import loggable.Withdraw;
