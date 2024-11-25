@@ -117,7 +117,7 @@ public class TransactionsManager {
     private boolean executeAction(AccountAction action){
         if (action.action()) {
             ((AccountAction)action).getOwner().appendActions(action);
-            System.out.print(action.getSuccess());
+            System.out.println(action.getSuccess());
             rw.logAction(action.getLog());
             return true;
         }

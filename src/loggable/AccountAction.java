@@ -25,6 +25,7 @@ public abstract class AccountAction implements Loggable {
     }
 
     protected void printFail() {
-        System.err.println(getType() + " failed!");
+        System.out.println(getType() + " failed!");
+        System.out.println();
     }
 }

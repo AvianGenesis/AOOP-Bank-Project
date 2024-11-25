@@ -312,7 +312,6 @@ public class Navigator {
     }
 
     public void pressToContinue() {
-        System.out.println();
         System.out.println("Please press ENTER to continue.");
         scanner.nextLine();
     }
