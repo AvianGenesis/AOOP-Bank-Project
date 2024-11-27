@@ -98,7 +98,6 @@ public class RunBank {
                             System.out.println("Success. You have logged in.");
                             uiMode = Mode.CHOOSE_ACCOUNT; 
                         }
-                        uiMode = Mode.CHOOSE_ACCOUNT;
                     } else {
                         System.out.println("Unrecognized ID, please try again.");
                     }
@@ -119,7 +118,6 @@ public class RunBank {
                                 System.out.println("Success. You have logged in.");
                                 uiMode = Mode.CHOOSE_ACCOUNT; 
                             }
-                            uiMode = Mode.CHOOSE_ACCOUNT;
                         } else {
                             System.out.println("Customer not found with that name.");
                         }
@@ -139,14 +137,11 @@ public class RunBank {
                                 System.out.println("Success. You have logged in.");
                                 uiMode = Mode.CHOOSE_ACCOUNT; 
                             } 
-                            uiMode = Mode.CHOOSE_ACCOUNT;
                         } else {
                             // Multiple customers found, ask user to select one
                             System.out.println("Multiple customers found:");
                             for (int i = 0; i < possibleCustomers.size(); i++) {
                                 System.out.println((i + 1) + ". " + possibleCustomers.get(i).getFirstName() + " " + possibleCustomers.get(i).getLastName());
-                                System.out.println((i + 1) + ". " + possibleCustomers.get(i).getFirstName() + " "
-                                        + possibleCustomers.get(i).getLastName());
                             }
                             // Ask user to pick a customer
                             input = nav.displayCustomerSelection(); // Method to prompt user for selection
@@ -162,9 +157,6 @@ public class RunBank {
                                     System.out.println("Success. You have logged in.");
                                     uiMode = Mode.CHOOSE_ACCOUNT; 
                                 } 
-                                activeCustomer = possibleCustomers.get(selection - 1); // Set active customer based on
-                                                                                       // selection
-                                uiMode = Mode.CHOOSE_ACCOUNT;
                             } else {
                                 System.out.println("Invalid selection, please try again.");
                             }
@@ -199,7 +191,6 @@ public class RunBank {
                         activeCustomer.setPassword(newPassword);
                         System.out.println("Success! Password Changed.");
                     }else {
-                    } else {
                         nav.displayGenericInputError(input);
                     }
                 } else {
