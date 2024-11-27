@@ -17,6 +17,8 @@ public class Customer extends Person {
     /** The unique identification number for the customer */
     private int idNumber;
 
+    private String password;
+
     /** An array representing the customer's accounts: [checking, saving, credit] */
     private Account[] accounts;
 
@@ -54,6 +56,7 @@ public class Customer extends Person {
         this.zip = zip;
         this.phoneNumber = phoneNumber;
         this.idNumber = idNumber;
+        this.password = "default";
         
         actions = new ArrayList<AccountAction>();
     }
@@ -108,6 +111,13 @@ public class Customer extends Person {
      */
     public void setAccounts(Account[] accounts) {
         this.accounts = accounts;
+    }
+
+    public String getPassword(){
+        return this.password;
+    }
+    public void setPassword(String newPass){
+        this.password = newPass;
     }
 
     public void appendActions(AccountAction action) {

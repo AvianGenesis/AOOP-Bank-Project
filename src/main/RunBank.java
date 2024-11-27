@@ -89,7 +89,15 @@ public class RunBank {
                     uiMode = Mode.MAIN;
                 } else if (uId != Integer.MIN_VALUE) {
                     if ((activeCustomer = custManager.searchById(uId)) != null) {
-                        uiMode = Mode.CHOOSE_ACCOUNT;
+                        String passwordIn = nav.passwordReq();
+                        System.out.println();
+                        if(!passwordIn.equals(activeCustomer.getPassword())){
+                            System.out.println("Password does not match. Pleas log in again.");
+                            uiMode = Mode.MAIN;
+                        }else{
+                            System.out.println("Success. You have logged in.");
+                            uiMode = Mode.CHOOSE_ACCOUNT; 
+                        }
                     } else {
                         System.out.println("Unrecognized ID, please try again.");
                     }
@@ -101,7 +109,15 @@ public class RunBank {
                         String first = nameParts[0];
                         String last = nameParts[1];
                         if ((activeCustomer = custManager.searchByName(first, last)) != null) {
-                            uiMode = Mode.CHOOSE_ACCOUNT;
+                            String passwordIn = nav.passwordReq();
+                            System.out.println();
+                            if(!passwordIn.equals(activeCustomer.getPassword())){
+                                System.out.println("Password does not match. Pleas log in again.");
+                                uiMode = Mode.MAIN;
+                            }else{
+                                System.out.println("Success. You have logged in.");
+                                uiMode = Mode.CHOOSE_ACCOUNT; 
+                            }
                         } else {
                             System.out.println("Customer not found with that name.");
                         }
@@ -112,21 +128,35 @@ public class RunBank {
                             System.out.println("No customers found with that name.");
                         } else if (possibleCustomers.size() == 1) {
                             activeCustomer = possibleCustomers.get(0);
-                            uiMode = Mode.CHOOSE_ACCOUNT;
+                            String passwordIn = nav.passwordReq();
+                            System.out.println();
+                            if(!passwordIn.equals(activeCustomer.getPassword())){
+                                System.out.println("Password does not match. Pleas log in again.");
+                                uiMode = Mode.MAIN;
+                            }else{
+                                System.out.println("Success. You have logged in.");
+                                uiMode = Mode.CHOOSE_ACCOUNT; 
+                            } 
                         } else {
                             // Multiple customers found, ask user to select one
                             System.out.println("Multiple customers found:");
                             for (int i = 0; i < possibleCustomers.size(); i++) {
-                                System.out.println((i + 1) + ". " + possibleCustomers.get(i).getFirstName() + " "
-                                        + possibleCustomers.get(i).getLastName());
+                                System.out.println((i + 1) + ". " + possibleCustomers.get(i).getFirstName() + " " + possibleCustomers.get(i).getLastName());
                             }
                             // Ask user to pick a customer
                             input = nav.displayCustomerSelection(); // Method to prompt user for selection
                             int selection = ip.tryParseInt(input);
                             if (selection >= 1 && selection <= possibleCustomers.size()) {
-                                activeCustomer = possibleCustomers.get(selection - 1); // Set active customer based on
-                                                                                       // selection
-                                uiMode = Mode.CHOOSE_ACCOUNT;
+                                activeCustomer = possibleCustomers.get(selection - 1); 
+                                String passwordIn = nav.passwordReq();
+                                System.out.println();
+                                if(!passwordIn.equals(activeCustomer.getPassword())){
+                                    System.out.println("Password does not match. Pleas log in again.");
+                                    uiMode = Mode.MAIN;
+                                }else{
+                                    System.out.println("Success. You have logged in.");
+                                    uiMode = Mode.CHOOSE_ACCOUNT; 
+                                } 
                             } else {
                                 System.out.println("Invalid selection, please try again.");
                             }
@@ -156,7 +186,11 @@ public class RunBank {
                         uiMode = Mode.CHOOSE_ACTION;
                     } else if (btn == 4) {
                         ctm.generateReport(activeCustomer);
-                    } else {
+                    } else if(btn == 5){
+                        String newPassword = nav.newPass();
+                        activeCustomer.setPassword(newPassword);
+                        System.out.println("Success! Password Changed.");
+                    }else {
                         nav.displayGenericInputError(input);
                     }
                 } else {

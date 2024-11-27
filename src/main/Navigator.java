@@ -79,6 +79,7 @@ public class Navigator {
             System.out.printf("| %2s  | %-8s --- %-5s |%n", tick++, acct.getAccountType(), acct.getAccountNumber());
         }
         System.out.println("|  4  | User transactions  |");
+        System.out.println("|  5  | Change Password    |");
         System.out.println("|--------------------------|");
 
         String input = "";
@@ -295,6 +296,16 @@ public class Navigator {
         System.out.print("Please enter the number corresponding to the customer: ");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
+    }
+
+    public String passwordReq(){
+        String in = requestInput("Please provide the password for this account");
+        return in;
+    }
+
+    public String newPass(){
+        String in = requestInput("Please provide the new password for this account.");
+        return in;
     }
 
     /**
