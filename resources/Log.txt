@@ -3969,3 +3969,10 @@ Mickey Mouse withdrew $100.00 from Checking-1000. Mickey Mouse’s New Balance f
 Mickey Mouse performed a balance inquiry on Checking-1000. Its balance is $399.12
 
 Mickey Mouse transfered $100.00 from Checking-1000 to Savings-2000. New balance for Checking-1000: $299.12. New balance for Savings-2000: $4,577.46.
+Mickey Mouse performed a balance inquiry on Checking-1000. Its balance is $399.12
+
+Mickey Mouse deposited $100.00 into Checking-1000. Mickey Mouse’s New Balance for Checking-1000: $499.12
+
+Mickey Mouse withdrew $100.00 from Checking-1000. Mickey Mouse’s New Balance for Checking-1000: $399.12
+Mickey Mouse transfered $100.00 from Checking-1000 to Savings-2000. New balance for Checking-1000: $299.12. New balance for Savings-2000: $4,577.46.
+Mickey Mouse paid $100.00 to Donald Duck from Checking-1000. New balance for Checking-1000: $199.12. New balance for Savings-2001: $3,782.37.
