@@ -188,7 +188,7 @@ public class Navigator {
      */
     public String displayPayTargetRequest() {
         String input = "";
-        input = requestInput("Please provide the name of who you would like to transfer to OR\ntype BACK:\n");
+        input = requestInput("Please provide the account number of the person you are trying to transfer to OR\ntype BACK:\n");
         return input;
     }
 
@@ -222,7 +222,7 @@ public class Navigator {
      * @return String
      */
     public String displayFirstNameReq() {
-        String in = requestInput("Please provide your first name for the account");
+        String in = requestInput("Please provide your first name for the account\n");
         return in;
     }
 
@@ -230,7 +230,7 @@ public class Navigator {
      * @return String
      */
     public String displayLastNameReq() {
-        String in = requestInput("Please Provide your last name for the account");
+        String in = requestInput("Please Provide your last name for the account\n");
         return in;
     }
 
@@ -238,7 +238,7 @@ public class Navigator {
      * @return String
      */
     public String displayDOBReq() {
-        String in = requestInput("Please provide you Date of Birth: 11/11/11");
+        String in = requestInput("Please provide you Date of Birth: 11/11/11\n");
         return in;
     }
 
@@ -246,7 +246,7 @@ public class Navigator {
      * @return String
      */
     public String displayAddressReq() {
-        String in = requestInput("Please provide your current living address");
+        String in = requestInput("Please provide your current living address\n");
         return in;
     }
 
@@ -254,7 +254,7 @@ public class Navigator {
      * @return String
      */
     public String displayCityReq() {
-        String in = requestInput("Please provide the city you live in");
+        String in = requestInput("Please provide the city you live in\n");
         return in;
     }
 
@@ -262,7 +262,7 @@ public class Navigator {
      * @return String
      */
     public String displayStateReq() {
-        String in = requestInput("Please provide the state");
+        String in = requestInput("Please provide the state\n");
         return in;
     }
 
@@ -279,7 +279,7 @@ public class Navigator {
      * @return String
      */
     public String displayPhoneNumReq() {
-        String in = requestInput("Please provide a Phone Number");
+        String in = requestInput("Please provide a Phone Number\n");
         return in;
     }
 
@@ -293,18 +293,18 @@ public class Navigator {
     }
 
     public String displayCustomerSelection() {
-        System.out.print("Please enter the number corresponding to the customer: ");
+        System.out.print("Please enter the number corresponding to the customer: \n");
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
 
     public String passwordReq(){
-        String in = requestInput("Please provide the password for this account");
+        String in = requestInput("Please provide the password for this account\n");
         return in;
     }
 
     public String newPass(){
-        String in = requestInput("Please provide the new password for this account.");
+        String in = requestInput("Please provide the new password for this account.\n");
         return in;
     }
 

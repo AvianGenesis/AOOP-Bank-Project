@@ -6,14 +6,12 @@ import java.util.List;
 
 import account.Account;
 import loggable.AccountAction;
-import loggable.Deposit;
-import loggable.Inquire;
-import loggable.Pay;
-import loggable.Transfer;
-import loggable.Withdraw;
+
+
 
 public class TransactionsManager {
     static final CustomerReadWriter rw = new CustomerReadWriter();
+    static final ActionFactory af = new ActionFactory();
 
     public TransactionsManager() {
 
@@ -38,7 +36,7 @@ public class TransactionsManager {
      * @param account
      */
     public void checkBalance(Account account) {
-        executeAction(new Inquire(account));
+        executeAction(af.chooseAction(account));
     }
 
     /**
@@ -46,8 +44,8 @@ public class TransactionsManager {
      * @param amount
      * @return boolean
      */
-    public boolean deposit(Account target, double amount) {
-        return executeAction(new Deposit(target, amount));
+    public boolean deposit(Account target, double amount, String actionType) {
+        return executeAction(af.chooseAction(target, amount, actionType));
     }
 
     /**
@@ -55,8 +53,8 @@ public class TransactionsManager {
      * @param amount
      * @return boolean
      */
-    public boolean withdraw(Account target, double amount) {
-        return executeAction(new Withdraw(target, amount));
+    public boolean withdraw(Account target, double amount, String actionType) {
+        return executeAction(af.chooseAction(target, amount, actionType));
     }
 
     /**
@@ -65,8 +63,8 @@ public class TransactionsManager {
      * @param amount
      * @return boolean
      */
-    public boolean transfer(Account from, Account to, double amount) {
-        return executeAction(new Transfer(from, amount, to));
+    public boolean transfer(Account from, Account to, double amount, String actionType) {
+        return executeAction(af.chooseAction(from, to, amount, actionType));
     }
 
     /**
@@ -75,8 +73,8 @@ public class TransactionsManager {
      * @param amount
      * @return boolean
      */
-    public boolean pay(Account from, Account to, double amount) {
-        return executeAction(new Pay(from, amount, to));
+    public boolean pay(Account from, Account to, double amount, String actionType) {
+        return executeAction(af.chooseAction(from, to, amount, actionType));
     }
 
     /**
