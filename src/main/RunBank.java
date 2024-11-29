@@ -233,7 +233,7 @@ public class RunBank {
                 if (input.trim().toUpperCase().equals("BACK")) {
                     uiMode = Mode.CHOOSE_ACCOUNT;
                 } else if ((amt = ip.tryParseAmt(input)) != Double.MIN_VALUE) {
-                    if (tm.deposit(activeAccount, amt)) {
+                    if (tm.deposit(activeAccount, amt, "Deposit")) {
                         uiMode = Mode.CHOOSE_ACTION;
                     }
                     nav.pressToContinue();
@@ -248,7 +248,7 @@ public class RunBank {
                 if (input.trim().toUpperCase().equals("BACK")) {
                     uiMode = Mode.CHOOSE_ACCOUNT;
                 } else if ((amt = ip.tryParseAmt(input)) != Double.MIN_VALUE) {
-                    if (tm.withdraw(activeAccount, amt)) {
+                    if (tm.withdraw(activeAccount, amt, "Withdraw")) {
                         uiMode = Mode.CHOOSE_ACTION;
                     }
                     nav.pressToContinue();
@@ -267,7 +267,7 @@ public class RunBank {
                     input = nav.displayTransferTargetRequest();
                     int receiver = ip.tryParseInt(input);
                     if ((receivingAccount = accManager.searchByNum(receiver)) != null) {
-                        if (tm.transfer(activeAccount, receivingAccount, amt)) {
+                        if (tm.transfer(activeAccount, receivingAccount, amt, "Transfer")) {
                             uiMode = Mode.CHOOSE_ACTION;
                         }
                     } else {
@@ -289,7 +289,7 @@ public class RunBank {
                     input = nav.displayPayTargetRequest();
                     int receiver = ip.tryParseInt(input);
                     if ((receivingAccount = accManager.searchByNum(receiver)) != null) {
-                        if (tm.pay(activeAccount, receivingAccount, amt)) {
+                        if (tm.pay(activeAccount, receivingAccount, amt, "Pay")) {
                             uiMode = Mode.CHOOSE_ACTION;
                         }
                     } else {
@@ -384,7 +384,7 @@ public class RunBank {
                         case ("deposits"):
                             if ((activeCustomer = custManager.searchByName(line[4], line[5])) != null) {
                                 activeAccount = activeCustomer.searchAccounts(line[6]);
-                                tm.deposit(activeAccount, ip.tryParseAmt(line[7]));
+                                tm.deposit(activeAccount, ip.tryParseAmt(line[7]), "Deposit");
                             } else {
                                 System.out.println("Deposit incomplete, customer not found.");
                             }
@@ -392,7 +392,7 @@ public class RunBank {
                         case ("withdraws"):
                             if ((activeCustomer = custManager.searchByName(line[0], line[1])) != null) {
                                 activeAccount = activeCustomer.searchAccounts(line[2]);
-                                tm.withdraw(activeAccount, ip.tryParseAmt(line[7]));
+                                tm.withdraw(activeAccount, ip.tryParseAmt(line[7]), "Withdraw");
                             } else {
                                 System.out.println("Withdrawal incomplete, customer not found.");
                             }
@@ -402,7 +402,7 @@ public class RunBank {
                                     (receivingCustomer = custManager.searchByName(line[4], line[5])) != null) {
                                 activeAccount = activeCustomer.searchAccounts(line[2]);
                                 receivingAccount = receivingCustomer.searchAccounts(line[6]);
-                                tm.transfer(activeAccount, receivingAccount, ip.tryParseAmt(line[7]));
+                                tm.transfer(activeAccount, receivingAccount, ip.tryParseAmt(line[7]), "Transfer");
                             } else {
                                 System.out.println("Transfer incomplete, customer(s) not found.");
                             }
@@ -412,7 +412,7 @@ public class RunBank {
                                     (receivingCustomer = custManager.searchByName(line[4], line[5])) != null) {
                                 activeAccount = activeCustomer.searchAccounts(line[2]);
                                 receivingAccount = receivingCustomer.searchAccounts(line[6]);
-                                tm.pay(activeAccount, receivingAccount, ip.tryParseAmt(line[7]));
+                                tm.pay(activeAccount, receivingAccount, ip.tryParseAmt(line[7]), "Pay");
                             } else {
                                 System.out.println("Payment incomplete, customer(s) not found.");
                             }

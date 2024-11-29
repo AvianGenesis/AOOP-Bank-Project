@@ -3957,3 +3957,15 @@ Captaiin Hook paid $11.83 to Sofia Hernandez from Savings-2026. New balance for 
 Kaa Disney withdrew $86.00 from Checking-1027. Kaa Disney’s New Balance for Checking-1027: $830.93
 a a deposited $2.00 into Savings-2103. a a’s New Balance for Savings-2103: $2.00
 
+Mickey Mouse performed a balance inquiry on Checking-1000. Its balance is $399.12
+
+Mickey Mouse performed a balance inquiry on Checking-1000. Its balance is $399.12
+
+Mickey Mouse deposited $100.00 into Checking-1000. Mickey Mouse’s New Balance for Checking-1000: $499.12
+
+Mickey Mouse performed a balance inquiry on Checking-1000. Its balance is $499.12
+
+Mickey Mouse withdrew $100.00 from Checking-1000. Mickey Mouse’s New Balance for Checking-1000: $399.12
+Mickey Mouse performed a balance inquiry on Checking-1000. Its balance is $399.12
+
+Mickey Mouse transfered $100.00 from Checking-1000 to Savings-2000. New balance for Checking-1000: $299.12. New balance for Savings-2000: $4,577.46.
