@@ -42,7 +42,7 @@ public class Pay extends DoubleAccountAction {
         String toName = getToOwner().getName();
 
         String message = String.format(
-                "%s paid $%,.2f to %s from %s. New balance for %s: $%,.2f. New balance for %s: $%,.2f.",
+                "%s paid $%,.2f to %s from %s. New balance for %s: $%,.2f. New balance for %s: $%,.2f.\n",
                 name, amt, toName, getAcctInfo(), getAcctInfo(), from.getAccountBalance(), getToAcctInfo(),
                 to.getAccountBalance());
 

@@ -32,7 +32,7 @@ public class Transfer extends DoubleAccountAction {
     }
 
     public String getReport() {
-        String message = String.format("Transfered $%,.2f from %s to %s\n", amt, getAcctInfo(), getToAcctInfo());
+        String message = String.format("Transferred $%,.2f from %s to %s\n", amt, getAcctInfo(), getToAcctInfo());
 
         return message;
     }
@@ -41,7 +41,7 @@ public class Transfer extends DoubleAccountAction {
         String name = getOwner().getName();
 
         String message = String.format(
-                "%s transfered $%,.2f from %s to %s. New balance for %s: $%,.2f. New balance for %s: $%,.2f.",
+                "%s transferred $%,.2f from %s to %s. New balance for %s: $%,.2f. New balance for %s: $%,.2f.\n",
                 name, amt, getAcctInfo(), getToAcctInfo(), getAcctInfo(), from.getAccountBalance(), getToAcctInfo(),
                 to.getAccountBalance());
 
@@ -49,7 +49,7 @@ public class Transfer extends DoubleAccountAction {
     }
 
     public String getSuccess() {
-        String message = String.format("Successfully transfered $%,.2f from %s to %s\n", amt, getAcctInfo(),
+        String message = String.format("Successfully transferred $%,.2f from %s to %s\n", amt, getAcctInfo(),
                 getToAcctInfo());
 
         return message;

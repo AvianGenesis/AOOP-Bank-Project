@@ -35,7 +35,7 @@ public class Withdraw extends AccountAction {
     public String getLog() {
         String name = getOwner().getName();
 
-        String message = String.format("%s withdrew $%,.2f from %s. %s’s New Balance for %s: $%,.2f",
+        String message = String.format("%s withdrew $%,.2f from %s. %s’s New Balance for %s: $%,.2f\n",
                 name, amt, getAcctInfo(), name, getAcctInfo(), from.getAccountBalance());
 
         return message;

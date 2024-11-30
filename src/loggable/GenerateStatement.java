@@ -1,6 +1,6 @@
 package loggable;
 
-import IO.CustomerReadWriter;
+import IO.ReadWriter;
 import main.Customer;
 
 public class GenerateStatement implements Loggable {
@@ -12,7 +12,7 @@ public class GenerateStatement implements Loggable {
 
     @Override
     public boolean action() {
-        CustomerReadWriter rw = new CustomerReadWriter();
+        ReadWriter rw = new ReadWriter();
         try {
             rw.generateStatement(customer);
             return true;

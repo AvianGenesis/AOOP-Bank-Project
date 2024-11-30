@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import IO.BankUsersIO;
-import IO.CustomerReadWriter;
+import IO.ReadWriter;
 import account.Account;
 import loggable.AccountAction;
 import loggable.ActionFactory;
@@ -14,7 +14,7 @@ import loggable.Loggable;
 
 public class TransactionsManager {
     static final BankUsersIO buio = new BankUsersIO();
-    static final CustomerReadWriter rw = new CustomerReadWriter();
+    static final ReadWriter rw = new ReadWriter();
     static final ActionFactory af = new ActionFactory();
 
     /**
