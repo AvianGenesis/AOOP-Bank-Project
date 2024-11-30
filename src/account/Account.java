@@ -110,6 +110,10 @@ public abstract class Account implements AccountTypes {
         this.accountBalance = accountBalance;
     }
 
+    
+    /** 
+     * @return double
+     */
     public double getStartBalance(){
         return startBalance;
     }
@@ -128,6 +132,11 @@ public abstract class Account implements AccountTypes {
         return false;
     }
 
+    
+    /** 
+     * @param amount
+     * @return boolean
+     */
     public boolean canDeposit(double amount) {
         return amtIsPositive(amount);
     }
@@ -147,10 +156,20 @@ public abstract class Account implements AccountTypes {
         return false;
     }
 
+    
+    /** 
+     * @param amount
+     * @return boolean
+     */
     public boolean canWithdraw(double amount) {
         return amtIsPositive(amount) && amtExists(amount);
     }
 
+    
+    /** 
+     * @param amount
+     * @return boolean
+     */
     protected boolean amtIsPositive(double amount) {
         if (amount > 0.0) {
             return true;
@@ -160,6 +179,11 @@ public abstract class Account implements AccountTypes {
         }
     }
 
+    
+    /** 
+     * @param amount
+     * @return boolean
+     */
     protected boolean amtExists(double amount) {
         if (amount <= accountBalance) {
             return true;

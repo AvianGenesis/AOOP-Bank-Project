@@ -57,7 +57,7 @@ public class Customer extends Person {
         this.phoneNumber = phoneNumber;
         this.idNumber = idNumber;
         this.password = "default";
-        
+
         actions = new ArrayList<AccountAction>();
     }
 
@@ -113,17 +113,30 @@ public class Customer extends Person {
         this.accounts = accounts;
     }
 
-    public String getPassword(){
+    /**
+     * @return String
+     */
+    public String getPassword() {
         return this.password;
     }
-    public void setPassword(String newPass){
+
+    /**
+     * @param newPass
+     */
+    public void setPassword(String newPass) {
         this.password = newPass;
     }
 
+    /**
+     * @param action
+     */
     public void appendActions(AccountAction action) {
         actions.add(action);
     }
 
+    /**
+     * @return List of AccountAction
+     */
     public List<AccountAction> getLogs() {
         return actions;
     }

@@ -16,6 +16,10 @@ public class Withdraw extends AccountAction {
         statement[5] = String.valueOf(amt);
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean action() {
         if (from.canWithdraw(amt)) {
             from.withdraw(amt);
@@ -26,12 +30,20 @@ public class Withdraw extends AccountAction {
         }
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getReport(){
         String message = String.format("Withdrew $%,.2f from %s\n", amt, getAcctInfo());
 
         return message;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getLog() {
         String name = getOwner().getName();
 
@@ -41,12 +53,20 @@ public class Withdraw extends AccountAction {
         return message;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getSuccess() {
         String message = String.format("Successfully withdrew $%,.2f from %s\n", amt, getAcctInfo());
 
         return message;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getType() {
         return WITHDRAW;
     }

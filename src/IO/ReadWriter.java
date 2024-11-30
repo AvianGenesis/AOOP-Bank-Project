@@ -51,6 +51,11 @@ public class ReadWriter implements AccountTypes{
         }
     }
 
+    
+    /** 
+     * @param customer
+     * @throws IOException
+     */
     public void generateReport(Customer customer) throws IOException {
         String message = "";
 

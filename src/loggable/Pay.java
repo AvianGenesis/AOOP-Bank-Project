@@ -16,6 +16,11 @@ public class Pay extends DoubleAccountAction {
         statement[5] = String.valueOf(amt);
     }
 
+    /**
+     * Verifies validity of and executes pay
+     * 
+     * @return boolean
+     */
     public boolean action() {
         if (getOwner() != getToOwner()) {
             if (from.canWithdraw(amt) && to.canDeposit(amt)) {
@@ -31,12 +36,18 @@ public class Pay extends DoubleAccountAction {
         return false;
     }
 
+    /**
+     * @return String
+     */
     public String getReport() {
         String message = String.format("Paid $%,.2f from %s to %s\n", amt, getAcctInfo(), getToAcctInfo());
 
         return message;
     }
 
+    /**
+     * @return String
+     */
     public String getLog() {
         String name = getOwner().getName();
         String toName = getToOwner().getName();
@@ -49,12 +60,18 @@ public class Pay extends DoubleAccountAction {
         return message;
     }
 
+    /**
+     * @return String
+     */
     public String getSuccess() {
         String message = String.format("Successfully paid $%,.2f from %s to %s\n", amt, getAcctInfo(), getToAcctInfo());
 
         return message;
     }
 
+    /**
+     * @return String
+     */
     public String getType() {
         return PAY;
     }

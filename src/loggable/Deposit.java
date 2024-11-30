@@ -16,6 +16,11 @@ public class Deposit extends AccountAction {
         statement[5] = String.valueOf(amt);
     }
 
+    /**
+     * Verifies validity of and executes deposit
+     * 
+     * @return boolean
+     */
     public boolean action() {
         if (from.canDeposit(amt)) {
             from.deposit(amt);
@@ -26,12 +31,18 @@ public class Deposit extends AccountAction {
         }
     }
 
+    /**
+     * @return String
+     */
     public String getReport() {
         String message = String.format("Deposited $%,.2f into %s\n", amt, getAcctInfo());
 
         return message;
     }
 
+    /**
+     * @return String
+     */
     public String getLog() {
         String name = getOwner().getName();
 
@@ -41,12 +52,18 @@ public class Deposit extends AccountAction {
         return message;
     }
 
+    /**
+     * @return String
+     */
     public String getSuccess() {
         String message = String.format("Successfully deposited $%,.2f into %s\n", amt, getAcctInfo());
 
         return message;
     }
 
+    /**
+     * @return String
+     */
     public String getType() {
         return DEPOSIT;
     }

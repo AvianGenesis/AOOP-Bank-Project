@@ -87,6 +87,11 @@ public class Navigator {
         return input;
     }
 
+    
+    /** 
+     * @param customer
+     * @return String
+     */
     public String displayAdminView(Customer customer) {
         System.out.println("|--------------------------|");
         System.out.printf("| Btn | %-18s |\n", customer.getName());
@@ -276,17 +281,31 @@ public class Navigator {
         scanner.nextLine();
     }
 
+    
+    /** 
+     * @return String
+     */
     public String displayCustomerSelection() {
         System.out.print("Please enter the number corresponding to the customer: \n");
         Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
+        String ret = scanner.nextLine();
+        scanner.close();
+        return ret;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String passwordReq(){
         String in = requestInput("Please provide the password for this account\n");
         return in;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String newPass(){
         String in = requestInput("Please provide the new password for this account.\n");
         return in;

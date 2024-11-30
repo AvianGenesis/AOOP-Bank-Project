@@ -6,11 +6,18 @@ import main.Customer;
 public abstract class DoubleAccountAction extends AccountAction {
     Account to;
 
-    protected String getToAcctInfo(){
+    /**
+     * @return Pre-formatted String of Account type and number of receiving Account
+     *         for printing purposes
+     */
+    protected String getToAcctInfo() {
         return new String(to.getAccountType() + "-" + to.getAccountNumber());
     }
 
-    protected Customer getToOwner(){
+    /**
+     * @return Customer who is receiving the action
+     */
+    protected Customer getToOwner() {
         return to.getAccountOwner();
     }
 }

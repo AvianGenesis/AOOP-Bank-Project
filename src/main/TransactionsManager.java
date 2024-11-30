@@ -112,6 +112,11 @@ public class TransactionsManager {
         // log customer creation
     }
 
+    
+    /** 
+     * @param action
+     * @return boolean
+     */
     private boolean executeAccountAction(AccountAction action) {
         if (action.action()) {
             action.getOwner().appendActions(action);
@@ -122,6 +127,10 @@ public class TransactionsManager {
         return false;
     }
 
+    
+    /** 
+     * @param action
+     */
     private void executeLoggable(Loggable action) {
         action.action();
         System.out.println(action.getSuccess());

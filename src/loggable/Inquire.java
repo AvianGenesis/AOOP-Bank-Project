@@ -16,6 +16,11 @@ public class Inquire extends AccountAction implements AccountTypes {
         statement[5] = "";
     }
 
+    /**
+     * Print Account inquiry information to console
+     * 
+     * @return boolean
+     */
     public boolean action() {
         System.out.println();
         System.out.println("|--------------------------|");
@@ -29,16 +34,25 @@ public class Inquire extends AccountAction implements AccountTypes {
         return true;
     }
 
+    /**
+     * @return String
+     */
     public String getReport() {
         String message = String.format("Inquired balance of \n", getAcctInfo());
 
         return message;
     }
 
-    public String[] getStatement(){
+    /**
+     * @return String[]
+     */
+    public String[] getStatement() {
         return statement;
     }
 
+    /**
+     * @return String
+     */
     public String getLog() {
         String name = getOwner().getName();
 
@@ -48,10 +62,16 @@ public class Inquire extends AccountAction implements AccountTypes {
         return message;
     }
 
-    public String getSuccess(){
+    /**
+     * @return String
+     */
+    public String getSuccess() {
         return "";
     }
 
+    /**
+     * @return String
+     */
     public String getType() {
         return INQUIRE;
     }

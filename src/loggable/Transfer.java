@@ -16,6 +16,11 @@ public class Transfer extends DoubleAccountAction {
         statement[5] = String.valueOf(amt);
     }
 
+    /**
+     * Verifies validity of and executes transfer
+     * 
+     * @return boolean
+     */
     public boolean action() {
         if (from != to) {
             if (from.canWithdraw(amt) && to.canDeposit(amt)) {
@@ -31,12 +36,18 @@ public class Transfer extends DoubleAccountAction {
         return false;
     }
 
+    /**
+     * @return String
+     */
     public String getReport() {
         String message = String.format("Transferred $%,.2f from %s to %s\n", amt, getAcctInfo(), getToAcctInfo());
 
         return message;
     }
 
+    /**
+     * @return String
+     */
     public String getLog() {
         String name = getOwner().getName();
 
@@ -48,6 +59,9 @@ public class Transfer extends DoubleAccountAction {
         return message;
     }
 
+    /**
+     * @return String
+     */
     public String getSuccess() {
         String message = String.format("Successfully transferred $%,.2f from %s to %s\n", amt, getAcctInfo(),
                 getToAcctInfo());
@@ -55,6 +69,9 @@ public class Transfer extends DoubleAccountAction {
         return message;
     }
 
+    /**
+     * @return String
+     */
     public String getType() {
         return TRANSFER;
     }

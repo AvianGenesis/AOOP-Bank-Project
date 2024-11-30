@@ -95,6 +95,10 @@ public abstract class Person {
         this.lastName = lastName;
     }
 
+    
+    /** 
+     * @return String
+     */
     public String getName(){
         return firstName + " " + lastName;
     }

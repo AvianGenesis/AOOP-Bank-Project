@@ -58,10 +58,20 @@ public class Credit extends Account {
         return false;
     }
 
+    
+    /** 
+     * @param amount
+     * @return boolean
+     */
     public boolean canDeposit(double amount){
         return amtIsPositive(amount) && amtAllowed(amount);
     }
 
+    
+    /** 
+     * @param amount
+     * @return boolean
+     */
     private boolean amtAllowed(double amount){
         if(amount <= accountBalance){
             return true;
@@ -88,6 +98,11 @@ public class Credit extends Account {
         return false;
     }
 
+    
+    /** 
+     * @param amount
+     * @return boolean
+     */
     protected boolean amtExists(double amount) {
         if (amount + accountBalance <= max) {
             return true;
