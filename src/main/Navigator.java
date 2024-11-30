@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Scanner;
 
 import account.Account;
-import account.Credit;
 
 public class Navigator {
     // attributes
@@ -121,21 +120,6 @@ public class Navigator {
         input = requestInput(
                 "Please press the button for which action you would like to perform OR\ntype BACK:\n");
         return input;
-    }
-
-    /**
-     * @param account
-     */
-    public void displayBalanceRequest(Account account) {
-        System.out.println();
-        System.out.println("|--------------------------|");
-        System.out.printf("| %-8s --- %-5s       |%n", account.getAccountType(), account.getAccountNumber());
-        System.out.println("|--------------------------|");
-        System.out.printf("| Balance: $%-,12.2f   |%n", account.getAccountBalance());
-        if (account.getAccountType() == "Credit") {
-            System.out.printf("| Max: $%-,12d       |%n", ((Credit) account).getMax());
-        }
-        System.out.println("|--------------------------|");
     }
 
     /**

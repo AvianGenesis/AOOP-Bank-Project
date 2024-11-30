@@ -1,15 +1,16 @@
 package loggable;
 
 import account.Account;
+import account.AccountTypes;
 import account.Credit;
 
-public class Inquire extends AccountAction {
+public class Inquire extends AccountAction implements AccountTypes {
     public Inquire(Account from) {
         this.from = from;
 
         statement[0] = String.valueOf(getOwner().getidNumber());
         statement[1] = String.valueOf(from.getAccountNumber());
-        statement[2] = "Inquiry";
+        statement[2] = INQUIRE;
         statement[3] = "";
         statement[4] = "";
         statement[5] = "";
@@ -21,7 +22,7 @@ public class Inquire extends AccountAction {
         System.out.printf("| %-8s --- %-5s       |%n", from.getAccountType(), from.getAccountNumber());
         System.out.println("|--------------------------|");
         System.out.printf("| Balance: $%-,12.2f   |%n", from.getAccountBalance());
-        if (from.getAccountType() == "Credit") {
+        if (from.getAccountType() == CREDIT) {
             System.out.printf("| Max: $%-,12d       |%n", ((Credit) from).getMax());
         }
         System.out.println("|--------------------------|");
@@ -52,6 +53,6 @@ public class Inquire extends AccountAction {
     }
 
     public String getType() {
-        return "Inquire";
+        return INQUIRE;
     }
 }

@@ -6,12 +6,12 @@ import main.Customer;
  * Represents a Savings account, which is a type of Account.
  * A savings account typically allows deposits and withdrawals
  */
-public class Saving extends Account {
+public class Savings extends Account {
 
     /**
      * Default constructor for the Saving account.
      */
-    public Saving() {
+    public Savings() {
         // Default constructor
     }
 
@@ -21,7 +21,7 @@ public class Saving extends Account {
      * @param num the account number
      * @param bal the initial account balance
      */
-    public Saving(int num, double bal) {
+    public Savings(int num, double bal) {
         super(num, bal);
     }
 
@@ -32,7 +32,7 @@ public class Saving extends Account {
      * @param num the account number
      * @param bal the initial account balance
      */
-    public Saving(Customer customer, int num, double bal) {
+    public Savings(Customer customer, int num, double bal) {
         super(customer, num, bal);
     }
 
@@ -43,7 +43,7 @@ public class Saving extends Account {
      */
     @Override
     public String getAccountType() {
-        return "Savings";
+        return SAVINGS;
     }
 }
 

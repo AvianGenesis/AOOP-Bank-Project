@@ -124,7 +124,7 @@ public class Credit extends Account {
      * @return a string of the account type as "Credit"
      */
     public String getAccountType() {
-        return "Credit";
+        return CREDIT;
     }
 }
 

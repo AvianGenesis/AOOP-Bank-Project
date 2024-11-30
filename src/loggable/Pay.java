@@ -2,7 +2,7 @@ package loggable;
 
 import account.Account;
 
-public class Pay extends DoubleAccountTransaction {
+public class Pay extends DoubleAccountAction {
     public Pay(Account from, double amt, Account to) {
         this.from = from;
         this.amt = amt;
@@ -10,7 +10,7 @@ public class Pay extends DoubleAccountTransaction {
 
         statement[0] = String.valueOf(getOwner().getidNumber());
         statement[1] = String.valueOf(from.getAccountNumber());
-        statement[2] = "Pay";
+        statement[2] = PAY;
         statement[3] = String.valueOf(getToOwner().getidNumber());
         statement[4] = String.valueOf(to.getAccountNumber());
         statement[5] = String.valueOf(amt);
@@ -56,6 +56,6 @@ public class Pay extends DoubleAccountTransaction {
     }
 
     public String getType() {
-        return "Pay";
+        return PAY;
     }
 }

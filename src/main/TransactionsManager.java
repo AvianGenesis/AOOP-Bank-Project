@@ -4,18 +4,16 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+import IO.BankUsersIO;
+import IO.CustomerReadWriter;
 import account.Account;
 import loggable.AccountAction;
-
-
+import loggable.ActionFactory;
 
 public class TransactionsManager {
+    static final BankUsersIO buio = new BankUsersIO();
     static final CustomerReadWriter rw = new CustomerReadWriter();
     static final ActionFactory af = new ActionFactory();
-
-    public TransactionsManager() {
-
-    }
 
     /**
      * Initial load-in of BankUsers.csv
@@ -26,7 +24,7 @@ public class TransactionsManager {
      * @throws IOException
      */
     public CustomersManager loadCustomers(List<Account> account) throws FileNotFoundException, IOException {
-        return rw.loadCustomers(account);
+        return buio.loadCustomers(account);
     }
 
     /**
@@ -111,9 +109,9 @@ public class TransactionsManager {
         // log customer creation
     }
 
-    private boolean executeAction(AccountAction action){
+    private boolean executeAction(AccountAction action) {
         if (action.action()) {
-            ((AccountAction)action).getOwner().appendActions(action);
+            ((AccountAction) action).getOwner().appendActions(action);
             System.out.println(action.getSuccess());
             rw.logAction(action.getLog());
             return true;
@@ -125,6 +123,6 @@ public class TransactionsManager {
      * @param customers
      */
     public void writeChanges(CustomersManager customers) {
-        rw.writeChanges(customers);
+        buio.writeChanges(customers);
     }
 }

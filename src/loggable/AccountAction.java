@@ -3,10 +3,9 @@ package loggable;
 import account.Account;
 import main.Customer;
 
-public abstract class AccountAction implements Loggable {
+public abstract class AccountAction implements Loggable, ActionTypes {
     Account from;
     double amt;
-    Account to;
 
     String[] statement = new String[6];
 

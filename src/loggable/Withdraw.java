@@ -2,7 +2,7 @@ package loggable;
 
 import account.Account;
 
-public class Withdraw extends AccountTransaction {
+public class Withdraw extends AccountAction {
 
     public Withdraw(Account from, double amt) {
         this.from = from;
@@ -10,7 +10,7 @@ public class Withdraw extends AccountTransaction {
 
         statement[0] = String.valueOf(getOwner().getidNumber());
         statement[1] = String.valueOf(from.getAccountNumber());
-        statement[2] = "Withdraw";
+        statement[2] = WITHDRAW;
         statement[3] = "";
         statement[4] = "";
         statement[5] = String.valueOf(amt);
@@ -48,6 +48,6 @@ public class Withdraw extends AccountTransaction {
     }
 
     public String getType() {
-        return "Withdraw";
+        return WITHDRAW;
     }
 }

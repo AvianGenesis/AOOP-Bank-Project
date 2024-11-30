@@ -41,7 +41,7 @@ public class Checking extends Account {
      * @return a string indicating the account type as "Checking"
      */
     public String getAccountType() {
-        return "Checking";
+        return CHECKING;
     }
 }
 

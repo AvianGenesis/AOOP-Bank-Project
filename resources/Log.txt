@@ -3976,3 +3976,609 @@ Mickey Mouse deposited $100.00 into Checking-1000. Mickey Mouse’s New Balance 
 Mickey Mouse withdrew $100.00 from Checking-1000. Mickey Mouse’s New Balance for Checking-1000: $399.12
 Mickey Mouse transfered $100.00 from Checking-1000 to Savings-2000. New balance for Checking-1000: $299.12. New balance for Savings-2000: $4,577.46.
 Mickey Mouse paid $100.00 to Donald Duck from Checking-1000. New balance for Checking-1000: $199.12. New balance for Savings-2001: $3,782.37.
+Mickey Mouse paid $100.00 to Donald Duck from Checking-1000. New balance for Checking-1000: $299.12. New balance for Checking-1001: $2,028.58.
+Mickey Mouse transfered $400.00 from Savings-2000 to Checking-1000. New balance for Savings-2000: $4,077.46. New balance for Checking-1000: $699.12.
+Mickey Mouse performed a balance inquiry on Savings-2000. Its balance is $4077.46
+
+Mickey Mouse withdrew $100.00 from Checking-1000. Mickey Mouse’s New Balance for Checking-1000: $599.12
+Mickey Mouse deposited $500.00 into Savings-2000. Mickey Mouse’s New Balance for Savings-2000: $4,577.46
+
+Mickey Mouse transfered $300.00 from Savings-2000 to Credit-3000. New balance for Savings-2000: $4,277.46. New balance for Credit-3000: $1,153.84.
+Alberto Miranda deposited $5,000.00 into Checking-1036. Alberto Miranda’s New Balance for Checking-1036: $5,474.59
+
+Alex Avila deposited $5,000.00 into Checking-1037. Alex Avila’s New Balance for Checking-1037: $5,085.09
+
+Alfonso Beltran deposited $5,000.00 into Checking-1038. Alfonso Beltran’s New Balance for Checking-1038: $5,474.39
+
+Alfredo Rodriguez deposited $5,000.00 into Checking-1039. Alfredo Rodriguez’s New Balance for Checking-1039: $6,772.98
+
+Alyssandra Cordero deposited $5,000.00 into Checking-1040. Alyssandra Cordero’s New Balance for Checking-1040: $6,169.49
+
+Anthony Jasso deposited $5,000.00 into Checking-1041. Anthony Jasso’s New Balance for Checking-1041: $5,661.74
+
+Arae Zarzosa deposited $5,000.00 into Checking-1042. Arae Zarzosa’s New Balance for Checking-1042: $6,994.56
+
+Brandon Bustamante deposited $5,000.00 into Checking-1043. Brandon Bustamante’s New Balance for Checking-1043: $5,355.39
+
+Cesar Cabrera deposited $5,000.00 into Checking-1044. Cesar Cabrera’s New Balance for Checking-1044: $6,806.19
+
+Christopher Reyes deposited $5,000.00 into Checking-1045. Christopher Reyes’s New Balance for Checking-1045: $6,330.23
+
+Dafne Bencomo deposited $5,000.00 into Checking-1046. Dafne Bencomo’s New Balance for Checking-1046: $5,519.88
+
+David Baptiste deposited $5,000.00 into Checking-1047. David Baptiste’s New Balance for Checking-1047: $6,076.98
+
+Derek Aguirre deposited $5,000.00 into Checking-1048. Derek Aguirre’s New Balance for Checking-1048: $6,845.56
+
+Eduardo Garcia deposited $5,000.00 into Checking-1049. Eduardo Garcia’s New Balance for Checking-1049: $6,243.42
+
+Ervey Montes deposited $5,000.00 into Checking-1050. Ervey Montes’s New Balance for Checking-1050: $6,584.85
+
+Estevan Ramos deposited $5,000.00 into Checking-1051. Estevan Ramos’s New Balance for Checking-1051: $5,760.91
+
+Federico Marin deposited $5,000.00 into Checking-1052. Federico Marin’s New Balance for Checking-1052: $6,917.27
+
+Gavin Baechle deposited $5,000.00 into Checking-1053. Gavin Baechle’s New Balance for Checking-1053: $6,734.37
+
+Gildardo Orea deposited $5,000.00 into Checking-1054. Gildardo Orea’s New Balance for Checking-1054: $5,291.85
+
+Grecia Navarrete deposited $5,000.00 into Checking-1055. Grecia Navarrete’s New Balance for Checking-1055: $6,622.04
+
+Hernan Garcia deposited $5,000.00 into Checking-1056. Hernan Garcia’s New Balance for Checking-1056: $5,135.23
+
+Isaiah Landin deposited $5,000.00 into Checking-1057. Isaiah Landin’s New Balance for Checking-1057: $6,816.52
+
+Jose Rodriguez Ortega deposited $5,000.00 into Checking-1058. Jose Rodriguez Ortega’s New Balance for Checking-1058: $5,398.46
+
+Joseph Medina - Sandoval deposited $5,000.00 into Checking-1059. Joseph Medina - Sandoval’s New Balance for Checking-1059: $5,903.51
+
+Juan Gutierrez deposited $5,000.00 into Checking-1060. Juan Gutierrez’s New Balance for Checking-1060: $5,526.23
+
+Juan Rabelo deposited $5,000.00 into Checking-1061. Juan Rabelo’s New Balance for Checking-1061: $6,851.26
+
+Judith Garcia deposited $5,000.00 into Checking-1062. Judith Garcia’s New Balance for Checking-1062: $6,740.54
+
+Laura Blanco deposited $5,000.00 into Checking-1063. Laura Blanco’s New Balance for Checking-1063: $6,506.74
+
+Laurence Labayen deposited $5,000.00 into Checking-1064. Laurence Labayen’s New Balance for Checking-1064: $6,079.13
+
+Lidice Castro Jimenez deposited $5,000.00 into Checking-1065. Lidice Castro Jimenez’s New Balance for Checking-1065: $6,942.67
+
+Manuel Melendez Lujan deposited $5,000.00 into Checking-1066. Manuel Melendez Lujan’s New Balance for Checking-1066: $6,311.35
+
+Manuel Ruvalcaba deposited $5,000.00 into Checking-1067. Manuel Ruvalcaba’s New Balance for Checking-1067: $5,870.60
+
+Mauricio Ornelas-Gutierrez deposited $5,000.00 into Checking-1068. Mauricio Ornelas-Gutierrez’s New Balance for Checking-1068: $5,192.14
+
+Minh Dang deposited $5,000.00 into Checking-1069. Minh Dang’s New Balance for Checking-1069: $5,623.42
+
+Oscar Decena deposited $5,000.00 into Checking-1070. Oscar Decena’s New Balance for Checking-1070: $6,450.22
+
+Robert Evans deposited $5,000.00 into Checking-1071. Robert Evans’s New Balance for Checking-1071: $6,223.55
+
+Roberto Carrasco deposited $5,000.00 into Checking-1072. Roberto Carrasco’s New Balance for Checking-1072: $6,152.39
+
+Sofia Hernandez deposited $5,000.00 into Checking-1073. Sofia Hernandez’s New Balance for Checking-1073: $6,515.79
+
+Yulianna Torres deposited $5,000.00 into Checking-1074. Yulianna Torres’s New Balance for Checking-1074: $6,035.19
+
+Alberto Miranda paid $1,000.00 to Daniel Mejia from Checking-1036. New balance for Checking-1036: $4,474.59. New balance for Checking-1077: $2,887.12.
+Alex Avila paid $1,000.00 to Daniel Mejia from Checking-1037. New balance for Checking-1037: $4,085.09. New balance for Checking-1077: $3,887.12.
+Alfonso Beltran paid $1,000.00 to Daniel Mejia from Checking-1038. New balance for Checking-1038: $4,474.39. New balance for Checking-1077: $4,887.12.
+Alfredo Rodriguez paid $1,000.00 to Daniel Mejia from Checking-1039. New balance for Checking-1039: $5,772.98. New balance for Checking-1077: $5,887.12.
+Alyssandra Cordero paid $1,000.00 to Daniel Mejia from Checking-1040. New balance for Checking-1040: $5,169.49. New balance for Checking-1077: $6,887.12.
+Anthony Jasso paid $1,000.00 to Daniel Mejia from Checking-1041. New balance for Checking-1041: $4,661.74. New balance for Checking-1077: $7,887.12.
+Arae Zarzosa paid $1,000.00 to Daniel Mejia from Checking-1042. New balance for Checking-1042: $5,994.56. New balance for Checking-1077: $8,887.12.
+Brandon Bustamante paid $1,000.00 to Daniel Mejia from Checking-1043. New balance for Checking-1043: $4,355.39. New balance for Checking-1077: $9,887.12.
+Cesar Cabrera paid $1,000.00 to Daniel Mejia from Checking-1044. New balance for Checking-1044: $5,806.19. New balance for Checking-1077: $10,887.12.
+Christopher Reyes paid $1,000.00 to Daniel Mejia from Checking-1045. New balance for Checking-1045: $5,330.23. New balance for Checking-1077: $11,887.12.
+Dafne Bencomo paid $1,000.00 to Daniel Mejia from Checking-1046. New balance for Checking-1046: $4,519.88. New balance for Checking-1077: $12,887.12.
+David Baptiste paid $1,000.00 to Daniel Mejia from Checking-1047. New balance for Checking-1047: $5,076.98. New balance for Checking-1077: $13,887.12.
+Derek Aguirre paid $1,000.00 to Daniel Mejia from Checking-1048. New balance for Checking-1048: $5,845.56. New balance for Checking-1077: $14,887.12.
+Eduardo Garcia paid $1,000.00 to Daniel Mejia from Checking-1049. New balance for Checking-1049: $5,243.42. New balance for Checking-1077: $15,887.12.
+Ervey Montes paid $1,000.00 to Daniel Mejia from Checking-1050. New balance for Checking-1050: $5,584.85. New balance for Checking-1077: $16,887.12.
+Estevan Ramos paid $1,000.00 to Daniel Mejia from Checking-1051. New balance for Checking-1051: $4,760.91. New balance for Checking-1077: $17,887.12.
+Federico Marin paid $1,000.00 to Daniel Mejia from Checking-1052. New balance for Checking-1052: $5,917.27. New balance for Checking-1077: $18,887.12.
+Gavin Baechle paid $1,000.00 to Daniel Mejia from Checking-1053. New balance for Checking-1053: $5,734.37. New balance for Checking-1077: $19,887.12.
+Gildardo Orea paid $1,000.00 to Daniel Mejia from Checking-1054. New balance for Checking-1054: $4,291.85. New balance for Checking-1077: $20,887.12.
+Grecia Navarrete paid $1,000.00 to Daniel Mejia from Checking-1055. New balance for Checking-1055: $5,622.04. New balance for Checking-1077: $21,887.12.
+Hernan Garcia paid $1,000.00 to Daniel Mejia from Checking-1056. New balance for Checking-1056: $4,135.23. New balance for Checking-1077: $22,887.12.
+Isaiah Landin paid $1,000.00 to Daniel Mejia from Checking-1057. New balance for Checking-1057: $5,816.52. New balance for Checking-1077: $23,887.12.
+Jose Rodriguez Ortega paid $1,000.00 to Daniel Mejia from Checking-1058. New balance for Checking-1058: $4,398.46. New balance for Checking-1077: $24,887.12.
+Joseph Medina - Sandoval paid $1,000.00 to Daniel Mejia from Checking-1059. New balance for Checking-1059: $4,903.51. New balance for Checking-1077: $25,887.12.
+Juan Gutierrez paid $1,000.00 to Daniel Mejia from Checking-1060. New balance for Checking-1060: $4,526.23. New balance for Checking-1077: $26,887.12.
+Juan Rabelo paid $1,000.00 to Daniel Mejia from Checking-1061. New balance for Checking-1061: $5,851.26. New balance for Checking-1077: $27,887.12.
+Judith Garcia paid $1,000.00 to Daniel Mejia from Checking-1062. New balance for Checking-1062: $5,740.54. New balance for Checking-1077: $28,887.12.
+Laura Blanco paid $1,000.00 to Daniel Mejia from Checking-1063. New balance for Checking-1063: $5,506.74. New balance for Checking-1077: $29,887.12.
+Laurence Labayen paid $1,000.00 to Daniel Mejia from Checking-1064. New balance for Checking-1064: $5,079.13. New balance for Checking-1077: $30,887.12.
+Lidice Castro Jimenez paid $1,000.00 to Daniel Mejia from Checking-1065. New balance for Checking-1065: $5,942.67. New balance for Checking-1077: $31,887.12.
+Manuel Melendez Lujan paid $1,000.00 to Daniel Mejia from Checking-1066. New balance for Checking-1066: $5,311.35. New balance for Checking-1077: $32,887.12.
+Manuel Ruvalcaba paid $1,000.00 to Daniel Mejia from Checking-1067. New balance for Checking-1067: $4,870.60. New balance for Checking-1077: $33,887.12.
+Mauricio Ornelas-Gutierrez paid $1,000.00 to Daniel Mejia from Checking-1068. New balance for Checking-1068: $4,192.14. New balance for Checking-1077: $34,887.12.
+Minh Dang paid $1,000.00 to Daniel Mejia from Checking-1069. New balance for Checking-1069: $4,623.42. New balance for Checking-1077: $35,887.12.
+Oscar Decena paid $1,000.00 to Daniel Mejia from Checking-1070. New balance for Checking-1070: $5,450.22. New balance for Checking-1077: $36,887.12.
+Robert Evans paid $1,000.00 to Daniel Mejia from Checking-1071. New balance for Checking-1071: $5,223.55. New balance for Checking-1077: $37,887.12.
+Roberto Carrasco paid $1,000.00 to Daniel Mejia from Checking-1072. New balance for Checking-1072: $5,152.39. New balance for Checking-1077: $38,887.12.
+Sofia Hernandez paid $1,000.00 to Daniel Mejia from Checking-1073. New balance for Checking-1073: $5,515.79. New balance for Checking-1077: $39,887.12.
+Yulianna Torres paid $1,000.00 to Daniel Mejia from Checking-1074. New balance for Checking-1074: $5,035.19. New balance for Checking-1077: $40,887.12.
+Daniel Mejia performed a balance inquiry on Checking-1077. Its balance is $40887.119999999995
+
+Mickey Mouse withdrew $100.00 from Savings-2000. Mickey Mouse’s New Balance for Savings-2000: $4,177.46
+Donald Duck paid $48.46 to Alberto Miranda from Checking-1001. New balance for Checking-1001: $1,980.12. New balance for Checking-1036: $4,523.05.
+Minnie Mouse withdrew $79.00 from Savings-2002. Minnie Mouse’s New Balance for Savings-2002: $248.99
+Goofy Disney paid $15.63 to Alfonso Beltran from Checking-1003. New balance for Checking-1003: $1,441.06. New balance for Checking-1038: $4,490.02.
+Pluto Disney withdrew $77.00 from Savings-2004. Pluto Disney’s New Balance for Savings-2004: $1,545.73
+Dale Disney withdrew $54.00 from Savings-2006. Dale Disney’s New Balance for Savings-2006: $4,037.61
+Cinderella Disney paid $28.81 to Arae Zarzosa from Checking-1007. New balance for Checking-1007: $886.73. New balance for Checking-1042: $6,023.37.
+Ariel Disney withdrew $57.00 from Savings-2008. Ariel Disney’s New Balance for Savings-2008: $672.50
+Jasmine Disney paid $28.89 to Cesar Cabrera from Checking-1009. New balance for Checking-1009: $605.05. New balance for Checking-1044: $5,835.08.
+Aladdin Disney withdrew $94.00 from Savings-2010. Aladdin Disney’s New Balance for Savings-2010: $3,339.15
+Simba Disney paid $39.29 to Dafne Bencomo from Checking-1011. New balance for Checking-1011: $1,297.50. New balance for Checking-1046: $4,559.17.
+Mufassa Disney withdrew $67.00 from Savings-2012. Mufassa Disney’s New Balance for Savings-2012: $3,779.05
+Aurora Disney paid $34.47 to Derek Aguirre from Checking-1013. New balance for Checking-1013: $308.98. New balance for Checking-1048: $5,880.03.
+Peter Pan withdrew $100.00 from Savings-2014. Peter Pan’s New Balance for Savings-2014: $2,152.52
+Woody Disney paid $34.04 to Ervey Montes from Checking-1015. New balance for Checking-1015: $224.02. New balance for Checking-1050: $5,618.89.
+Jafar Aladdin paid $12.36 to Federico Marin from Checking-1017. New balance for Checking-1017: $505.71. New balance for Checking-1052: $5,929.63.
+Ursela Mermaid withdrew $56.00 from Savings-2018. Ursela Mermaid’s New Balance for Savings-2018: $1,447.63
+Beast Disney paid $26.84 to Gildardo Orea from Checking-1019. New balance for Checking-1019: $1,822.19. New balance for Checking-1054: $4,318.69.
+Belle Disney withdrew $88.00 from Savings-2020. Belle Disney’s New Balance for Savings-2020: $2,346.75
+Cruella De Vil paid $34.70 to Hernan Garcia from Checking-1021. New balance for Checking-1021: $1,097.91. New balance for Checking-1056: $4,169.93.
+Scar Lion withdrew $65.00 from Savings-2022. Scar Lion’s New Balance for Savings-2022: $4,261.32
+Simba King paid $11.31 to Jose Rodriguez Ortega from Checking-1023. New balance for Checking-1023: $1,460.74. New balance for Checking-1058: $4,409.77.
+Gaston Disney withdrew $78.00 from Savings-2024. Gaston Disney’s New Balance for Savings-2024: $916.47
+Shere Khan paid $41.20 to Juan Gutierrez from Checking-1025. New balance for Checking-1025: $647.57. New balance for Checking-1060: $4,567.43.
+Captaiin Hook withdrew $86.00 from Savings-2026. Captaiin Hook’s New Balance for Savings-2026: $3,209.28
+Kaa Disney paid $11.83 to Judith Garcia from Checking-1027. New balance for Checking-1027: $916.93. New balance for Checking-1062: $5,752.37.
+Evil Queen withdrew $86.00 from Savings-2028. Evil Queen’s New Balance for Savings-2028: $4,758.83
+Pinocchio Disney paid $34.11 to Laurence Labayen from Checking-1029. New balance for Checking-1029: $1,246.66. New balance for Checking-1064: $5,113.24.
+Prince Eric withdrew $57.00 from Savings-2030. Prince Eric’s New Balance for Savings-2030: $4,448.00
+Quasimodo Disney paid $25.58 to Manuel Melendez Lujan from Checking-1031. New balance for Checking-1031: $457.99. New balance for Checking-1066: $5,336.93.
+Hercules Disney withdrew $85.00 from Savings-2032. Hercules Disney’s New Balance for Savings-2032: $1,303.27
+Mulan Disney paid $36.48 to Mauricio Ornelas-Gutierrez from Checking-1033. New balance for Checking-1033: $1,737.78. New balance for Checking-1068: $4,228.62.
+Lilo Disney withdrew $59.00 from Savings-2034. Lilo Disney’s New Balance for Savings-2034: $1,883.89
+Stitch Disney paid $29.25 to Oscar Decena from Checking-1035. New balance for Checking-1035: $358.07. New balance for Checking-1070: $5,479.47.
+Gaston Disney withdrew $74.00 from Savings-2024. Gaston Disney’s New Balance for Savings-2024: $842.47
+Mickey Mouse paid $17.97 to Roberto Carrasco from Checking-1000. New balance for Checking-1000: $581.15. New balance for Checking-1072: $5,170.36.
+Donald Duck withdrew $91.00 from Savings-2001. Donald Duck’s New Balance for Savings-2001: $3,591.37
+Minnie Mouse paid $29.50 to Yulianna Torres from Checking-1002. New balance for Checking-1002: $1,864.66. New balance for Checking-1074: $5,064.69.
+Goofy Disney withdrew $81.00 from Savings-2003. Goofy Disney’s New Balance for Savings-2003: $803.26
+Pluto Disney paid $39.92 to Alex Avila from Checking-1004. New balance for Checking-1004: $1,509.75. New balance for Checking-1037: $4,125.01.
+Chip Disney withdrew $75.00 from Savings-2005. Chip Disney’s New Balance for Savings-2005: $3,612.14
+Dale Disney paid $50.39 to Alfredo Rodriguez from Checking-1006. New balance for Checking-1006: $843.71. New balance for Checking-1039: $5,823.37.
+Cinderella Disney withdrew $79.00 from Savings-2007. Cinderella Disney’s New Balance for Savings-2007: $2,898.94
+Ariel Disney paid $46.88 to Anthony Jasso from Checking-1008. New balance for Checking-1008: $1,535.09. New balance for Checking-1041: $4,708.62.
+Jasmine Disney withdrew $59.00 from Savings-2009. Jasmine Disney’s New Balance for Savings-2009: $1,028.10
+Aladdin Disney paid $25.16 to Brandon Bustamante from Checking-1010. New balance for Checking-1010: $115.62. New balance for Checking-1043: $4,380.55.
+Simba Disney withdrew $100.00 from Savings-2011. Simba Disney’s New Balance for Savings-2011: $273.47
+Mufassa Disney paid $33.54 to Christopher Reyes from Checking-1012. New balance for Checking-1012: $115.14. New balance for Checking-1045: $5,363.77.
+Mickey Mouse paid $48.46 to David Baptiste from Savings-2000. New balance for Savings-2000: $4,129.00. New balance for Checking-1047: $5,125.44.
+Donald Duck withdrew $79.00 from Checking-1001. Donald Duck’s New Balance for Checking-1001: $1,901.12
+Minnie Mouse paid $15.63 to Eduardo Garcia from Savings-2002. New balance for Savings-2002: $233.36. New balance for Checking-1049: $5,259.05.
+Goofy Disney withdrew $77.00 from Checking-1003. Goofy Disney’s New Balance for Checking-1003: $1,364.06
+Pluto Disney paid $50.99 to Estevan Ramos from Savings-2004. New balance for Savings-2004: $1,494.74. New balance for Checking-1051: $4,811.90.
+Dale Disney paid $28.81 to Gavin Baechle from Savings-2006. New balance for Savings-2006: $4,008.80. New balance for Checking-1053: $5,763.18.
+Cinderella Disney withdrew $57.00 from Checking-1007. Cinderella Disney’s New Balance for Checking-1007: $829.73
+Ariel Disney paid $28.89 to Grecia Navarrete from Savings-2008. New balance for Savings-2008: $643.61. New balance for Checking-1055: $5,650.93.
+Jasmine Disney withdrew $94.00 from Checking-1009. Jasmine Disney’s New Balance for Checking-1009: $511.05
+Aladdin Disney paid $39.29 to Isaiah Landin from Savings-2010. New balance for Savings-2010: $3,299.86. New balance for Checking-1057: $5,855.81.
+Simba Disney withdrew $67.00 from Checking-1011. Simba Disney’s New Balance for Checking-1011: $1,230.50
+Mufassa Disney paid $34.47 to Joseph Medina - Sandoval from Savings-2012. New balance for Savings-2012: $3,744.58. New balance for Checking-1059: $4,937.98.
+Aurora Disney withdrew $100.00 from Checking-1013. Aurora Disney’s New Balance for Checking-1013: $208.98
+Peter Pan paid $34.04 to Juan Rabelo from Savings-2014. New balance for Savings-2014: $2,118.48. New balance for Checking-1061: $5,885.30.
+Woody Disney withdrew $90.00 from Checking-1015. Woody Disney’s New Balance for Checking-1015: $134.02
+Buzz Lightyear paid $12.36 to Laura Blanco from Savings-2016. New balance for Savings-2016: $21.17. New balance for Checking-1063: $5,519.10.
+Jafar Aladdin withdrew $56.00 from Checking-1017. Jafar Aladdin’s New Balance for Checking-1017: $449.71
+Ursela Mermaid paid $26.84 to Lidice Castro Jimenez from Savings-2018. New balance for Savings-2018: $1,420.79. New balance for Checking-1065: $5,969.51.
+Beast Disney withdrew $88.00 from Checking-1019. Beast Disney’s New Balance for Checking-1019: $1,734.19
+Belle Disney paid $34.70 to Manuel Ruvalcaba from Savings-2020. New balance for Savings-2020: $2,312.05. New balance for Checking-1067: $4,905.30.
+Cruella De Vil withdrew $65.00 from Checking-1021. Cruella De Vil’s New Balance for Checking-1021: $1,032.91
+Scar Lion paid $11.31 to Minh Dang from Savings-2022. New balance for Savings-2022: $4,250.01. New balance for Checking-1069: $4,634.73.
+Simba King withdrew $78.00 from Checking-1023. Simba King’s New Balance for Checking-1023: $1,382.74
+Gaston Disney paid $41.20 to Robert Evans from Savings-2024. New balance for Savings-2024: $801.27. New balance for Checking-1071: $5,264.75.
+Shere Khan withdrew $86.00 from Checking-1025. Shere Khan’s New Balance for Checking-1025: $561.57
+Captaiin Hook paid $11.83 to Sofia Hernandez from Savings-2026. New balance for Savings-2026: $3,197.45. New balance for Checking-1073: $5,527.62.
+Kaa Disney withdrew $86.00 from Checking-1027. Kaa Disney’s New Balance for Checking-1027: $830.93
+Mickey Mouse paid $100.00 to Donald Duck from Checking-1000. New balance for Checking-1000: $299.12. New balance for Checking-1001: $2,028.58.
+Mickey Mouse transfered $400.00 from Savings-2000 to Checking-1000. New balance for Savings-2000: $4,077.46. New balance for Checking-1000: $699.12.
+Mickey Mouse performed a balance inquiry on Savings-2000. Its balance is $4077.46
+
+Mickey Mouse withdrew $100.00 from Checking-1000. Mickey Mouse’s New Balance for Checking-1000: $599.12
+Mickey Mouse deposited $500.00 into Savings-2000. Mickey Mouse’s New Balance for Savings-2000: $4,577.46
+
+Mickey Mouse transfered $300.00 from Savings-2000 to Credit-3000. New balance for Savings-2000: $4,277.46. New balance for Credit-3000: $1,153.84.
+Alberto Miranda deposited $5,000.00 into Checking-1036. Alberto Miranda’s New Balance for Checking-1036: $5,474.59
+
+Alex Avila deposited $5,000.00 into Checking-1037. Alex Avila’s New Balance for Checking-1037: $5,085.09
+
+Alfonso Beltran deposited $5,000.00 into Checking-1038. Alfonso Beltran’s New Balance for Checking-1038: $5,474.39
+
+Alfredo Rodriguez deposited $5,000.00 into Checking-1039. Alfredo Rodriguez’s New Balance for Checking-1039: $6,772.98
+
+Alyssandra Cordero deposited $5,000.00 into Checking-1040. Alyssandra Cordero’s New Balance for Checking-1040: $6,169.49
+
+Anthony Jasso deposited $5,000.00 into Checking-1041. Anthony Jasso’s New Balance for Checking-1041: $5,661.74
+
+Arae Zarzosa deposited $5,000.00 into Checking-1042. Arae Zarzosa’s New Balance for Checking-1042: $6,994.56
+
+Brandon Bustamante deposited $5,000.00 into Checking-1043. Brandon Bustamante’s New Balance for Checking-1043: $5,355.39
+
+Cesar Cabrera deposited $5,000.00 into Checking-1044. Cesar Cabrera’s New Balance for Checking-1044: $6,806.19
+
+Christopher Reyes deposited $5,000.00 into Checking-1045. Christopher Reyes’s New Balance for Checking-1045: $6,330.23
+
+Dafne Bencomo deposited $5,000.00 into Checking-1046. Dafne Bencomo’s New Balance for Checking-1046: $5,519.88
+
+David Baptiste deposited $5,000.00 into Checking-1047. David Baptiste’s New Balance for Checking-1047: $6,076.98
+
+Derek Aguirre deposited $5,000.00 into Checking-1048. Derek Aguirre’s New Balance for Checking-1048: $6,845.56
+
+Eduardo Garcia deposited $5,000.00 into Checking-1049. Eduardo Garcia’s New Balance for Checking-1049: $6,243.42
+
+Ervey Montes deposited $5,000.00 into Checking-1050. Ervey Montes’s New Balance for Checking-1050: $6,584.85
+
+Estevan Ramos deposited $5,000.00 into Checking-1051. Estevan Ramos’s New Balance for Checking-1051: $5,760.91
+
+Federico Marin deposited $5,000.00 into Checking-1052. Federico Marin’s New Balance for Checking-1052: $6,917.27
+
+Gavin Baechle deposited $5,000.00 into Checking-1053. Gavin Baechle’s New Balance for Checking-1053: $6,734.37
+
+Gildardo Orea deposited $5,000.00 into Checking-1054. Gildardo Orea’s New Balance for Checking-1054: $5,291.85
+
+Grecia Navarrete deposited $5,000.00 into Checking-1055. Grecia Navarrete’s New Balance for Checking-1055: $6,622.04
+
+Hernan Garcia deposited $5,000.00 into Checking-1056. Hernan Garcia’s New Balance for Checking-1056: $5,135.23
+
+Isaiah Landin deposited $5,000.00 into Checking-1057. Isaiah Landin’s New Balance for Checking-1057: $6,816.52
+
+Jose Rodriguez Ortega deposited $5,000.00 into Checking-1058. Jose Rodriguez Ortega’s New Balance for Checking-1058: $5,398.46
+
+Joseph Medina - Sandoval deposited $5,000.00 into Checking-1059. Joseph Medina - Sandoval’s New Balance for Checking-1059: $5,903.51
+
+Juan Gutierrez deposited $5,000.00 into Checking-1060. Juan Gutierrez’s New Balance for Checking-1060: $5,526.23
+
+Juan Rabelo deposited $5,000.00 into Checking-1061. Juan Rabelo’s New Balance for Checking-1061: $6,851.26
+
+Judith Garcia deposited $5,000.00 into Checking-1062. Judith Garcia’s New Balance for Checking-1062: $6,740.54
+
+Laura Blanco deposited $5,000.00 into Checking-1063. Laura Blanco’s New Balance for Checking-1063: $6,506.74
+
+Laurence Labayen deposited $5,000.00 into Checking-1064. Laurence Labayen’s New Balance for Checking-1064: $6,079.13
+
+Lidice Castro Jimenez deposited $5,000.00 into Checking-1065. Lidice Castro Jimenez’s New Balance for Checking-1065: $6,942.67
+
+Manuel Melendez Lujan deposited $5,000.00 into Checking-1066. Manuel Melendez Lujan’s New Balance for Checking-1066: $6,311.35
+
+Manuel Ruvalcaba deposited $5,000.00 into Checking-1067. Manuel Ruvalcaba’s New Balance for Checking-1067: $5,870.60
+
+Mauricio Ornelas-Gutierrez deposited $5,000.00 into Checking-1068. Mauricio Ornelas-Gutierrez’s New Balance for Checking-1068: $5,192.14
+
+Minh Dang deposited $5,000.00 into Checking-1069. Minh Dang’s New Balance for Checking-1069: $5,623.42
+
+Oscar Decena deposited $5,000.00 into Checking-1070. Oscar Decena’s New Balance for Checking-1070: $6,450.22
+
+Robert Evans deposited $5,000.00 into Checking-1071. Robert Evans’s New Balance for Checking-1071: $6,223.55
+
+Roberto Carrasco deposited $5,000.00 into Checking-1072. Roberto Carrasco’s New Balance for Checking-1072: $6,152.39
+
+Sofia Hernandez deposited $5,000.00 into Checking-1073. Sofia Hernandez’s New Balance for Checking-1073: $6,515.79
+
+Yulianna Torres deposited $5,000.00 into Checking-1074. Yulianna Torres’s New Balance for Checking-1074: $6,035.19
+
+Alberto Miranda paid $1,000.00 to Daniel Mejia from Checking-1036. New balance for Checking-1036: $4,474.59. New balance for Checking-1077: $2,887.12.
+Alex Avila paid $1,000.00 to Daniel Mejia from Checking-1037. New balance for Checking-1037: $4,085.09. New balance for Checking-1077: $3,887.12.
+Alfonso Beltran paid $1,000.00 to Daniel Mejia from Checking-1038. New balance for Checking-1038: $4,474.39. New balance for Checking-1077: $4,887.12.
+Alfredo Rodriguez paid $1,000.00 to Daniel Mejia from Checking-1039. New balance for Checking-1039: $5,772.98. New balance for Checking-1077: $5,887.12.
+Alyssandra Cordero paid $1,000.00 to Daniel Mejia from Checking-1040. New balance for Checking-1040: $5,169.49. New balance for Checking-1077: $6,887.12.
+Anthony Jasso paid $1,000.00 to Daniel Mejia from Checking-1041. New balance for Checking-1041: $4,661.74. New balance for Checking-1077: $7,887.12.
+Arae Zarzosa paid $1,000.00 to Daniel Mejia from Checking-1042. New balance for Checking-1042: $5,994.56. New balance for Checking-1077: $8,887.12.
+Brandon Bustamante paid $1,000.00 to Daniel Mejia from Checking-1043. New balance for Checking-1043: $4,355.39. New balance for Checking-1077: $9,887.12.
+Cesar Cabrera paid $1,000.00 to Daniel Mejia from Checking-1044. New balance for Checking-1044: $5,806.19. New balance for Checking-1077: $10,887.12.
+Christopher Reyes paid $1,000.00 to Daniel Mejia from Checking-1045. New balance for Checking-1045: $5,330.23. New balance for Checking-1077: $11,887.12.
+Dafne Bencomo paid $1,000.00 to Daniel Mejia from Checking-1046. New balance for Checking-1046: $4,519.88. New balance for Checking-1077: $12,887.12.
+David Baptiste paid $1,000.00 to Daniel Mejia from Checking-1047. New balance for Checking-1047: $5,076.98. New balance for Checking-1077: $13,887.12.
+Derek Aguirre paid $1,000.00 to Daniel Mejia from Checking-1048. New balance for Checking-1048: $5,845.56. New balance for Checking-1077: $14,887.12.
+Eduardo Garcia paid $1,000.00 to Daniel Mejia from Checking-1049. New balance for Checking-1049: $5,243.42. New balance for Checking-1077: $15,887.12.
+Ervey Montes paid $1,000.00 to Daniel Mejia from Checking-1050. New balance for Checking-1050: $5,584.85. New balance for Checking-1077: $16,887.12.
+Estevan Ramos paid $1,000.00 to Daniel Mejia from Checking-1051. New balance for Checking-1051: $4,760.91. New balance for Checking-1077: $17,887.12.
+Federico Marin paid $1,000.00 to Daniel Mejia from Checking-1052. New balance for Checking-1052: $5,917.27. New balance for Checking-1077: $18,887.12.
+Gavin Baechle paid $1,000.00 to Daniel Mejia from Checking-1053. New balance for Checking-1053: $5,734.37. New balance for Checking-1077: $19,887.12.
+Gildardo Orea paid $1,000.00 to Daniel Mejia from Checking-1054. New balance for Checking-1054: $4,291.85. New balance for Checking-1077: $20,887.12.
+Grecia Navarrete paid $1,000.00 to Daniel Mejia from Checking-1055. New balance for Checking-1055: $5,622.04. New balance for Checking-1077: $21,887.12.
+Hernan Garcia paid $1,000.00 to Daniel Mejia from Checking-1056. New balance for Checking-1056: $4,135.23. New balance for Checking-1077: $22,887.12.
+Isaiah Landin paid $1,000.00 to Daniel Mejia from Checking-1057. New balance for Checking-1057: $5,816.52. New balance for Checking-1077: $23,887.12.
+Jose Rodriguez Ortega paid $1,000.00 to Daniel Mejia from Checking-1058. New balance for Checking-1058: $4,398.46. New balance for Checking-1077: $24,887.12.
+Joseph Medina - Sandoval paid $1,000.00 to Daniel Mejia from Checking-1059. New balance for Checking-1059: $4,903.51. New balance for Checking-1077: $25,887.12.
+Juan Gutierrez paid $1,000.00 to Daniel Mejia from Checking-1060. New balance for Checking-1060: $4,526.23. New balance for Checking-1077: $26,887.12.
+Juan Rabelo paid $1,000.00 to Daniel Mejia from Checking-1061. New balance for Checking-1061: $5,851.26. New balance for Checking-1077: $27,887.12.
+Judith Garcia paid $1,000.00 to Daniel Mejia from Checking-1062. New balance for Checking-1062: $5,740.54. New balance for Checking-1077: $28,887.12.
+Laura Blanco paid $1,000.00 to Daniel Mejia from Checking-1063. New balance for Checking-1063: $5,506.74. New balance for Checking-1077: $29,887.12.
+Laurence Labayen paid $1,000.00 to Daniel Mejia from Checking-1064. New balance for Checking-1064: $5,079.13. New balance for Checking-1077: $30,887.12.
+Lidice Castro Jimenez paid $1,000.00 to Daniel Mejia from Checking-1065. New balance for Checking-1065: $5,942.67. New balance for Checking-1077: $31,887.12.
+Manuel Melendez Lujan paid $1,000.00 to Daniel Mejia from Checking-1066. New balance for Checking-1066: $5,311.35. New balance for Checking-1077: $32,887.12.
+Manuel Ruvalcaba paid $1,000.00 to Daniel Mejia from Checking-1067. New balance for Checking-1067: $4,870.60. New balance for Checking-1077: $33,887.12.
+Mauricio Ornelas-Gutierrez paid $1,000.00 to Daniel Mejia from Checking-1068. New balance for Checking-1068: $4,192.14. New balance for Checking-1077: $34,887.12.
+Minh Dang paid $1,000.00 to Daniel Mejia from Checking-1069. New balance for Checking-1069: $4,623.42. New balance for Checking-1077: $35,887.12.
+Oscar Decena paid $1,000.00 to Daniel Mejia from Checking-1070. New balance for Checking-1070: $5,450.22. New balance for Checking-1077: $36,887.12.
+Robert Evans paid $1,000.00 to Daniel Mejia from Checking-1071. New balance for Checking-1071: $5,223.55. New balance for Checking-1077: $37,887.12.
+Roberto Carrasco paid $1,000.00 to Daniel Mejia from Checking-1072. New balance for Checking-1072: $5,152.39. New balance for Checking-1077: $38,887.12.
+Sofia Hernandez paid $1,000.00 to Daniel Mejia from Checking-1073. New balance for Checking-1073: $5,515.79. New balance for Checking-1077: $39,887.12.
+Yulianna Torres paid $1,000.00 to Daniel Mejia from Checking-1074. New balance for Checking-1074: $5,035.19. New balance for Checking-1077: $40,887.12.
+Daniel Mejia performed a balance inquiry on Checking-1077. Its balance is $40887.119999999995
+
+Mickey Mouse withdrew $100.00 from Savings-2000. Mickey Mouse’s New Balance for Savings-2000: $4,177.46
+Donald Duck paid $48.46 to Alberto Miranda from Checking-1001. New balance for Checking-1001: $1,980.12. New balance for Checking-1036: $4,523.05.
+Minnie Mouse withdrew $79.00 from Savings-2002. Minnie Mouse’s New Balance for Savings-2002: $248.99
+Goofy Disney paid $15.63 to Alfonso Beltran from Checking-1003. New balance for Checking-1003: $1,441.06. New balance for Checking-1038: $4,490.02.
+Pluto Disney withdrew $77.00 from Savings-2004. Pluto Disney’s New Balance for Savings-2004: $1,545.73
+Dale Disney withdrew $54.00 from Savings-2006. Dale Disney’s New Balance for Savings-2006: $4,037.61
+Cinderella Disney paid $28.81 to Arae Zarzosa from Checking-1007. New balance for Checking-1007: $886.73. New balance for Checking-1042: $6,023.37.
+Ariel Disney withdrew $57.00 from Savings-2008. Ariel Disney’s New Balance for Savings-2008: $672.50
+Jasmine Disney paid $28.89 to Cesar Cabrera from Checking-1009. New balance for Checking-1009: $605.05. New balance for Checking-1044: $5,835.08.
+Aladdin Disney withdrew $94.00 from Savings-2010. Aladdin Disney’s New Balance for Savings-2010: $3,339.15
+Simba Disney paid $39.29 to Dafne Bencomo from Checking-1011. New balance for Checking-1011: $1,297.50. New balance for Checking-1046: $4,559.17.
+Mufassa Disney withdrew $67.00 from Savings-2012. Mufassa Disney’s New Balance for Savings-2012: $3,779.05
+Aurora Disney paid $34.47 to Derek Aguirre from Checking-1013. New balance for Checking-1013: $308.98. New balance for Checking-1048: $5,880.03.
+Peter Pan withdrew $100.00 from Savings-2014. Peter Pan’s New Balance for Savings-2014: $2,152.52
+Woody Disney paid $34.04 to Ervey Montes from Checking-1015. New balance for Checking-1015: $224.02. New balance for Checking-1050: $5,618.89.
+Jafar Aladdin paid $12.36 to Federico Marin from Checking-1017. New balance for Checking-1017: $505.71. New balance for Checking-1052: $5,929.63.
+Ursela Mermaid withdrew $56.00 from Savings-2018. Ursela Mermaid’s New Balance for Savings-2018: $1,447.63
+Beast Disney paid $26.84 to Gildardo Orea from Checking-1019. New balance for Checking-1019: $1,822.19. New balance for Checking-1054: $4,318.69.
+Belle Disney withdrew $88.00 from Savings-2020. Belle Disney’s New Balance for Savings-2020: $2,346.75
+Cruella De Vil paid $34.70 to Hernan Garcia from Checking-1021. New balance for Checking-1021: $1,097.91. New balance for Checking-1056: $4,169.93.
+Scar Lion withdrew $65.00 from Savings-2022. Scar Lion’s New Balance for Savings-2022: $4,261.32
+Simba King paid $11.31 to Jose Rodriguez Ortega from Checking-1023. New balance for Checking-1023: $1,460.74. New balance for Checking-1058: $4,409.77.
+Gaston Disney withdrew $78.00 from Savings-2024. Gaston Disney’s New Balance for Savings-2024: $916.47
+Shere Khan paid $41.20 to Juan Gutierrez from Checking-1025. New balance for Checking-1025: $647.57. New balance for Checking-1060: $4,567.43.
+Captaiin Hook withdrew $86.00 from Savings-2026. Captaiin Hook’s New Balance for Savings-2026: $3,209.28
+Kaa Disney paid $11.83 to Judith Garcia from Checking-1027. New balance for Checking-1027: $916.93. New balance for Checking-1062: $5,752.37.
+Evil Queen withdrew $86.00 from Savings-2028. Evil Queen’s New Balance for Savings-2028: $4,758.83
+Pinocchio Disney paid $34.11 to Laurence Labayen from Checking-1029. New balance for Checking-1029: $1,246.66. New balance for Checking-1064: $5,113.24.
+Prince Eric withdrew $57.00 from Savings-2030. Prince Eric’s New Balance for Savings-2030: $4,448.00
+Quasimodo Disney paid $25.58 to Manuel Melendez Lujan from Checking-1031. New balance for Checking-1031: $457.99. New balance for Checking-1066: $5,336.93.
+Hercules Disney withdrew $85.00 from Savings-2032. Hercules Disney’s New Balance for Savings-2032: $1,303.27
+Mulan Disney paid $36.48 to Mauricio Ornelas-Gutierrez from Checking-1033. New balance for Checking-1033: $1,737.78. New balance for Checking-1068: $4,228.62.
+Lilo Disney withdrew $59.00 from Savings-2034. Lilo Disney’s New Balance for Savings-2034: $1,883.89
+Stitch Disney paid $29.25 to Oscar Decena from Checking-1035. New balance for Checking-1035: $358.07. New balance for Checking-1070: $5,479.47.
+Gaston Disney withdrew $74.00 from Savings-2024. Gaston Disney’s New Balance for Savings-2024: $842.47
+Mickey Mouse paid $17.97 to Roberto Carrasco from Checking-1000. New balance for Checking-1000: $581.15. New balance for Checking-1072: $5,170.36.
+Donald Duck withdrew $91.00 from Savings-2001. Donald Duck’s New Balance for Savings-2001: $3,591.37
+Minnie Mouse paid $29.50 to Yulianna Torres from Checking-1002. New balance for Checking-1002: $1,864.66. New balance for Checking-1074: $5,064.69.
+Goofy Disney withdrew $81.00 from Savings-2003. Goofy Disney’s New Balance for Savings-2003: $803.26
+Pluto Disney paid $39.92 to Alex Avila from Checking-1004. New balance for Checking-1004: $1,509.75. New balance for Checking-1037: $4,125.01.
+Chip Disney withdrew $75.00 from Savings-2005. Chip Disney’s New Balance for Savings-2005: $3,612.14
+Dale Disney paid $50.39 to Alfredo Rodriguez from Checking-1006. New balance for Checking-1006: $843.71. New balance for Checking-1039: $5,823.37.
+Cinderella Disney withdrew $79.00 from Savings-2007. Cinderella Disney’s New Balance for Savings-2007: $2,898.94
+Ariel Disney paid $46.88 to Anthony Jasso from Checking-1008. New balance for Checking-1008: $1,535.09. New balance for Checking-1041: $4,708.62.
+Jasmine Disney withdrew $59.00 from Savings-2009. Jasmine Disney’s New Balance for Savings-2009: $1,028.10
+Aladdin Disney paid $25.16 to Brandon Bustamante from Checking-1010. New balance for Checking-1010: $115.62. New balance for Checking-1043: $4,380.55.
+Simba Disney withdrew $100.00 from Savings-2011. Simba Disney’s New Balance for Savings-2011: $273.47
+Mufassa Disney paid $33.54 to Christopher Reyes from Checking-1012. New balance for Checking-1012: $115.14. New balance for Checking-1045: $5,363.77.
+Mickey Mouse paid $48.46 to David Baptiste from Savings-2000. New balance for Savings-2000: $4,129.00. New balance for Checking-1047: $5,125.44.
+Donald Duck withdrew $79.00 from Checking-1001. Donald Duck’s New Balance for Checking-1001: $1,901.12
+Minnie Mouse paid $15.63 to Eduardo Garcia from Savings-2002. New balance for Savings-2002: $233.36. New balance for Checking-1049: $5,259.05.
+Goofy Disney withdrew $77.00 from Checking-1003. Goofy Disney’s New Balance for Checking-1003: $1,364.06
+Pluto Disney paid $50.99 to Estevan Ramos from Savings-2004. New balance for Savings-2004: $1,494.74. New balance for Checking-1051: $4,811.90.
+Dale Disney paid $28.81 to Gavin Baechle from Savings-2006. New balance for Savings-2006: $4,008.80. New balance for Checking-1053: $5,763.18.
+Cinderella Disney withdrew $57.00 from Checking-1007. Cinderella Disney’s New Balance for Checking-1007: $829.73
+Ariel Disney paid $28.89 to Grecia Navarrete from Savings-2008. New balance for Savings-2008: $643.61. New balance for Checking-1055: $5,650.93.
+Jasmine Disney withdrew $94.00 from Checking-1009. Jasmine Disney’s New Balance for Checking-1009: $511.05
+Aladdin Disney paid $39.29 to Isaiah Landin from Savings-2010. New balance for Savings-2010: $3,299.86. New balance for Checking-1057: $5,855.81.
+Simba Disney withdrew $67.00 from Checking-1011. Simba Disney’s New Balance for Checking-1011: $1,230.50
+Mufassa Disney paid $34.47 to Joseph Medina - Sandoval from Savings-2012. New balance for Savings-2012: $3,744.58. New balance for Checking-1059: $4,937.98.
+Aurora Disney withdrew $100.00 from Checking-1013. Aurora Disney’s New Balance for Checking-1013: $208.98
+Peter Pan paid $34.04 to Juan Rabelo from Savings-2014. New balance for Savings-2014: $2,118.48. New balance for Checking-1061: $5,885.30.
+Woody Disney withdrew $90.00 from Checking-1015. Woody Disney’s New Balance for Checking-1015: $134.02
+Buzz Lightyear paid $12.36 to Laura Blanco from Savings-2016. New balance for Savings-2016: $21.17. New balance for Checking-1063: $5,519.10.
+Jafar Aladdin withdrew $56.00 from Checking-1017. Jafar Aladdin’s New Balance for Checking-1017: $449.71
+Ursela Mermaid paid $26.84 to Lidice Castro Jimenez from Savings-2018. New balance for Savings-2018: $1,420.79. New balance for Checking-1065: $5,969.51.
+Beast Disney withdrew $88.00 from Checking-1019. Beast Disney’s New Balance for Checking-1019: $1,734.19
+Belle Disney paid $34.70 to Manuel Ruvalcaba from Savings-2020. New balance for Savings-2020: $2,312.05. New balance for Checking-1067: $4,905.30.
+Cruella De Vil withdrew $65.00 from Checking-1021. Cruella De Vil’s New Balance for Checking-1021: $1,032.91
+Scar Lion paid $11.31 to Minh Dang from Savings-2022. New balance for Savings-2022: $4,250.01. New balance for Checking-1069: $4,634.73.
+Simba King withdrew $78.00 from Checking-1023. Simba King’s New Balance for Checking-1023: $1,382.74
+Gaston Disney paid $41.20 to Robert Evans from Savings-2024. New balance for Savings-2024: $801.27. New balance for Checking-1071: $5,264.75.
+Shere Khan withdrew $86.00 from Checking-1025. Shere Khan’s New Balance for Checking-1025: $561.57
+Captaiin Hook paid $11.83 to Sofia Hernandez from Savings-2026. New balance for Savings-2026: $3,197.45. New balance for Checking-1073: $5,527.62.
+Kaa Disney withdrew $86.00 from Checking-1027. Kaa Disney’s New Balance for Checking-1027: $830.93
+Mickey Mouse paid $100.00 to Donald Duck from Checking-1000. New balance for Checking-1000: $299.12. New balance for Checking-1001: $2,028.58.
+Mickey Mouse transfered $400.00 from Savings-2000 to Checking-1000. New balance for Savings-2000: $4,077.46. New balance for Checking-1000: $699.12.
+Mickey Mouse performed a balance inquiry on Savings-2000. Its balance is $4077.46
+
+Mickey Mouse withdrew $100.00 from Checking-1000. Mickey Mouse’s New Balance for Checking-1000: $599.12
+Mickey Mouse deposited $500.00 into Savings-2000. Mickey Mouse’s New Balance for Savings-2000: $4,577.46
+
+Mickey Mouse transfered $300.00 from Savings-2000 to Credit-3000. New balance for Savings-2000: $4,277.46. New balance for Credit-3000: $1,153.84.
+Alberto Miranda deposited $5,000.00 into Checking-1036. Alberto Miranda’s New Balance for Checking-1036: $5,474.59
+
+Alex Avila deposited $5,000.00 into Checking-1037. Alex Avila’s New Balance for Checking-1037: $5,085.09
+
+Alfonso Beltran deposited $5,000.00 into Checking-1038. Alfonso Beltran’s New Balance for Checking-1038: $5,474.39
+
+Alfredo Rodriguez deposited $5,000.00 into Checking-1039. Alfredo Rodriguez’s New Balance for Checking-1039: $6,772.98
+
+Alyssandra Cordero deposited $5,000.00 into Checking-1040. Alyssandra Cordero’s New Balance for Checking-1040: $6,169.49
+
+Anthony Jasso deposited $5,000.00 into Checking-1041. Anthony Jasso’s New Balance for Checking-1041: $5,661.74
+
+Arae Zarzosa deposited $5,000.00 into Checking-1042. Arae Zarzosa’s New Balance for Checking-1042: $6,994.56
+
+Brandon Bustamante deposited $5,000.00 into Checking-1043. Brandon Bustamante’s New Balance for Checking-1043: $5,355.39
+
+Cesar Cabrera deposited $5,000.00 into Checking-1044. Cesar Cabrera’s New Balance for Checking-1044: $6,806.19
+
+Christopher Reyes deposited $5,000.00 into Checking-1045. Christopher Reyes’s New Balance for Checking-1045: $6,330.23
+
+Dafne Bencomo deposited $5,000.00 into Checking-1046. Dafne Bencomo’s New Balance for Checking-1046: $5,519.88
+
+David Baptiste deposited $5,000.00 into Checking-1047. David Baptiste’s New Balance for Checking-1047: $6,076.98
+
+Derek Aguirre deposited $5,000.00 into Checking-1048. Derek Aguirre’s New Balance for Checking-1048: $6,845.56
+
+Eduardo Garcia deposited $5,000.00 into Checking-1049. Eduardo Garcia’s New Balance for Checking-1049: $6,243.42
+
+Ervey Montes deposited $5,000.00 into Checking-1050. Ervey Montes’s New Balance for Checking-1050: $6,584.85
+
+Estevan Ramos deposited $5,000.00 into Checking-1051. Estevan Ramos’s New Balance for Checking-1051: $5,760.91
+
+Federico Marin deposited $5,000.00 into Checking-1052. Federico Marin’s New Balance for Checking-1052: $6,917.27
+
+Gavin Baechle deposited $5,000.00 into Checking-1053. Gavin Baechle’s New Balance for Checking-1053: $6,734.37
+
+Gildardo Orea deposited $5,000.00 into Checking-1054. Gildardo Orea’s New Balance for Checking-1054: $5,291.85
+
+Grecia Navarrete deposited $5,000.00 into Checking-1055. Grecia Navarrete’s New Balance for Checking-1055: $6,622.04
+
+Hernan Garcia deposited $5,000.00 into Checking-1056. Hernan Garcia’s New Balance for Checking-1056: $5,135.23
+
+Isaiah Landin deposited $5,000.00 into Checking-1057. Isaiah Landin’s New Balance for Checking-1057: $6,816.52
+
+Jose Rodriguez Ortega deposited $5,000.00 into Checking-1058. Jose Rodriguez Ortega’s New Balance for Checking-1058: $5,398.46
+
+Joseph Medina - Sandoval deposited $5,000.00 into Checking-1059. Joseph Medina - Sandoval’s New Balance for Checking-1059: $5,903.51
+
+Juan Gutierrez deposited $5,000.00 into Checking-1060. Juan Gutierrez’s New Balance for Checking-1060: $5,526.23
+
+Juan Rabelo deposited $5,000.00 into Checking-1061. Juan Rabelo’s New Balance for Checking-1061: $6,851.26
+
+Judith Garcia deposited $5,000.00 into Checking-1062. Judith Garcia’s New Balance for Checking-1062: $6,740.54
+
+Laura Blanco deposited $5,000.00 into Checking-1063. Laura Blanco’s New Balance for Checking-1063: $6,506.74
+
+Laurence Labayen deposited $5,000.00 into Checking-1064. Laurence Labayen’s New Balance for Checking-1064: $6,079.13
+
+Lidice Castro Jimenez deposited $5,000.00 into Checking-1065. Lidice Castro Jimenez’s New Balance for Checking-1065: $6,942.67
+
+Manuel Melendez Lujan deposited $5,000.00 into Checking-1066. Manuel Melendez Lujan’s New Balance for Checking-1066: $6,311.35
+
+Manuel Ruvalcaba deposited $5,000.00 into Checking-1067. Manuel Ruvalcaba’s New Balance for Checking-1067: $5,870.60
+
+Mauricio Ornelas-Gutierrez deposited $5,000.00 into Checking-1068. Mauricio Ornelas-Gutierrez’s New Balance for Checking-1068: $5,192.14
+
+Minh Dang deposited $5,000.00 into Checking-1069. Minh Dang’s New Balance for Checking-1069: $5,623.42
+
+Oscar Decena deposited $5,000.00 into Checking-1070. Oscar Decena’s New Balance for Checking-1070: $6,450.22
+
+Robert Evans deposited $5,000.00 into Checking-1071. Robert Evans’s New Balance for Checking-1071: $6,223.55
+
+Roberto Carrasco deposited $5,000.00 into Checking-1072. Roberto Carrasco’s New Balance for Checking-1072: $6,152.39
+
+Sofia Hernandez deposited $5,000.00 into Checking-1073. Sofia Hernandez’s New Balance for Checking-1073: $6,515.79
+
+Yulianna Torres deposited $5,000.00 into Checking-1074. Yulianna Torres’s New Balance for Checking-1074: $6,035.19
+
+Alberto Miranda paid $1,000.00 to Daniel Mejia from Checking-1036. New balance for Checking-1036: $4,474.59. New balance for Checking-1077: $2,887.12.
+Alex Avila paid $1,000.00 to Daniel Mejia from Checking-1037. New balance for Checking-1037: $4,085.09. New balance for Checking-1077: $3,887.12.
+Alfonso Beltran paid $1,000.00 to Daniel Mejia from Checking-1038. New balance for Checking-1038: $4,474.39. New balance for Checking-1077: $4,887.12.
+Alfredo Rodriguez paid $1,000.00 to Daniel Mejia from Checking-1039. New balance for Checking-1039: $5,772.98. New balance for Checking-1077: $5,887.12.
+Alyssandra Cordero paid $1,000.00 to Daniel Mejia from Checking-1040. New balance for Checking-1040: $5,169.49. New balance for Checking-1077: $6,887.12.
+Anthony Jasso paid $1,000.00 to Daniel Mejia from Checking-1041. New balance for Checking-1041: $4,661.74. New balance for Checking-1077: $7,887.12.
+Arae Zarzosa paid $1,000.00 to Daniel Mejia from Checking-1042. New balance for Checking-1042: $5,994.56. New balance for Checking-1077: $8,887.12.
+Brandon Bustamante paid $1,000.00 to Daniel Mejia from Checking-1043. New balance for Checking-1043: $4,355.39. New balance for Checking-1077: $9,887.12.
+Cesar Cabrera paid $1,000.00 to Daniel Mejia from Checking-1044. New balance for Checking-1044: $5,806.19. New balance for Checking-1077: $10,887.12.
+Christopher Reyes paid $1,000.00 to Daniel Mejia from Checking-1045. New balance for Checking-1045: $5,330.23. New balance for Checking-1077: $11,887.12.
+Dafne Bencomo paid $1,000.00 to Daniel Mejia from Checking-1046. New balance for Checking-1046: $4,519.88. New balance for Checking-1077: $12,887.12.
+David Baptiste paid $1,000.00 to Daniel Mejia from Checking-1047. New balance for Checking-1047: $5,076.98. New balance for Checking-1077: $13,887.12.
+Derek Aguirre paid $1,000.00 to Daniel Mejia from Checking-1048. New balance for Checking-1048: $5,845.56. New balance for Checking-1077: $14,887.12.
+Eduardo Garcia paid $1,000.00 to Daniel Mejia from Checking-1049. New balance for Checking-1049: $5,243.42. New balance for Checking-1077: $15,887.12.
+Ervey Montes paid $1,000.00 to Daniel Mejia from Checking-1050. New balance for Checking-1050: $5,584.85. New balance for Checking-1077: $16,887.12.
+Estevan Ramos paid $1,000.00 to Daniel Mejia from Checking-1051. New balance for Checking-1051: $4,760.91. New balance for Checking-1077: $17,887.12.
+Federico Marin paid $1,000.00 to Daniel Mejia from Checking-1052. New balance for Checking-1052: $5,917.27. New balance for Checking-1077: $18,887.12.
+Gavin Baechle paid $1,000.00 to Daniel Mejia from Checking-1053. New balance for Checking-1053: $5,734.37. New balance for Checking-1077: $19,887.12.
+Gildardo Orea paid $1,000.00 to Daniel Mejia from Checking-1054. New balance for Checking-1054: $4,291.85. New balance for Checking-1077: $20,887.12.
+Grecia Navarrete paid $1,000.00 to Daniel Mejia from Checking-1055. New balance for Checking-1055: $5,622.04. New balance for Checking-1077: $21,887.12.
+Hernan Garcia paid $1,000.00 to Daniel Mejia from Checking-1056. New balance for Checking-1056: $4,135.23. New balance for Checking-1077: $22,887.12.
+Isaiah Landin paid $1,000.00 to Daniel Mejia from Checking-1057. New balance for Checking-1057: $5,816.52. New balance for Checking-1077: $23,887.12.
+Jose Rodriguez Ortega paid $1,000.00 to Daniel Mejia from Checking-1058. New balance for Checking-1058: $4,398.46. New balance for Checking-1077: $24,887.12.
+Joseph Medina - Sandoval paid $1,000.00 to Daniel Mejia from Checking-1059. New balance for Checking-1059: $4,903.51. New balance for Checking-1077: $25,887.12.
+Juan Gutierrez paid $1,000.00 to Daniel Mejia from Checking-1060. New balance for Checking-1060: $4,526.23. New balance for Checking-1077: $26,887.12.
+Juan Rabelo paid $1,000.00 to Daniel Mejia from Checking-1061. New balance for Checking-1061: $5,851.26. New balance for Checking-1077: $27,887.12.
+Judith Garcia paid $1,000.00 to Daniel Mejia from Checking-1062. New balance for Checking-1062: $5,740.54. New balance for Checking-1077: $28,887.12.
+Laura Blanco paid $1,000.00 to Daniel Mejia from Checking-1063. New balance for Checking-1063: $5,506.74. New balance for Checking-1077: $29,887.12.
+Laurence Labayen paid $1,000.00 to Daniel Mejia from Checking-1064. New balance for Checking-1064: $5,079.13. New balance for Checking-1077: $30,887.12.
+Lidice Castro Jimenez paid $1,000.00 to Daniel Mejia from Checking-1065. New balance for Checking-1065: $5,942.67. New balance for Checking-1077: $31,887.12.
+Manuel Melendez Lujan paid $1,000.00 to Daniel Mejia from Checking-1066. New balance for Checking-1066: $5,311.35. New balance for Checking-1077: $32,887.12.
+Manuel Ruvalcaba paid $1,000.00 to Daniel Mejia from Checking-1067. New balance for Checking-1067: $4,870.60. New balance for Checking-1077: $33,887.12.
+Mauricio Ornelas-Gutierrez paid $1,000.00 to Daniel Mejia from Checking-1068. New balance for Checking-1068: $4,192.14. New balance for Checking-1077: $34,887.12.
+Minh Dang paid $1,000.00 to Daniel Mejia from Checking-1069. New balance for Checking-1069: $4,623.42. New balance for Checking-1077: $35,887.12.
+Oscar Decena paid $1,000.00 to Daniel Mejia from Checking-1070. New balance for Checking-1070: $5,450.22. New balance for Checking-1077: $36,887.12.
+Robert Evans paid $1,000.00 to Daniel Mejia from Checking-1071. New balance for Checking-1071: $5,223.55. New balance for Checking-1077: $37,887.12.
+Roberto Carrasco paid $1,000.00 to Daniel Mejia from Checking-1072. New balance for Checking-1072: $5,152.39. New balance for Checking-1077: $38,887.12.
+Sofia Hernandez paid $1,000.00 to Daniel Mejia from Checking-1073. New balance for Checking-1073: $5,515.79. New balance for Checking-1077: $39,887.12.
+Yulianna Torres paid $1,000.00 to Daniel Mejia from Checking-1074. New balance for Checking-1074: $5,035.19. New balance for Checking-1077: $40,887.12.
+Daniel Mejia performed a balance inquiry on Checking-1077. Its balance is $40887.119999999995
+
+Mickey Mouse withdrew $100.00 from Savings-2000. Mickey Mouse’s New Balance for Savings-2000: $4,177.46
+Donald Duck paid $48.46 to Alberto Miranda from Checking-1001. New balance for Checking-1001: $1,980.12. New balance for Checking-1036: $4,523.05.
+Minnie Mouse withdrew $79.00 from Savings-2002. Minnie Mouse’s New Balance for Savings-2002: $248.99
+Goofy Disney paid $15.63 to Alfonso Beltran from Checking-1003. New balance for Checking-1003: $1,441.06. New balance for Checking-1038: $4,490.02.
+Pluto Disney withdrew $77.00 from Savings-2004. Pluto Disney’s New Balance for Savings-2004: $1,545.73
+Dale Disney withdrew $54.00 from Savings-2006. Dale Disney’s New Balance for Savings-2006: $4,037.61
+Cinderella Disney paid $28.81 to Arae Zarzosa from Checking-1007. New balance for Checking-1007: $886.73. New balance for Checking-1042: $6,023.37.
+Ariel Disney withdrew $57.00 from Savings-2008. Ariel Disney’s New Balance for Savings-2008: $672.50
+Jasmine Disney paid $28.89 to Cesar Cabrera from Checking-1009. New balance for Checking-1009: $605.05. New balance for Checking-1044: $5,835.08.
+Aladdin Disney withdrew $94.00 from Savings-2010. Aladdin Disney’s New Balance for Savings-2010: $3,339.15
+Simba Disney paid $39.29 to Dafne Bencomo from Checking-1011. New balance for Checking-1011: $1,297.50. New balance for Checking-1046: $4,559.17.
+Mufassa Disney withdrew $67.00 from Savings-2012. Mufassa Disney’s New Balance for Savings-2012: $3,779.05
+Aurora Disney paid $34.47 to Derek Aguirre from Checking-1013. New balance for Checking-1013: $308.98. New balance for Checking-1048: $5,880.03.
+Peter Pan withdrew $100.00 from Savings-2014. Peter Pan’s New Balance for Savings-2014: $2,152.52
+Woody Disney paid $34.04 to Ervey Montes from Checking-1015. New balance for Checking-1015: $224.02. New balance for Checking-1050: $5,618.89.
+Jafar Aladdin paid $12.36 to Federico Marin from Checking-1017. New balance for Checking-1017: $505.71. New balance for Checking-1052: $5,929.63.
+Ursela Mermaid withdrew $56.00 from Savings-2018. Ursela Mermaid’s New Balance for Savings-2018: $1,447.63
+Beast Disney paid $26.84 to Gildardo Orea from Checking-1019. New balance for Checking-1019: $1,822.19. New balance for Checking-1054: $4,318.69.
+Belle Disney withdrew $88.00 from Savings-2020. Belle Disney’s New Balance for Savings-2020: $2,346.75
+Cruella De Vil paid $34.70 to Hernan Garcia from Checking-1021. New balance for Checking-1021: $1,097.91. New balance for Checking-1056: $4,169.93.
+Scar Lion withdrew $65.00 from Savings-2022. Scar Lion’s New Balance for Savings-2022: $4,261.32
+Simba King paid $11.31 to Jose Rodriguez Ortega from Checking-1023. New balance for Checking-1023: $1,460.74. New balance for Checking-1058: $4,409.77.
+Gaston Disney withdrew $78.00 from Savings-2024. Gaston Disney’s New Balance for Savings-2024: $916.47
+Shere Khan paid $41.20 to Juan Gutierrez from Checking-1025. New balance for Checking-1025: $647.57. New balance for Checking-1060: $4,567.43.
+Captaiin Hook withdrew $86.00 from Savings-2026. Captaiin Hook’s New Balance for Savings-2026: $3,209.28
+Kaa Disney paid $11.83 to Judith Garcia from Checking-1027. New balance for Checking-1027: $916.93. New balance for Checking-1062: $5,752.37.
+Evil Queen withdrew $86.00 from Savings-2028. Evil Queen’s New Balance for Savings-2028: $4,758.83
+Pinocchio Disney paid $34.11 to Laurence Labayen from Checking-1029. New balance for Checking-1029: $1,246.66. New balance for Checking-1064: $5,113.24.
+Prince Eric withdrew $57.00 from Savings-2030. Prince Eric’s New Balance for Savings-2030: $4,448.00
+Quasimodo Disney paid $25.58 to Manuel Melendez Lujan from Checking-1031. New balance for Checking-1031: $457.99. New balance for Checking-1066: $5,336.93.
+Hercules Disney withdrew $85.00 from Savings-2032. Hercules Disney’s New Balance for Savings-2032: $1,303.27
+Mulan Disney paid $36.48 to Mauricio Ornelas-Gutierrez from Checking-1033. New balance for Checking-1033: $1,737.78. New balance for Checking-1068: $4,228.62.
+Lilo Disney withdrew $59.00 from Savings-2034. Lilo Disney’s New Balance for Savings-2034: $1,883.89
+Stitch Disney paid $29.25 to Oscar Decena from Checking-1035. New balance for Checking-1035: $358.07. New balance for Checking-1070: $5,479.47.
+Gaston Disney withdrew $74.00 from Savings-2024. Gaston Disney’s New Balance for Savings-2024: $842.47
+Mickey Mouse paid $17.97 to Roberto Carrasco from Checking-1000. New balance for Checking-1000: $581.15. New balance for Checking-1072: $5,170.36.
+Donald Duck withdrew $91.00 from Savings-2001. Donald Duck’s New Balance for Savings-2001: $3,591.37
+Minnie Mouse paid $29.50 to Yulianna Torres from Checking-1002. New balance for Checking-1002: $1,864.66. New balance for Checking-1074: $5,064.69.
+Goofy Disney withdrew $81.00 from Savings-2003. Goofy Disney’s New Balance for Savings-2003: $803.26
+Pluto Disney paid $39.92 to Alex Avila from Checking-1004. New balance for Checking-1004: $1,509.75. New balance for Checking-1037: $4,125.01.
+Chip Disney withdrew $75.00 from Savings-2005. Chip Disney’s New Balance for Savings-2005: $3,612.14
+Dale Disney paid $50.39 to Alfredo Rodriguez from Checking-1006. New balance for Checking-1006: $843.71. New balance for Checking-1039: $5,823.37.
+Cinderella Disney withdrew $79.00 from Savings-2007. Cinderella Disney’s New Balance for Savings-2007: $2,898.94
+Ariel Disney paid $46.88 to Anthony Jasso from Checking-1008. New balance for Checking-1008: $1,535.09. New balance for Checking-1041: $4,708.62.
+Jasmine Disney withdrew $59.00 from Savings-2009. Jasmine Disney’s New Balance for Savings-2009: $1,028.10
+Aladdin Disney paid $25.16 to Brandon Bustamante from Checking-1010. New balance for Checking-1010: $115.62. New balance for Checking-1043: $4,380.55.
+Simba Disney withdrew $100.00 from Savings-2011. Simba Disney’s New Balance for Savings-2011: $273.47
+Mufassa Disney paid $33.54 to Christopher Reyes from Checking-1012. New balance for Checking-1012: $115.14. New balance for Checking-1045: $5,363.77.
+Mickey Mouse paid $48.46 to David Baptiste from Savings-2000. New balance for Savings-2000: $4,129.00. New balance for Checking-1047: $5,125.44.
+Donald Duck withdrew $79.00 from Checking-1001. Donald Duck’s New Balance for Checking-1001: $1,901.12
+Minnie Mouse paid $15.63 to Eduardo Garcia from Savings-2002. New balance for Savings-2002: $233.36. New balance for Checking-1049: $5,259.05.
+Goofy Disney withdrew $77.00 from Checking-1003. Goofy Disney’s New Balance for Checking-1003: $1,364.06
+Pluto Disney paid $50.99 to Estevan Ramos from Savings-2004. New balance for Savings-2004: $1,494.74. New balance for Checking-1051: $4,811.90.
+Dale Disney paid $28.81 to Gavin Baechle from Savings-2006. New balance for Savings-2006: $4,008.80. New balance for Checking-1053: $5,763.18.
+Cinderella Disney withdrew $57.00 from Checking-1007. Cinderella Disney’s New Balance for Checking-1007: $829.73
+Ariel Disney paid $28.89 to Grecia Navarrete from Savings-2008. New balance for Savings-2008: $643.61. New balance for Checking-1055: $5,650.93.
+Jasmine Disney withdrew $94.00 from Checking-1009. Jasmine Disney’s New Balance for Checking-1009: $511.05
+Aladdin Disney paid $39.29 to Isaiah Landin from Savings-2010. New balance for Savings-2010: $3,299.86. New balance for Checking-1057: $5,855.81.
+Simba Disney withdrew $67.00 from Checking-1011. Simba Disney’s New Balance for Checking-1011: $1,230.50
+Mufassa Disney paid $34.47 to Joseph Medina - Sandoval from Savings-2012. New balance for Savings-2012: $3,744.58. New balance for Checking-1059: $4,937.98.
+Aurora Disney withdrew $100.00 from Checking-1013. Aurora Disney’s New Balance for Checking-1013: $208.98
+Peter Pan paid $34.04 to Juan Rabelo from Savings-2014. New balance for Savings-2014: $2,118.48. New balance for Checking-1061: $5,885.30.
+Woody Disney withdrew $90.00 from Checking-1015. Woody Disney’s New Balance for Checking-1015: $134.02
+Buzz Lightyear paid $12.36 to Laura Blanco from Savings-2016. New balance for Savings-2016: $21.17. New balance for Checking-1063: $5,519.10.
+Jafar Aladdin withdrew $56.00 from Checking-1017. Jafar Aladdin’s New Balance for Checking-1017: $449.71
+Ursela Mermaid paid $26.84 to Lidice Castro Jimenez from Savings-2018. New balance for Savings-2018: $1,420.79. New balance for Checking-1065: $5,969.51.
+Beast Disney withdrew $88.00 from Checking-1019. Beast Disney’s New Balance for Checking-1019: $1,734.19
+Belle Disney paid $34.70 to Manuel Ruvalcaba from Savings-2020. New balance for Savings-2020: $2,312.05. New balance for Checking-1067: $4,905.30.
+Cruella De Vil withdrew $65.00 from Checking-1021. Cruella De Vil’s New Balance for Checking-1021: $1,032.91
+Scar Lion paid $11.31 to Minh Dang from Savings-2022. New balance for Savings-2022: $4,250.01. New balance for Checking-1069: $4,634.73.
+Simba King withdrew $78.00 from Checking-1023. Simba King’s New Balance for Checking-1023: $1,382.74
+Gaston Disney paid $41.20 to Robert Evans from Savings-2024. New balance for Savings-2024: $801.27. New balance for Checking-1071: $5,264.75.
+Shere Khan withdrew $86.00 from Checking-1025. Shere Khan’s New Balance for Checking-1025: $561.57
+Captaiin Hook paid $11.83 to Sofia Hernandez from Savings-2026. New balance for Savings-2026: $3,197.45. New balance for Checking-1073: $5,527.62.
+Kaa Disney withdrew $86.00 from Checking-1027. Kaa Disney’s New Balance for Checking-1027: $830.93

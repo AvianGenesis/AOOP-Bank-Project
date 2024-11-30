@@ -3,7 +3,7 @@ package loggable;
 import account.Account;
 import main.Customer;
 
-public abstract class DoubleAccountTransaction extends AccountTransaction {
+public abstract class DoubleAccountAction extends AccountAction {
     Account to;
 
     protected String getToAcctInfo(){

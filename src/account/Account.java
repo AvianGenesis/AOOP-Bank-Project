@@ -9,7 +9,7 @@ import main.Customer;
  */
 
  //Hello Chagnes Made
-public abstract class Account {
+public abstract class Account implements AccountTypes {
 
     /** The owner of the account */
     private Customer accountOwner;
@@ -20,6 +20,7 @@ public abstract class Account {
     /** The balance of the account */
     protected double accountBalance;
 
+    /** The starting balance of the account */
     protected double startBalance;
 
     /**

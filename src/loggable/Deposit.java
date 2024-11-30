@@ -2,7 +2,7 @@ package loggable;
 
 import account.Account;
 
-public class Deposit extends AccountTransaction {
+public class Deposit extends AccountAction {
 
     public Deposit(Account from, double amt) {
         this.from = from;
@@ -10,7 +10,7 @@ public class Deposit extends AccountTransaction {
 
         statement[0] = String.valueOf(getOwner().getidNumber());
         statement[1] = String.valueOf(from.getAccountNumber());
-        statement[2] = "Deposit";
+        statement[2] = DEPOSIT;
         statement[3] = "";
         statement[4] = "";
         statement[5] = String.valueOf(amt);
@@ -48,6 +48,6 @@ public class Deposit extends AccountTransaction {
     }
 
     public String getType() {
-        return "Deposit";
+        return DEPOSIT;
     }
 }
