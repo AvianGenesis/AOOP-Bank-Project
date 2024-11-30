@@ -16,8 +16,9 @@ public class Withdraw extends AccountAction {
         statement[5] = String.valueOf(amt);
     }
 
-    
-    /** 
+    /**
+     * Verifies validity of and executes withdraw
+     * 
      * @return boolean
      */
     public boolean action() {
@@ -30,18 +31,16 @@ public class Withdraw extends AccountAction {
         }
     }
 
-    
-    /** 
+    /**
      * @return String
      */
-    public String getReport(){
+    public String getReport() {
         String message = String.format("Withdrew $%,.2f from %s\n", amt, getAcctInfo());
 
         return message;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
     public String getLog() {
@@ -53,8 +52,7 @@ public class Withdraw extends AccountAction {
         return message;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
     public String getSuccess() {
@@ -63,8 +61,7 @@ public class Withdraw extends AccountAction {
         return message;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
     public String getType() {
