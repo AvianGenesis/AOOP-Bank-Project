@@ -1,6 +1,6 @@
 package loggable;
 
-public interface Loggable { // all transactions, report generation, new user creation, etc
+public interface Loggable extends ActionTypes { // all transactions, report generation, new user creation, etc
     public abstract boolean action();
 
     public abstract String getLog();

@@ -4582,3 +4582,4 @@ Gaston Disney paid $41.20 to Robert Evans from Savings-2024. New balance for Sav
 Shere Khan withdrew $86.00 from Checking-1025. Shere Khan’s New Balance for Checking-1025: $561.57
 Captaiin Hook paid $11.83 to Sofia Hernandez from Savings-2026. New balance for Savings-2026: $3,197.45. New balance for Checking-1073: $5,527.62.
 Kaa Disney withdrew $86.00 from Checking-1027. Kaa Disney’s New Balance for Checking-1027: $830.93
+Manager generated bank statement for Goofy Disney

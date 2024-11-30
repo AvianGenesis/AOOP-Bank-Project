@@ -3,7 +3,7 @@ package loggable;
 import account.Account;
 import main.Customer;
 
-public abstract class AccountAction implements Loggable, ActionTypes {
+public abstract class AccountAction implements Loggable {
     Account from;
     double amt;
 

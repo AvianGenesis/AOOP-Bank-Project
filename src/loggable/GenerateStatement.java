@@ -1,29 +1,45 @@
 package loggable;
 
+import IO.CustomerReadWriter;
+import main.Customer;
+
 public class GenerateStatement implements Loggable {
+    Customer customer;
+
+    public GenerateStatement(Customer customer) {
+        this.customer = customer;
+    }
 
     @Override
     public boolean action() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'action'");
+        CustomerReadWriter rw = new CustomerReadWriter();
+        try {
+            rw.generateStatement(customer);
+            return true;
+        } catch (Exception e) {
+
+        }
+        System.out.println("Statement generation failed");
+        return false;
     }
 
     @Override
     public String getLog() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getLog'");
+        String message = String.format("Manager generated bank statement for %s", customer.getName());
+
+        return message;
     }
 
     @Override
     public String getType() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getType'");
+        return GENSTATEMENT;
     }
 
     @Override
     public String getSuccess() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getSuccess'");
+        String message = String.format("Generated bank statement for %s", customer.getName());
+
+        return message;
     }
-    
+
 }

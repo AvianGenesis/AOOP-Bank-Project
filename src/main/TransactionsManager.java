@@ -9,6 +9,8 @@ import IO.CustomerReadWriter;
 import account.Account;
 import loggable.AccountAction;
 import loggable.ActionFactory;
+import loggable.GenerateStatement;
+import loggable.Loggable;
 
 public class TransactionsManager {
     static final BankUsersIO buio = new BankUsersIO();
@@ -34,7 +36,7 @@ public class TransactionsManager {
      * @param account
      */
     public void checkBalance(Account account) {
-        executeAction(af.chooseAction(account));
+        executeAccountAction(af.chooseAction(account));
     }
 
     /**
@@ -43,7 +45,7 @@ public class TransactionsManager {
      * @return boolean
      */
     public boolean deposit(Account target, double amount, String actionType) {
-        return executeAction(af.chooseAction(target, amount, actionType));
+        return executeAccountAction(af.chooseAction(target, amount, actionType));
     }
 
     /**
@@ -52,7 +54,7 @@ public class TransactionsManager {
      * @return boolean
      */
     public boolean withdraw(Account target, double amount, String actionType) {
-        return executeAction(af.chooseAction(target, amount, actionType));
+        return executeAccountAction(af.chooseAction(target, amount, actionType));
     }
 
     /**
@@ -62,7 +64,7 @@ public class TransactionsManager {
      * @return boolean
      */
     public boolean transfer(Account from, Account to, double amount, String actionType) {
-        return executeAction(af.chooseAction(from, to, amount, actionType));
+        return executeAccountAction(af.chooseAction(from, to, amount, actionType));
     }
 
     /**
@@ -72,7 +74,7 @@ public class TransactionsManager {
      * @return boolean
      */
     public boolean pay(Account from, Account to, double amount, String actionType) {
-        return executeAction(af.chooseAction(from, to, amount, actionType));
+        return executeAccountAction(af.chooseAction(from, to, amount, actionType));
     }
 
     /**
@@ -100,6 +102,7 @@ public class TransactionsManager {
      */
     public void generateStatement(Customer customer) throws IOException {
         rw.generateStatement(customer);
+        executeLoggable(new GenerateStatement(customer));
     }
 
     /**
@@ -109,14 +112,20 @@ public class TransactionsManager {
         // log customer creation
     }
 
-    private boolean executeAction(AccountAction action) {
+    private boolean executeAccountAction(AccountAction action) {
         if (action.action()) {
-            ((AccountAction) action).getOwner().appendActions(action);
+            action.getOwner().appendActions(action);
             System.out.println(action.getSuccess());
             rw.logAction(action.getLog());
             return true;
         }
         return false;
+    }
+
+    private void executeLoggable(Loggable action) {
+        action.action();
+        System.out.println(action.getSuccess());
+        rw.logAction(action.getLog());
     }
 
     /**
