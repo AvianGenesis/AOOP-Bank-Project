@@ -61,11 +61,11 @@ public class Navigator {
     }
 
     /**
+     * Display accounts for given customer
+     * 
      * @param customer
-     * @param isAdmin
      * @return String
      */
-    // display accounts of requested customer
     public String displayAccounts(Customer customer) {
         int tick = 1;
         System.out.println("Welcome back, " + customer.getFirstName().toUpperCase() + "!");
@@ -87,8 +87,7 @@ public class Navigator {
         return input;
     }
 
-    
-    /** 
+    /**
      * @param customer
      * @return String
      */
@@ -177,7 +176,8 @@ public class Navigator {
      */
     public String displayPayTargetRequest() {
         String input = "";
-        input = requestInput("Please provide the account number of the person you are trying to transfer to OR\ntype BACK:\n");
+        input = requestInput(
+                "Please provide the account number of the person you are trying to transfer to OR\ntype BACK:\n");
         return input;
     }
 
@@ -281,8 +281,7 @@ public class Navigator {
         scanner.nextLine();
     }
 
-    
-    /** 
+    /**
      * @return String
      */
     public String displayCustomerSelection() {
@@ -293,20 +292,18 @@ public class Navigator {
         return ret;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
-    public String passwordReq(){
+    public String passwordReq() {
         String in = requestInput("Please provide the password for this account\n");
         return in;
     }
 
-    
-    /** 
+    /**
      * @return String
      */
-    public String newPass(){
+    public String newPass() {
         String in = requestInput("Please provide the new password for this account.\n");
         return in;
     }

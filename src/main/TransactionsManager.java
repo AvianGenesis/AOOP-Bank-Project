@@ -32,7 +32,6 @@ public class TransactionsManager {
     /**
      * Record a customer's balance inquiry
      * 
-     * @param customer
      * @param account
      */
     public void checkBalance(Account account) {
