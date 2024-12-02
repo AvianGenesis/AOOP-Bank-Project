@@ -44,13 +44,6 @@ public class Inquire extends AccountAction implements AccountTypes {
     }
 
     /**
-     * @return String[]
-     */
-    public String[] getStatement() {
-        return statement;
-    }
-
-    /**
      * @return String
      */
     public String getLog() {

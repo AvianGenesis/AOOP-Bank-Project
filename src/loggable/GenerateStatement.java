@@ -4,7 +4,7 @@ import IO.ReadWriter;
 import main.Customer;
 
 public class GenerateStatement implements Loggable {
-    Customer customer;
+    private Customer customer;
 
     public GenerateStatement(Customer customer) {
         this.customer = customer;

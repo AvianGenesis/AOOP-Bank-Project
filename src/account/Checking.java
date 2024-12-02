@@ -44,4 +44,3 @@ public class Checking extends Account {
         return CHECKING;
     }
 }
-

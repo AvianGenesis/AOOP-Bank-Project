@@ -3,8 +3,8 @@ package loggable;
 import account.Account;
 
 public class ActionFactory implements ActionTypes {
-    
-    /** 
+
+    /**
      * @param account
      * @return AccountAction
      */
@@ -12,8 +12,7 @@ public class ActionFactory implements ActionTypes {
         return new Inquire(account);
     }
 
-    
-    /** 
+    /**
      * @param target
      * @param amount
      * @param actionType
@@ -29,8 +28,7 @@ public class ActionFactory implements ActionTypes {
         }
     }
 
-    
-    /** 
+    /**
      * @param from
      * @param to
      * @param amount

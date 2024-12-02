@@ -8,7 +8,7 @@ import main.Customer;
  * operations.
  */
 
- //Hello Chagnes Made
+// Hello Chagnes Made
 public abstract class Account implements AccountTypes {
 
     /** The owner of the account */
@@ -54,6 +54,79 @@ public abstract class Account implements AccountTypes {
         this.accountNumber = accountNumber;
         this.accountBalance = accountBalance;
         this.startBalance = accountBalance;
+    }
+
+    /**
+     * Deposits an amount to the account balance if the amount is positive.
+     * 
+     * @param amount the amount to deposit
+     * @return true if the deposit was successful; false otherwise
+     */
+    public boolean deposit(double amount) {
+        if (canDeposit(amount)) {
+            accountBalance += amount;
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param amount
+     * @return boolean
+     */
+    public boolean canDeposit(double amount) {
+        return amtIsPositive(amount);
+    }
+
+    /**
+     * Withdraws an amount from the account balance if the amount is positive
+     * and does not exceed the current balance.
+     * 
+     * @param amount the amount to withdraw
+     * @return true if the withdrawal was successful; false otherwise
+     */
+    public boolean withdraw(double amount) {
+        if (canWithdraw(amount)) {
+            accountBalance -= amount;
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param amount
+     * @return boolean
+     */
+    public boolean canWithdraw(double amount) {
+        return amtIsPositive(amount) && amtExists(amount);
+    }
+
+    /**
+     * @param amount
+     * @return boolean
+     */
+    protected boolean amtIsPositive(double amount) {
+        if (amount > 0.0) {
+            return true;
+        } else {
+            System.out.println("Amount must be positive!\n");
+            return false;
+        }
+    }
+
+    /**
+     * @param amount
+     * @return boolean
+     */
+    protected boolean amtExists(double amount) {
+        if (amount <= accountBalance) {
+            return true;
+        } else {
+            System.out.println("Not enough funds in account!");
+            System.out.println("Requested: $" + amount);
+            System.out.println("Available: $" + accountBalance);
+            return false;
+        }
     }
 
     /**
@@ -110,89 +183,11 @@ public abstract class Account implements AccountTypes {
         this.accountBalance = accountBalance;
     }
 
-    
-    /** 
+    /**
      * @return double
      */
-    public double getStartBalance(){
+    public double getStartBalance() {
         return startBalance;
-    }
-
-    /**
-     * Deposits an amount to the account balance if the amount is positive.
-     * 
-     * @param amount the amount to deposit
-     * @return true if the deposit was successful; false otherwise
-     */
-    public boolean deposit(double amount) {
-        if (canDeposit(amount)) {
-            accountBalance += amount;
-            return true;
-        }
-        return false;
-    }
-
-    
-    /** 
-     * @param amount
-     * @return boolean
-     */
-    public boolean canDeposit(double amount) {
-        return amtIsPositive(amount);
-    }
-
-    /**
-     * Withdraws an amount from the account balance if the amount is positive
-     * and does not exceed the current balance.
-     * 
-     * @param amount the amount to withdraw
-     * @return true if the withdrawal was successful; false otherwise
-     */
-    public boolean withdraw(double amount) {
-        if (canWithdraw(amount)) {
-            accountBalance -= amount;
-            return true;
-        }
-        return false;
-    }
-
-    
-    /** 
-     * @param amount
-     * @return boolean
-     */
-    public boolean canWithdraw(double amount) {
-        return amtIsPositive(amount) && amtExists(amount);
-    }
-
-    
-    /** 
-     * @param amount
-     * @return boolean
-     */
-    protected boolean amtIsPositive(double amount) {
-        if (amount > 0.0) {
-            return true;
-        } else {
-            System.out.println("Amount must be positive!\n");
-            return false;
-        }
-    }
-
-    
-    /** 
-     * @param amount
-     * @return boolean
-     */
-    protected boolean amtExists(double amount) {
-        if (amount <= accountBalance) {
-            return true;
-        } else {
-            System.out.println("Not enough funds in account!");
-            System.out.println("Requested: $" + amount);
-            System.out.println("Available: $" + accountBalance);
-            return false;
-        }
     }
 
     /**

@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,27 +17,25 @@ import main.Customer;
 import main.CustomersManager;
 
 public class BankUsersIO {
+    private static final String INPUT_CSV = "resources/BankUsers.csv";
+    private static final String OUTPUT_CSV = "resources/BankUsersOutput.csv";
 
-    static final String INPUT_CSV = "resources/BankUsers.csv";
-    static final String OUTPUT_CSV = "resources/BankUsersOutput.csv";
-    static final DecimalFormat DF = new DecimalFormat("$#,##0.00");
-
-    static final String ID = "Identification Number";
-    static final String FIRST_NAME = "First Name";
-    static final String LAST_NAME = "Last Name";
-    static final String DOB = "Date of Birth";
-    static final String ADDRESS = "Address";
-    static final String CITY = "City";
-    static final String STATE = "State";
-    static final String ZIP = "Zip";
-    static final String PHONE_NUMBER = "Phone Number";
-    static final String CHECKING_NUMBER = "Checking Account Number";
-    static final String CHECKING_BALANCE = "Checking Starting Balance";
-    static final String SAVINGS_NUMBER = "Savings Account Number";
-    static final String SAVINGS_BALANCE = "Savings Starting Balance";
-    static final String CREDIT_NUMBER = "Credit Account Number";
-    static final String CREDIT_MAX = "Credit Max";
-    static final String CREDIT_BALANCE = "Credit Starting Balance";
+    private static final String ID = "Identification Number";
+    private static final String FIRST_NAME = "First Name";
+    private static final String LAST_NAME = "Last Name";
+    private static final String DOB = "Date of Birth";
+    private static final String ADDRESS = "Address";
+    private static final String CITY = "City";
+    private static final String STATE = "State";
+    private static final String ZIP = "Zip";
+    private static final String PHONE_NUMBER = "Phone Number";
+    private static final String CHECKING_NUMBER = "Checking Account Number";
+    private static final String CHECKING_BALANCE = "Checking Starting Balance";
+    private static final String SAVINGS_NUMBER = "Savings Account Number";
+    private static final String SAVINGS_BALANCE = "Savings Starting Balance";
+    private static final String CREDIT_NUMBER = "Credit Account Number";
+    private static final String CREDIT_MAX = "Credit Max";
+    private static final String CREDIT_BALANCE = "Credit Starting Balance";
 
     private class DataPoint {
         public String head;
@@ -50,24 +47,24 @@ public class BankUsersIO {
         }
     }
 
-    List<String> headers;
-    List<DataPoint> points = new ArrayList<DataPoint>();
-    DataPoint id = new DataPoint(ID);
-    DataPoint firstName = new DataPoint(FIRST_NAME);
-    DataPoint lastName = new DataPoint(LAST_NAME);
-    DataPoint dob = new DataPoint(DOB);
-    DataPoint address = new DataPoint(ADDRESS);
-    DataPoint city = new DataPoint(CITY);
-    DataPoint state = new DataPoint(STATE);
-    DataPoint zip = new DataPoint(ZIP);
-    DataPoint phone = new DataPoint(PHONE_NUMBER);
-    DataPoint chkNum = new DataPoint(CHECKING_NUMBER);
-    DataPoint chkBal = new DataPoint(CHECKING_BALANCE);
-    DataPoint savNum = new DataPoint(SAVINGS_NUMBER);
-    DataPoint savBal = new DataPoint(SAVINGS_BALANCE);
-    DataPoint creNum = new DataPoint(CREDIT_NUMBER);
-    DataPoint creMax = new DataPoint(CREDIT_MAX);
-    DataPoint creBal = new DataPoint(CREDIT_BALANCE);
+    private List<String> headers;
+    private List<DataPoint> points = new ArrayList<DataPoint>();
+    private DataPoint id = new DataPoint(ID);
+    private DataPoint firstName = new DataPoint(FIRST_NAME);
+    private DataPoint lastName = new DataPoint(LAST_NAME);
+    private DataPoint dob = new DataPoint(DOB);
+    private DataPoint address = new DataPoint(ADDRESS);
+    private DataPoint city = new DataPoint(CITY);
+    private DataPoint state = new DataPoint(STATE);
+    private DataPoint zip = new DataPoint(ZIP);
+    private DataPoint phone = new DataPoint(PHONE_NUMBER);
+    private DataPoint chkNum = new DataPoint(CHECKING_NUMBER);
+    private DataPoint chkBal = new DataPoint(CHECKING_BALANCE);
+    private DataPoint savNum = new DataPoint(SAVINGS_NUMBER);
+    private DataPoint savBal = new DataPoint(SAVINGS_BALANCE);
+    private DataPoint creNum = new DataPoint(CREDIT_NUMBER);
+    private DataPoint creMax = new DataPoint(CREDIT_MAX);
+    private DataPoint creBal = new DataPoint(CREDIT_BALANCE);
 
     public BankUsersIO() {
         points.add(id);
@@ -132,10 +129,6 @@ public class BankUsersIO {
      * @param customers
      */
     public void writeChanges(CustomersManager customers) {
-        // String changes = "Identification Number,First Name,Last Name,Date of
-        // Birth,Address,City,State,Zip,Phone Number,Checking Account Number,Checking
-        // Starting Balance,Savings Account Number,Savings Starting Balance,Credit
-        // Account Number,Credit Max,Credit Starting Balance\n";
         String changes = headers.get(0);
         for (int i = 1; i < headers.size(); i++) {
             changes += "," + headers.get(i);

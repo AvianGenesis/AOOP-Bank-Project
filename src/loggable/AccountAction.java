@@ -7,7 +7,7 @@ public abstract class AccountAction implements Loggable {
     Account from;
     double amt;
 
-    String[] statement = new String[6];
+    protected String[] statement = new String[6];
 
     public abstract String getReport();
 

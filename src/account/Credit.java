@@ -9,7 +9,7 @@ import main.Customer;
 public class Credit extends Account {
     
     /** The maximum credit limit */
-    int max;
+    private int max;
 
     /**
      * Default constructor for the Credit account.

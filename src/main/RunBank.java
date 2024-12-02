@@ -382,7 +382,7 @@ public class RunBank implements ActionTypes {
                 System.out.println("Make a Deposit into your savings account ");
                 activeAccount = newSav;
                 activeCustomer = newC;
-                uiMode = Mode.ADMIN;
+                uiMode = Mode.DEPOSIT;
 
                 System.out.println();
             } else if (uiMode == Mode.TRANSACTIONS) {

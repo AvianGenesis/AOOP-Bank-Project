@@ -13,9 +13,9 @@ import loggable.GenerateStatement;
 import loggable.Loggable;
 
 public class TransactionsManager {
-    static final BankUsersIO buio = new BankUsersIO();
-    static final ReadWriter rw = new ReadWriter();
-    static final ActionFactory af = new ActionFactory();
+    private static final BankUsersIO buio = new BankUsersIO();
+    private static final ReadWriter rw = new ReadWriter();
+    private static final ActionFactory af = new ActionFactory();
 
     /**
      * Initial load-in of BankUsers.csv
@@ -83,7 +83,6 @@ public class TransactionsManager {
      * @throws IOException
      */
     public List<String[]> readTransactions(String transFile) throws FileNotFoundException, IOException {
-        // log transactions execution
         return rw.readTransactions(transFile);
     }
 
@@ -100,15 +99,7 @@ public class TransactionsManager {
      * @throws IOException
      */
     public void generateStatement(Customer customer) throws IOException {
-        rw.generateStatement(customer);
         executeLoggable(new GenerateStatement(customer));
-    }
-
-    /**
-     * @param customer
-     */
-    public void newCustomer(Customer customer) {
-        // log customer creation
     }
 
     

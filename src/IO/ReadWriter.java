@@ -15,7 +15,7 @@ import loggable.AccountAction;
 import main.Customer;
 
 public class ReadWriter implements AccountTypes{
-    static final String OUTPUT_LOG = "resources/Log.txt";
+    private static final String OUTPUT_LOG = "resources/Log.txt";
 
     /**
      * 
