@@ -1,18 +1,18 @@
 ID: 1
 Name: Mickey Mouse
-Timestamp: 2024-11-30T00:31:30.085986400Z
+Timestamp: 2024-12-04T23:23:11.890559300Z
 Checking start balance: $399.12
-Checking end balance: $581.15
+Checking end balance: $239.12
 Savings start balance: $4477.46
-Savings end balance: $4129.0
+Savings end balance: $4477.46
 Credit start balance: $1453.84
-Credit end balance: $1153.84
-Paid $100.00 from Checking-1000 to Checking-1001
-Transfered $400.00 from Savings-2000 to Checking-1000
+Credit end balance: $1453.84
+Inquired balance of 
+Deposited $20.00 into Checking-1000
 Inquired balance of 
 Withdrew $100.00 from Checking-1000
-Deposited $500.00 into Savings-2000
-Transfered $300.00 from Savings-2000 to Credit-3000
-Withdrew $100.00 from Savings-2000
-Paid $17.97 from Checking-1000 to Checking-1072
-Paid $48.46 from Savings-2000 to Checking-1047
+Inquired balance of 
+Transferred $50.00 from Checking-1000 to Savings-2001
+Inquired balance of 
+Paid $30.00 from Checking-1000 to Checking-1050
+Inquired balance of 

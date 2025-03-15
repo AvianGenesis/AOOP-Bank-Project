@@ -1,0 +1,9 @@
+ID: 3
+Name: Minnie Mouse
+Timestamp: 2024-12-04T22:57:59.853992500Z
+Checking start balance: $1894.16
+Checking end balance: $1894.16
+Savings start balance: $327.99
+Savings end balance: $327.99
+Credit start balance: $239.31
+Credit end balance: $239.31
